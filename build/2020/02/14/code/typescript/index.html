@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+
+  <!-- 页面元数据 -->
+  
+  <title>TypeScript - 梦回年少</title>
+  
+    <meta name="keywords" content="TypeScript">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+    
+      <meta name="msapplication-TileColor" content="#ffffff">
+    
+      <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/browserconfig.xml">
+    
+      <meta name="theme-color" content="#ffffff">
+    
+  
+
+  <!-- link -->
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/node-waves/0.7.6/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo_blue.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_blue.png">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/site.webmanifest">
+  <link rel="shortcut icon" href="/assets/img/logo_blue.png">
+  <link href="/assets/css/base.css" rel="stylesheet">
+  
+
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css">
+
+    
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  <!-- 脚本懒加载函数 -->
+  <script>
+  function loadScript(src, cb) {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+    var script = document.createElement('script');
+    script.setAttribute('type','text/javascript');
+    if (cb) script.onload = cb;
+    script.setAttribute('src', src);
+    HEAD.appendChild(script);
+  }
+  //https://github.com/filamentgroup/loadCSS
+  !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
+  </script>
+  <script id="loadcss"></script>
+</head>
+
+<body>
+  <header class="l_header auto shadow blur floatable " style='opacity: 0' >
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='/assets/img/logo_blue_small.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/message/
+                  
+                  
+                  
+                    id="message"
+                  >
+                  <i class='fas  fa-comments fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索...(◕ܫ◕)" />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/message/
+                  
+                  
+                  
+                    id="message"
+                  >
+                  <i class='fas  fa-comments fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div class="l_body">
+    <div class="l_cover">
+  
+    
+    
+        <div class='cover-wrapper post featured' style="display: none;">
+          
+            <div class='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+      <img no-lazy class='logo' src='/assets/img/banner_logo.png'/>
+    
+    
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <img src='https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/home.png'><p>首页</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/archive.png'><p>文档</p>
+            </a>
+          
+            <a href="/message/"
+              
+              
+              id="message">
+              <img src='https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/comments.png'><p>留言</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <img src='https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/link.png'><p>朋友</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <img src='https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/about.png'><p>关于</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+  
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">TypeScript</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "half") { // 半屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "full") { // 全屏 
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+ 
+
+        
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        TypeScript
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/assets/img/avatar.jpg">
+    <p>豆豆</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年2月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="TypeScript" data-path="/2020/02/14/code/typescript/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4.9k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：19分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="了解TypeScript"><a href="#了解TypeScript" class="headerlink" title="了解TypeScript"></a>了解TypeScript</h2><p>增强版的JavaScript，目的是为了让前端更加规范合理，TypeScript最大的目的是让程序员更具创造性，提高生产力，它将极大增强JavaScript编写应用的开发和调试环节，让JavaScript能够方便用于编写大型应用和进行多人协作。</p>
+<h3 id="TypeScript-与JavaScript两者的特性对比，主要表现为以下几点："><a href="#TypeScript-与JavaScript两者的特性对比，主要表现为以下几点：" class="headerlink" title="TypeScript 与JavaScript两者的特性对比，主要表现为以下几点："></a>TypeScript 与JavaScript两者的特性对比，主要表现为以下几点：</h3><p>TypeScript是一个应用程序级的JavaScript开发语言。（这也表示TypeScript比较牛逼，可以开发大型应用，或者说更适合开发大型应用）<br>TypeScript是JavaScript的超集，可以编译成纯JavaScript。这个和我们CSS离的Less或者Sass是很像的，我们用更好的代码编写方式来进行编写，最后还是有好生成原生的JavaScript语言。<br>TypeScript跨浏览器、跨操作系统、跨主机、且开源。由于最后他编译成了JavaScript所以只要能运行JS的地方，都可以运行我们写的程序，设置在node.js里。<br>TypeScript始于JavaScript，终于JavaScript。遵循JavaScript的语法和语义，所以对于我们前端从业者来说，学习前来得心应手，并没有太大的难度。<br>TypeScript可以重用JavaScript代码，调用流行的JavaScript库。<br>TypeScript提供了类、模块和接口，更易于构建组件和维护。</p>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><p><code>npm install typescript -g</code> 全局安装<br><code>tsc --init</code>生成tsconfig.json配置文件<br><code>tsc -b .\tsconfig.json</code> 编译ts文件为js文件</p>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>ts声明变量必须制定变量类型<br>TypeScript中的数据类型有：</p>
+<p>Undefined : 未定义（大多数不赋值的话直接编辑器就报错了）<br>Number:数值类型;<br>string : 字符串类型;<br>Boolean: 布尔类型；<br>enum：枚举类型；<br>any : 任意类型，一个牛X的类型；<br>void：空类型；void类型像是与any类型相反，它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是void。声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null<br>Array : 数组类型;<br>Tuple : 元祖类型；<br>Null ：空类型。</p>
+<pre><code class="ts">var stature:number = 178.5
+console.log(stature)
+var jspang:string = &quot;技术胖 jspang.com&quot;
+console.log(jspang)
+var c:boolean = false
+# 枚举类型enum
+enum REN&#123; nan , nv ,yao&#125;
+console.log(REN.yao)  //返回了2，这是索引index，跟数组很想。
+# 如果我们想给这些枚举赋值，可以直接使用=,来进行赋值。
+
+enum REN&#123;
+    nan = &#39;男&#39;,
+    nv = &#39;女&#39;,
+    yao= &#39;妖&#39;
+&#125;
+console.log(REN.yao)  //返回了妖 这个字
+#任意类型其实就是前端现在的方式，可以对变量赋值任意类型。
+var t:any =10 
+t = &quot;jspang&quot;
+t = true
+console.log(t)</code></pre>
+<h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><p>有时候你会遇到这样的情况，你会比TypeScript更了解某个值的详细信息。 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
+<p>通过类型断言这种方式可以告诉编译器，“相信我，我知道自己在干什么”。 类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构。 它没有运行时的影响，只是在编译阶段起作用。 TypeScript会假设你，程序员，已经进行了必须的检查。</p>
+<p>类型断言有两种形式。 其一是“尖括号”语法：</p>
+<pre><code>let someValue: any = &quot;this is a string&quot;;
+
+let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
+<p>另一个为as语法：</p>
+<pre><code>let someValue: any = &quot;this is a string&quot;;
+
+let strLength: number = (someValue as string).length;</code></pre>
+<p>两种形式是等价的。 至于使用哪个大多数情况下是凭个人喜好；然而，当你在TypeScript里使用JSX时，只有as语法断言是被允许的。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>声明（定义）函数必须加 function 关键字；<br>函数名与变量名一样，命名规则按照标识符规则；<br>函数参数可有可无，多个参数之间用逗号隔开；<br>每个参数参数由名字与类型组成，之间用分号隔开；<br>函数的返回值可有可无，没有时，返回类型为 void；<br>大括号中是函数体。<br>小括号后面的类型是函数返回值return的类型</p>
+<pre><code>  function searchXiaoJieJie(age:number):string&#123;
+      return &#39;找到了&#39;+age+&#39;岁的小姐姐&#39; 
+  &#125;
+  var age:number = 18
+  var result:string = searchXiaoJieJie(age)
+  console.log(result)</code></pre>
+<h3 id="传参多种方式"><a href="#传参多种方式" class="headerlink" title="传参多种方式"></a>传参多种方式</h3><p>正常传参<code>age:number</code>,可选传参<code>stature?:string</code>,默认传参<code>style:string=&#39;大胸&#39;</code>,剩余其他参数传参<code>...other:string[]</code>。</p>
+<pre><code>function searchXiaoJieJie2(age:number,stature?:string,style:string=&#39;大胸&#39;,...other:string[]):string&#123;
+
+    let yy:string = &#39;&#39;
+    yy = &#39;找到了&#39;+age+&#39;岁&#39;
+    if(stature !=undefined)&#123;
+        yy = yy + stature
+    &#125;
+    return yy+&#39;的小姐姐&#39;
+
+&#125;
+
+var result:string  =  searchXiaoJieJie2(22,&#39;大长腿&#39;)
+console.log(result)</code></pre>
+<h3 id="函数定义多种方式"><a href="#函数定义多种方式" class="headerlink" title="函数定义多种方式"></a>函数定义多种方式</h3><h4 id="函数声明法"><a href="#函数声明法" class="headerlink" title="函数声明法"></a>函数声明法</h4><p>函数声明法创建函数是最常用的函数定义法。使用function关键字和函数名去定义一个函数。</p>
+<pre><code>function add(n1:number,n2:number):number&#123;
+    return n1+n2
+&#125;</code></pre>
+<h4 id="函数表达式法"><a href="#函数表达式法" class="headerlink" title="函数表达式法"></a>函数表达式法</h4><p>函数表达式法是将一个函数赋值给一个变量，这个变量名就是函数名。通过变量名就可以调用函数了。这种方式定义的函数，必须在定义之后，调用函数。下面例子中等号右边的函数没有函数名，称为匿名函数。</p>
+<pre><code>var add = function(n1:number,n2:number):number&#123;
+    return n1+n2
+&#125;
+
+console.log(add(1,4))</code></pre>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>箭头函数是 ES6 中新增的函数定义的新方式，我们的 TypeScript 语言是完全支持 ES6 语法的。箭头函数定义的函数一般都用于回调函数中。</p>
+<pre><code>var add = (n1:number,n2:number):number=&gt;&#123;
+    return n1+n2
+&#125;
+
+console.log(add(1,4))</code></pre>
+<h2 id="引用类型数组"><a href="#引用类型数组" class="headerlink" title="引用类型数组"></a>引用类型数组</h2><p>初始化数组的两种方法</p>
+<h3 id="声明数组的方法"><a href="#声明数组的方法" class="headerlink" title="声明数组的方法"></a>声明数组的方法</h3><pre><code>let arr1:number[ ]     //声明一个数值类型的数组
+let arr2:Array&lt;string&gt;  //声明一个字符串类型的数组</code></pre>
+<h3 id="给数组赋值"><a href="#给数组赋值" class="headerlink" title="给数组赋值"></a>给数组赋值</h3><p>数组是存储大量数据的集合，声明数组之后，需要给数组存储数据。这时候有两种方法：</p>
+<p>字面量赋值法：直接使用“[ ]”对数组进行赋值。<br>构造函数赋值法：</p>
+<h4 id="字面量赋值法"><a href="#字面量赋值法" class="headerlink" title="** 字面量赋值法**"></a>** 字面量赋值法**</h4><pre><code>//定义一个空数组，数组容量为0
+let arr1:number[] = [] 
+//定义一个数组时，直接给数组赋值
+let arr2:number[] = [1,2,3,4,5]
+//定义数组 的同事给数组赋值
+let arr3:Array&lt;string&gt; = [&#39;jspang&#39;,&#39;技术胖&#39;,&#39;金三胖&#39;]
+let arr4:Array&lt;boolean&gt; = [ true,false,false]</code></pre>
+<p>需要注意的是，在TypeScript中指定数据类型的数组只能存储同一类型的数组元素。</p>
+<pre><code>//报错！ 必须存储number类型的数据
+let arr5:number[] = [1,2,true]</code></pre>
+<h4 id="构造函数赋值法"><a href="#构造函数赋值法" class="headerlink" title="构造函数赋值法"></a>构造函数赋值法</h4><p>在 TypeScript 中使用 Array 这个引用类型来表示数组的，那么每一个数组都是 Array 类型的实例。那么，我们在创建数组的时候也可以使用构造函数来进行赋值。</p>
+<pre><code>let arr1:number[] = new Array()
+let ara2:number[] = new Array(1,2,3,4,5)
+let arr3:Array&lt;string&gt; = new Array(&#39;jspang&#39;,&#39;技术胖&#39;,&#39;金三胖&#39;)
+let arr4:Array&lt;boolean&gt; = new Array(true,false,false)</code></pre>
+<p>这两种方法，都可以给数组进行赋值，在实际开发中使用哪种方法都是可以的。</p>
+<h3 id="认识元祖，一种特殊的数组"><a href="#认识元祖，一种特殊的数组" class="headerlink" title="认识元祖，一种特殊的数组"></a>认识元祖，一种特殊的数组</h3><p>元祖是一种特殊的数组，元祖类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。比如，你可以定义一对值分别为string和number类型的元祖。元祖在实际开发中使用的非常少，大家了解一下就可以了，不做过多介绍。</p>
+<p>//声明一个元祖类型<br>let x : [string,number]<br>//正确的初始化<br>x = [‘hello’,10]<br>//错误的初始化方法<br>x = [10,’hello’]</p>
+<h2 id="引用类型-字符串"><a href="#引用类型-字符串" class="headerlink" title="引用类型-字符串"></a>引用类型-字符串</h2><p>在TypeScript中存在两种类型的字符串：基本类型字符串和引用类型字符串。</p>
+<h3 id="字符串的两种类型"><a href="#字符串的两种类型" class="headerlink" title="字符串的两种类型"></a>字符串的两种类型</h3><p>基本类型字符串：由单引号或者双引号括起来的一串字符串。<br>引用类型字符串：用new 实例化的 String类型。JavaScript的开发人员为了大家更容易的操作字符串，有了引用类型的字符串就可以给字符串增加一系列方法了。</p>
+<pre><code>let jspang:string = &#39;技术胖&#39;
+let jspanga:String = new String(&quot;jspang.com&quot;)
+console.log(jspang)
+console.log(jspanga)</code></pre>
+<p>编译以后我们使用node 运行这段代码，你可以看到控制台输出了的结果，这可能跟你心里想的不太一样。</p>
+<pre><code>技术胖
+[String: &#39;jspang.com&#39;]</code></pre>
+<p>需要说明的是这两种声明字符串的方法没有什么不同。基本类型的字符串可以直接使用引用类型的属性和方法。</p>
+<h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><p>字符串的截取长度等方法与js一样。</p>
+<h2 id="引用类型-日期对象"><a href="#引用类型-日期对象" class="headerlink" title="引用类型-日期对象"></a>引用类型-日期对象</h2><p>TypeScript中使用Date这个引用类型来存储日期对象，如果你要声明一个日期变量时，记得也要注明它的类型是Date。</p>
+<h3 id="创建日期对象"><a href="#创建日期对象" class="headerlink" title="创建日期对象"></a>创建日期对象</h3><p>日期对象是Date的实例，可以使用构造函数的方法进行创建。并且构造函数中可以传递多种类型的参数。</p>
+<h3 id="1-不传递任何参数"><a href="#1-不传递任何参数" class="headerlink" title="1.不传递任何参数"></a>1.不传递任何参数</h3><p>构造函数中不传递参数时，Date（）构造函数将根据当前日期和时间创建一个Date对象。我们看下面的例子理解一下。</p>
+<pre><code>let d:Date = new Date()
+console.log(d)</code></pre>
+<p>这时候运行node的结果如下：</p>
+<p><code>2018-09-06T06:48:12.504Z</code></p>
+<h3 id="2-传递一个整数"><a href="#2-传递一个整数" class="headerlink" title="2.传递一个整数"></a>2.传递一个整数</h3><p>传递一个整数，这个整数代表的是距离1970-01-01 00:00:00的毫秒数（具体为什么是这个时间，小伙伴可以自己百度一下）。例如：传入参数为1000，将创建一个表示1970-01-01 00:00:01的日期对象。</p>
+<p>我们举个例子，传递一个整数，看一下结果。</p>
+<pre><code>let d:Date = new Date(1000)
+let da:Date = new Date(2000)
+console.log(d)  //1970-01-01T00:00:01.000Z
+console.log(da) //1970-01-01T00:00:02.000Z</code></pre>
+<h3 id="3-传递一个字符串"><a href="#3-传递一个字符串" class="headerlink" title="3.传递一个字符串"></a>3.传递一个字符串</h3><p>如果传递一个表示日期的字符串，就会生成相对应的日期对象。字符串的格式常用:yyyy/MM/dd hh:mm:ss，yyyy-MM-dd hh:mm:ss，yyyy-MM-ddThh:mm:ss等,具体可以参看下面的例子。</p>
+<pre><code>let d1:Date = new Date(&#39;2018/09/06 05:30:00&#39;)
+let d2:Date = new Date(&#39;2018-09-06 05:30:00&#39;)
+let d3:Date = new Date(&#39;2018-09-06T05:30:00&#39;)
+console.log(d1)
+console.log(d2)
+console.log(d3)</code></pre>
+<p>当然，他们打印出来的结果时完全相同的，所以在开发中你不用太过于纠结使用哪种方式进行声明。</p>
+<h3 id="4-传递表示年月日时分秒的变量"><a href="#4-传递表示年月日时分秒的变量" class="headerlink" title="4.传递表示年月日时分秒的变量"></a>4.传递表示年月日时分秒的变量</h3><p><code>let d:Date = new Date(year,month,day,hours,minutes,seconds,ms);</code><br>year 表示年份，4位数字。<br>month表示月份，数值是0(1月)<del>11(12月)之间的整数。<br>day 表示日期。数值是1</del>31之间的整数。<br>hours 表示小时，数值是0-23之间的整数。<br>minutes 表示分钟数，数值是0<del>59之间的整数。<br>seconds 表示秒数，数值是0</del>59之间的整数。<br>ms 表示毫秒数，数值是0~999之间的整数。<br>至于Date类型的方法，跟JavaScript完全一样。</p>
+<h2 id="引用类型-正则表达式"><a href="#引用类型-正则表达式" class="headerlink" title="引用类型-正则表达式"></a>引用类型-正则表达式</h2><p>认识正则表达式<br>创建正则表达式和字符串犹如一对好基友（类似），创建正则表达式也提供了两种方法，一种是才采用new 关键字，另一种是采用字面量的方式。</p>
+<h3 id="构造函数法"><a href="#构造函数法" class="headerlink" title="构造函数法"></a>构造函数法</h3><p>构造函数中可以传一个参数，也可以传递两个参数。一个是字符串描述，另一个是修饰符，比如g是全局修饰符，i是忽略大小写，m是多行模式。</p>
+<p>举个例子：</p>
+<pre><code>let reg1:RegExp = new RegExp(&quot;jspang&quot;)  //表示字符串规则里含有jspang
+console.log(reg1)
+let reg2:RegExp = new RegExp(&quot;jspang&quot;,&#39;gi&#39;)
+console.log(reg2)</code></pre>
+<p>其实现在打印出来的就是字面量的赋值方法。我们可以在视频中看到输出的结果。</p>
+<h3 id="字面量法"><a href="#字面量法" class="headerlink" title="字面量法"></a>字面量法</h3><p>其实构造函数的方法我个人用的是比较少的，我都会使用字面量法来声明正则表达式。</p>
+<pre><code>let reg3:RegExp = /jspang/
+let reg4:RegExp = /jspang/gi</code></pre>
+<h3 id="RegExp中的常用方法"><a href="#RegExp中的常用方法" class="headerlink" title="RegExp中的常用方法"></a>RegExp中的常用方法</h3><p>RegExp对象包含两个方法：test( )和exec( ),功能基本相似，用于测试字符串匹配。</p>
+<p>test(string) ：在字符串中查找是否存在指定的正则表达式并返回布尔值，如果存在则返回 true，不存在则返回 false。<br>exec(string) : 用于在字符串中查找指定正则表达式，如果 exec() 方法执行成功，则返回包含该查找字符串的相关信息数组。如果执行失败，则返回 null。<br>来看一个test的例子：</p>
+<pre><code>let reg1:RegExp =  /jspang/i
+let website:string = &#39;jspang.com&#39;
+let result:boolean = reg1.test(website)
+console.log(result)    //true</code></pre>
+<p>这时候控制台打印出来的是true，那么我们再来看一下exec的使用方法。</p>
+<pre><code>let reg1:RegExp =  /jspang/i
+let website:string = &#39;jspang.com&#39;
+console.log(reg1.exec(website))
+//[ &#39;jspang&#39;, index: 0, input: &#39;jspang.com&#39; ]</code></pre>
+<p>输出的结果变为了<code>[ &#39;jspang&#39;, index: 0, input: &#39;jspang.com&#39; ]</code>。</p>
+<h2 id="面向对象编程-类的声明和使用"><a href="#面向对象编程-类的声明和使用" class="headerlink" title="面向对象编程-类的声明和使用"></a>面向对象编程-类的声明和使用</h2><h3 id="声明类"><a href="#声明类" class="headerlink" title="声明类"></a>声明类</h3><pre><code>class Jspang&#123;
+     name:string
+     age : number
+     skill: string
+    constructor(name:string,age:number,skill:string)&#123;
+        this.name = name
+        this.age = age
+        this.skill = skill
+    &#125;
+     interest()&#123;
+        console.log(&#39;找小姐姐&#39;)
+    &#125;
+&#125;
+
+let jspangObj:Jspang = new Jspang(&#39;技术胖&#39;,18,&#39;web&#39;)
+jspangObj.interest()</code></pre>
+<p>我们先用class关键字声明了一个类，并在里边声明了name和age属性。constructor为构造函数。构造函数的主要作用是给类中封装的属性进行赋值。</p>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>继承：允许我们创建一个类（子类），从已有的类（父类）上继承所有的属性和方法，子类可以新建父类中没有的属性和方法。</p>
+<p>现在技术胖要繁衍生息了，跟准备生个儿子（也就是我们说的子类）。那我的儿子一定要比我强啊，他不仅完全继承了我的基因，还增加了帅气的属性和赚钱的本领。</p>
+<p>我们看看如何用程序实现。</p>
+<pre><code>class JsShuai extends Jspang&#123;
+    public xingxiang:string = &#39;帅气&#39;
+    public zhuangQian()&#123;
+        console.log(&#39;一天赚了一个亿&#39;)
+    &#125;
+&#125;
+
+let shuai = new JsShuai(&quot;技术帅&quot;,5,&#39;演讲&#39;)
+shuai.interest()
+shuai.zhuangQian()</code></pre>
+<p>extends关键字就是继承的重点,但是有一点需要我们注意，TypeScript不支持多重继承。</p>
+<h3 id="类方法的重写"><a href="#类方法的重写" class="headerlink" title="类方法的重写"></a>类方法的重写</h3><p>重写就是在子类中重写父类的方法。例如，我的儿子“技术帅”发现兴趣爱好是找小姐姐，完成不了“”一天赚一个亿“”的目标，它需要多个兴趣，开平台网站。这时候我们就用到了重写。看下面的列子代码：</p>
+<pre><code>class JsShuai extends Jspang&#123;
+    public xingxiang:string = &#39;帅气&#39;
+    public interest()&#123;
+        super.interest()
+        console.log(&#39;建立电商平台&#39;)
+    &#125;
+    public zhuangQian()&#123;
+        console.log(&#39;一天赚了一个亿&#39;)
+    &#125;
+&#125;</code></pre>
+<p>先是继承了父类的方法，然后通过super关键字调用了父类的方法，实现了技能的增加。</p>
+<h2 id="面向对象编程-修饰符"><a href="#面向对象编程-修饰符" class="headerlink" title="面向对象编程-修饰符"></a>面向对象编程-修饰符</h2><p>public:公有修饰符，可以在类内或者类外使用public修饰的属性或者行为，默认修饰符。<br>protected:受保护的修饰符，可以本类和子类中使用protected修饰的属性和行为。<br>private : 私有修饰符，只可以在类内使用private修饰的属性和行为。<br>readonly :只读属性修饰符,只读属性必须在生命时或者构造函数里被初始化（注意）。</p>
+<pre><code>class XiaoJieJie2&#123;
+    public readonly sex:string
+    protected name:string
+    private age:number
+    public constructor(sex:string,name:string,age:number)&#123;
+        this.sex=sex
+        this.name=name
+        this.age=age
+    &#125;
+    public sayHello()&#123;
+        console.log(&#39;小哥哥好&#39;)
+    &#125;
+
+    protected sayLove()&#123;
+        console.log(&#39;我爱你&#39;)
+    &#125;
+&#125;
+
+var jiejie2:XiaoJieJie2 = new XiaoJieJie2(&#39;女&#39;,&#39;热巴&#39;,22)
+jiejie2.sex=&#39;男&#39; //报错
+console.log(jiejie2.sex)
+console.log(jiejie2.name)   //报错
+console.log(jiejie2.age)    //报错
+jiejie2.sayHello()
+jiejie2.sayLove()    //报错</code></pre>
+<p>你可以在写代码的时候，就会发现，编辑器已经给我们报错了。</p>
+<h2 id="面向对象编程-接口"><a href="#面向对象编程-接口" class="headerlink" title="面向对象编程-接口"></a>面向对象编程-接口</h2><p>在通常情况下，接口是用来定义一些规范，使用这些接口，就必须实现按照接口中的规范来走。</p>
+<p>在面向对象的语言中，术语interface经常被用来定义一个不包含数据和逻辑代码但是用来签名定义了行为的抽象类型。</p>
+<h3 id="认识接口"><a href="#认识接口" class="headerlink" title="认识接口"></a>认识接口</h3><p>定义接口的关键字是interface。我们现在就来定义一个接口，这个接口是用来规范丈夫的。</p>
+<pre><code>interface Husband &#123;
+    sex:string
+    interest:string
+&#125;
+let myhusband:Husband =&#123; sex:&#39;男&#39;,interest:&#39;看书、作家务&#39;&#125;
+console.log(myhusband)</code></pre>
+<p>我们通过接口，定义了一个找老公的接口，并且给他了两个必选项：性别和兴趣爱好.</p>
+<h3 id="可选参数的接口"><a href="#可选参数的接口" class="headerlink" title="可选参数的接口"></a>可选参数的接口</h3><p>对老公的标准如果我们有一些可选项，这些并不是都需要显示出来的，在有些情况下，我们只需要传入部分参数。我们可以使用问好的形式来设置可选参数。</p>
+<p>比如现在我们还希望老公的标准，有一条是给我“买包包”，但是这个是隐喻的，不是直接显示出来的。我们修改我们的接口。</p>
+<pre><code>interface Husband &#123;
+    sex:string
+    interest:string
+    maiBaoBao?:Boolean
+&#125;
+let myhusband:Husband =&#123; sex:&#39;男&#39;,interest:&#39;看书、作家务&#39;,maiBaoBao:true&#125;
+console.log(myhusband)</code></pre>
+<p>上面的代码maiBaoBao选项就是可选的，可以写也可以不写。</p>
+<h3 id="规范函数类型接口"><a href="#规范函数类型接口" class="headerlink" title="规范函数类型接口"></a>规范函数类型接口</h3><p>我们还可以使用接口来规范函数类型的接口，比如现在要找老公这件事，我们规定有一些资源，然后我们需要哪些资源，在函数中进行匹配，最后返回是否匹配成功。</p>
+<pre><code>interface  SearchMan&#123;
+    (source:string,subString:string):boolean
+&#125;
+
+let mySearch:SearchMan
+
+mySearch = function(source:string,subString:string):boolean&#123;
+    let flag =source.search(subString)
+    return (flag != -1)
+&#125; 
+
+console.log(mySearch(&#39;高、富、帅、德&#39;,&#39;胖&#39;)) //false</code></pre>
+<p>接口还可以规范类，但形式都和上满讲的差不多。工作中利用接口就是规范程序标准化使用的，在大团队中经常使用。但是如果是小团队，我觉的接口使用的并不多。</p>
+<h2 id="面向对象编程-命名空间"><a href="#面向对象编程-命名空间" class="headerlink" title="面向对象编程-命名空间"></a>面向对象编程-命名空间</h2><p>在制作大型应用的时候，为了让程序更加有层次感和变量之间不互相干扰，我们可以使用命名空间来构建程序。举个小例子：比如“德华”这件事，帅哥也有叫德华的，二师兄也有叫德华的。那我们要如何区分那。</p>
+<h3 id="命名空间的使用"><a href="#命名空间的使用" class="headerlink" title="命名空间的使用"></a>命名空间的使用</h3><p>当然命名空间就是解决这个问题的，命名空间，又称内部模块，被用于组织有些具有内在联系的特性和对象。我们来看一个例子：</p>
+<pre><code>namespace shuaiGe&#123;
+    export class Dehua&#123;
+        public name:string = &#39;刘德华&#39;
+        talk()&#123;
+            console.log(&#39;我是帅哥刘德华&#39;)
+        &#125;
+    &#125;
+&#125;
+
+namespace bajie&#123;
+    export class Dehua&#123;
+        public name:string = &#39;马德华&#39;
+        talk()&#123;
+            console.log(&#39;我是二师兄马德华&#39;)
+        &#125;
+    &#125;
+&#125;
+
+let dehua1:shuaiGe.Dehua   = new shuaiGe.Dehua()
+let dehua2:shuaiGe.Dehua   = new bajie.Dehua()
+dehua1.talk()</code></pre>
+<p>程序我会在视频中详细讲解，通过命名空间我们很好的把程序变的清晰了，各位小姐姐也再也不会刘德华和马德华傻傻分不清了。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://yoursite.com/2020/02/14/code/typescript/>http://yoursite.com/2020/02/14/code/typescript/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-18T15:07:52+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年9月18日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/TypeScript/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>TypeScript</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/14/code/typescript/&title=TypeScript - 梦回年少&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/14/code/typescript/&title=TypeScript - 梦回年少&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/14/code/typescript/&title=TypeScript - 梦回年少&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADDklEQVR42u3aQW7DMAwEwPz/0+0D2sBcUgbMZHRLELfi+LJY6fVj/bteCMCAAQMGDJg1MK/mevd89fs/G7r43dU+js0DBgwYMGDAgFkHUw5ARYB04OrnLnx5HjBgwIABAwbMWphqoKsGq7sHSV/c5YsAAwYMGDBgwHwNTLVASoPf1XNpoAQDBgwYMGDAgKluKA1k3UA4fXFgwIABAwYMmM+B6RZF1QHTC0B3BUUwYMCAAQMGzOfApGsauO7+3J4HDBgwYMCAAbMGZrpOB75TBVh7HjBgwIABAwbMGpj0oKt7oahbMN118FdOvmDAgAEDBgyYx8NMg1oX6K6CqgsMBgwYMGDAgPkcmFO/Szdc/fvdImwc8MCAAQMGDBgwj4NJN3q6UGoXTOHnOOCBAQMGDBgwYB4HUw1O00JoesDXDZ7tgAcGDBgwYMCAWQuTXsg5fUGoGwCrAfLtc2DAgAEDBgyYdTBpEJsebHWDX3oQFxduYMCAAQMGDJg1MFWANJC1A9ZNL6T8gsCAAQMGDBgwa2C6INMCqxy4hoODAQMGDBgwYD4X5q6CqQuXBspuUXZ5cQgMGDBgwIABsw6mOmi30KoWWSl8t/gqBzwwYMCAAQMGzONg0gA1LZpOQ01fGBgwYMCAAQNmL0z3os6pA7bxIM1gBwYMGDBgwID5Hpi7DsCm/z8trC6LLzBgwIABAwbMGphp8ZQelKVFVfcFdOcAAwYMGDBgwOyDqV7QSZ9Lg1s1kJ36P+WTSDBgwIABAwbM42DGxU64gW4xdfqAMG7wwIABAwYMGDCPg5muNBhOAa5+1y3WwIABAwYMGDD7YF7NVd1Yt+iaXjxK9wcGDBgwYMCA2QtzOtCdKqSOF1FXsGDAgAEDBgyYtTDTQNcdYBo400D6NnCCAQMGDBgwYL4GJg146YHY9KJSui8wYMCAAQMGzPfBnPq+O+ixg0EwYMCAAQMGzFqY6QWgalDrFlvTAHoZIMGAAQMGDBgw62BOHWClA7YHGL6AcsADAwYMGDBgwDwWxgIDBgwYMGDALFu/uoDkHSVDhaIAAAAASUVORK5CYII=">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
+          
+            target="_blank" href="https://t.me/share/url?url=http://yoursite.com/2020/02/14/code/typescript/&text=TypeScript - 梦回年少"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/03/05/code/python/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Python</p>
+          <p class='content'>了解PythonPython的哲学就是简单优雅，尽量写容易看明白的代码，尽量写少的代码。如果一个资深程序员向你炫耀他写的晦涩难懂、动不动就几万行的代码，你可以尽情地嘲笑他。
+那Python适合开...</p>
+        </a>
+      
+      
+        <a class='next' href='/2019/12/31/code/flutter/'>
+          <p class='title'>Flutter<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>了解FlutterFlutter的优点非常明显，如果你选择一个跨平台框架，与众多基于html的跨平台框架相比，Flutter绝对是体验最好，性能与构建思路几乎最接近原生开发的框架。性能强大，流畅...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3TypeScript"><span class="toc-text">了解TypeScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript-%E4%B8%8EJavaScript%E4%B8%A4%E8%80%85%E7%9A%84%E7%89%B9%E6%80%A7%E5%AF%B9%E6%AF%94%EF%BC%8C%E4%B8%BB%E8%A6%81%E8%A1%A8%E7%8E%B0%E4%B8%BA%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%82%B9%EF%BC%9A"><span class="toc-text">TypeScript 与JavaScript两者的特性对比，主要表现为以下几点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="toc-text">声明变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="toc-text">类型断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E5%8F%82%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">传参多种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">函数定义多种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E6%B3%95"><span class="toc-text">函数声明法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B3%95"><span class="toc-text">函数表达式法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-text">箭头函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84"><span class="toc-text">引用类型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">声明数组的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC"><span class="toc-text">给数组赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F%E8%B5%8B%E5%80%BC%E6%B3%95"><span class="toc-text">** 字面量赋值法**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B5%8B%E5%80%BC%E6%B3%95"><span class="toc-text">构造函数赋值法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E5%85%83%E7%A5%96%EF%BC%8C%E4%B8%80%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-text">认识元祖，一种特殊的数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">引用类型-字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">字符串的两种类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">字符串的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1"><span class="toc-text">引用类型-日期对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建日期对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8D%E4%BC%A0%E9%80%92%E4%BB%BB%E4%BD%95%E5%8F%82%E6%95%B0"><span class="toc-text">1.不传递任何参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0"><span class="toc-text">2.传递一个整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">3.传递一个字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BC%A0%E9%80%92%E8%A1%A8%E7%A4%BA%E5%B9%B4%E6%9C%88%E6%97%A5%E6%97%B6%E5%88%86%E7%A7%92%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">4.传递表示年月日时分秒的变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">引用类型-正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%B3%95"><span class="toc-text">构造函数法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F%E6%B3%95"><span class="toc-text">字面量法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RegExp%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">RegExp中的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">面向对象编程-类的声明和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E7%B1%BB"><span class="toc-text">声明类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">类的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99"><span class="toc-text">类方法的重写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">面向对象编程-修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E6%8E%A5%E5%8F%A3"><span class="toc-text">面向对象编程-接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%8E%A5%E5%8F%A3"><span class="toc-text">认识接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="toc-text">可选参数的接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-text">规范函数类型接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">面向对象编程-命名空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">命名空间的使用</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.5'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='1987569985'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        
+          <div><p><br/>一碗胡辣汤</p>
+</div>
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a target="_blank" rel="noopener" href="https://xaoxuu.com/">Copyright © 2019-2020 Mr. Dou</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/assets/img/background/4l8eeq.jpg", "/assets/img/background/a9157f3e6709c93d57ad1296903df8dcd1005471.jpg", "/assets/img/background/lm2762.jpg", "/assets/img/background/p2dky9.jpg", "/assets/img/background/wyx3px.png", "/assets/img/background/Z3y1e0.jpg", "/assets/img/background/Z3y3wV.jpg", "/assets/img/background/Z3y6YD.jpg", "/assets/img/background/Z3yBex.jpg", "/assets/img/background/Z3yEo8.jpg", "/assets/img/background/Z3yYYF.jpg", "/assets/img/background/Z3yZFS.png"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>复制文本</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>复制链接</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>在新标签页打开</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>复制图片地址</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
+        
+        
+        
+        
+          id="https:githubcomvolantis-xhexo-theme-volantis"
+        >
+        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('true' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if ('true' == true && ('home,hr,source_theme,hr,print,hr,music'||[]).includes('music')) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '1987569985';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.5';
+</script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+
+
+
+  
+<script src="/js/aplayer.js"></script>
+
+
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "qdFzg1YdBoon6he5A8fHRFOi-gzGzoHsz",
+      appKey: "Gd4Giq4nxJMKJr8Xc9TQPCnW",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script>
+
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
+  });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '16px',
+  time: '0s',
+  mixColor: '#f4f4f4',
+  backgroundColor: '#f4f4f4',
+  buttonColorDark: '#333',
+  buttonColorLight: '#ddd',
+  saveInCookies: true,
+  label: '',
+  autoMatchOsTheme: true
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
+
+function pjax_darkmodejs(){
+  
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  window.darkmode = new Darkmode(options);
+  
+  window.darkmode.showWidget();
+  
+  pjax_darkmodejs();
+}
+////////////////Development///////////////////////
+//////////////darkmode模式切换////////////////////
+//window.darkmode.toggle();                     //
+//////////////darkmode模式判断////////////////////
+//console.log(window.darkmode.isActivated())    //
+//////////////////////////////////////////////////
+</script>
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);
+
+</script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'qdFzg1YdBoon6he5A8fHRFOi-gzGzoHsz',
+    app_key: 'Gd4Giq4nxJMKJr8Xc9TQPCnW',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://yoursite.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://yoursite.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://yoursite.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
+
+  
+  <script src="/assets/js/diy_style.js"></script>
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = ["/artitalk/"];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+          
+          if ('') {
+            $('').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
+          } else {
+            $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
+          }
+        
+        
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+        
+        
+          pjax_scrollrebeal();
+        
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+          pjax_darkmodejs();
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

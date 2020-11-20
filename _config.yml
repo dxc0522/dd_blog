@@ -3,13 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: 梦回年少
+subtitle: '愿你久经沧桑，归来仍是少年'
+description: '当你出生哭着来到人世时，你周围的人都在笑着迎接你的到来，所以你在生命历程中不要辜负你身边的人，应该善待他人，尽一切努力，走好人生的每一步。'
+keywords: '年少，技术，时间，学习，总结，博客'
+author: DouDou
+language:
+  - zh-CN
+  - en
+  - zh-HK
+  - zh-TW
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -22,13 +26,21 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
+# 资源文件夹，这个文件夹用来存放内容。
 source_dir: source
-public_dir: public
+# 公共文件夹，这个文件夹用于存放生成的站点文件。
+public_dir: build
+# 标签文件夹
 tag_dir: tags
+# 归档文件夹
 archive_dir: archives
+# 分类文件夹
 category_dir: categories
+# Include code 文件夹，source_dir 下的子目录
 code_dir: downloads/code
+# 国际化（i18n）文件夹
 i18n_dir: :lang
+# 跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。
 skip_render:
 
 # Writing
@@ -45,7 +57,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
@@ -92,7 +104,10 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
+  
+
 exclude:
+
 ignore:
 
 # Extensions
@@ -104,3 +119,18 @@ theme: volantis
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+
+import:
+  meta:
+    - <meta name="msapplication-TileColor" content="#ffffff">
+    - <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/browserconfig.xml">
+    - <meta name="theme-color" content="#ffffff">
+  link:
+    - <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png">
+    - <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo_blue.png">
+    - <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_blue.png">
+    - <link rel="manifest" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/site.webmanifest">
+    - <link rel="shortcut icon" href="/assets/img/logo_blue.png">
+    - <link href="/assets/css/base.css" rel="stylesheet">
+  script:
+    - <script src="/assets/js/diy_style.js"></script>

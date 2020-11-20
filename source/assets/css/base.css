@@ -1,0 +1,8 @@
+#veditor {
+    background: url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/valine/comment.webp) 100% 100% no-repeat;
+}
+
+#veditor:focus {
+    background-position-y: 400px;
+    transition: all 0.2s ease-in-out 0s;
+}
