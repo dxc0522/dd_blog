@@ -497,13 +497,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.2k字</p>
+      <p>字数：1.3k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：6分钟</p>
+      <p>时长：7分钟</p>
     </a>
   </div>
 
@@ -516,7 +516,12 @@
 
 
   
-  <h2 id="基础样式"><a href="#基础样式" class="headerlink" title="基础样式"></a>基础样式</h2><pre><code class="css">.dis_n &#123;
+  <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="gitignore规则不生效"><a href="#gitignore规则不生效" class="headerlink" title=".gitignore规则不生效"></a>.gitignore规则不生效</h3><p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p>
+<p>解决方法就是先把本地缓存删除（改变成未track状态），然后再提交:</p>
+<pre><code class="git">git rm -r --cached .
+git add .
+git commit -m &#39;update .gitignore&#39;</code></pre>
+<h2 id="基础样式"><a href="#基础样式" class="headerlink" title="基础样式"></a>基础样式</h2><pre><code class="css">.dis_n &#123;
   display: none;
 &#125;
 .dis_b &#123;
@@ -873,10 +878,10 @@ page,view,text,image,icon,textarea,switch,input,scroll-view &#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-18T15:06:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-12T15:10:45+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月18日</p>
+    <p>更新于：2020年10月12日</p>
   </a>
 </div>
 
@@ -1022,7 +1027,7 @@ mongoose中根据id查的时候不用转ObjectId
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">微信小程序基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h5-%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">h5 基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99"><span class="toc-text">常用正则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%89%93%E5%8C%85%E5%90%8E%E6%96%87%E4%BB%B6%E5%8D%A0%E6%AF%94"><span class="toc-text">分析打包后文件占比</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gitignore%E8%A7%84%E5%88%99%E4%B8%8D%E7%94%9F%E6%95%88"><span class="toc-text">.gitignore规则不生效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">微信小程序基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h5-%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">h5 基础样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99"><span class="toc-text">常用正则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%89%93%E5%8C%85%E5%90%8E%E6%96%87%E4%BB%B6%E5%8D%A0%E6%AF%94"><span class="toc-text">分析打包后文件占比</span></a></li></ol>
     </div>
   </section>
 
