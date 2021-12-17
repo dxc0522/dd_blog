@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="2021/12/17/code/eslint/"/>
-      <url>2021/12/17/code/eslint/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://cn.eslint.org/docs/user-guide/configuring#extending-configuration-files">eslint 文档</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>webpack4打包</title>
       <link href="2021/12/17/code/webpack4/"/>
       <url>2021/12/17/code/webpack4/</url>
@@ -50,7 +37,7 @@
       <link href="2021/06/11/code/npm/"/>
       <url>2021/06/11/code/npm/</url>
       
-        <content type="html"><![CDATA[<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>一般来说根目录下会存在这么几个文件夹：</p><p>src：源码源文件。<br>lib：依赖文件（没通过 npm，直接下载源码的那种）。<br>node_modules：npm 依赖文件。<br>bin：二进制可执行文件。<br>tests：单元测试或集成测试文件。<br>docs：文档、开发手册。<br>examples：示例代码或项目。<br>build：构建时所需文件。<br>dist：打包后的输出目录。</p><p>至于 npm publish 出来的文件包含上述哪些，你即可以在 package.json 的 files 里配置包含哪些，也可以在 .npmignore 里配置忽略哪些。</p><h2 id="须知"><a href="#须知" class="headerlink" title="须知"></a>须知</h2><p>package.json字段<br>以下是和发布到 npm 有密切关系的字段(但不仅限于这些字段)</p><p>name：库的名字。<br>version：库的版本号，发布的时候读取的就是这个字段。<br>author：库作者，会在 npm 网站库首页显示。<br>license：开源证书，会在 npm 网站库首页显示。<br>repository：代码库地址，会在 npm 网站库首页显示。<br>homepage：库的主页地址，会在 npm 网站库首页显示。<br>dependencies：你的库依赖的其他库，在开发者 install 你的库的时候会一并下载。</p><h2 id="私有仓库"><a href="#私有仓库" class="headerlink" title="私有仓库"></a>私有仓库</h2><p>scoped库<br>如果你的库是公开库，则直接 npm publish 就可以了（对了 publish 前记得 login 噢~）。</p><p>如果你的库名是 @name/subname，说明你的库是 scoped，那么你还要做这些事情：</p><ol><li><p>登录到 npm 网站，建立一个 @name 的组织：<a href="https://www.npmjs.com/org/create">https://www.npmjs.com/org/create</a> （填写 organization name 的时候 @ 符号不用填），付费还是公开按需自己的需要。首次发布，如果不先建立，是发不上去的，会报 Scope not found。</p></li><li><p>如果你的库名是 @name/subname，且按公开库发布，在运行 npm 发布命令时要加参数：npm publis –access public</p></li><li><p>第二步中如果不加参数，请在 package.json 中加上如下字段：</p></li></ol><p>{<br>      “publishConfig”: {<br>        “access”: “public”<br>      }<br> } </p>]]></content>
+        <content type="html"><![CDATA[<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://cn.eslint.org/docs/user-guide/configuring#extending-configuration-files">eslint 文档</a></p><h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>一般来说根目录下会存在这么几个文件夹：</p><p>packages: 多组件源文件<br>src：源码源文件入口文件。<br>lib：打包后的插件<br>node_modules：npm 依赖文件。<br>bin：二进制可执行文件。<br>tests：单元测试或集成测试文件。<br>docs：文档、开发手册。<br>examples：示例代码或项目。</p><p>至于 npm publish 出来的文件包含上述哪些，你即可以在 package.json 的 files 里配置包含哪些，也可以在 .npmignore 里配置忽略哪些。</p><h2 id="须知"><a href="#须知" class="headerlink" title="须知"></a>须知</h2><p>package.json 字段<br>以下是和发布到 npm 有密切关系的字段(但不仅限于这些字段)</p><p>name：库的名字。<br>version：库的版本号，发布的时候读取的就是这个字段。<br>main: 指定默认文件<br>author：库作者，会在 npm 网站库首页显示。<br>license：开源证书，会在 npm 网站库首页显示。<br>repository：代码库地址，会在 npm 网站库首页显示。<br>homepage：库的主页地址，会在 npm 网站库首页显示。<br>dependencies：你的库依赖的其他库，在开发者 install 你的库的时候会一并下载。</p><pre><code class="json">&#123;    &quot;name&quot;: &quot;@bzvue/beizeng-ui&quot;, // 库的名字    &quot;version&quot;: &quot;0.0.7&quot;, // 库的版本号，发布的时候读取的就是这个字段 每次发布版本号必须更新    &quot;main&quot;: &quot;lib/index.common.min.js&quot;, //指定默认文件    &quot;author&quot;: &quot;doudou&quot;, //库作者，会在 npm 网站库首页显示。    &quot;files&quot;: [        // 发布时上传的文件或文件夹        &quot;lib&quot;    ],    &quot;keywords&quot;: [        // 关键词        &quot;vue&quot;,        &quot;components&quot;    ],    &quot;scripts&quot;: &#123;        &quot;dev&quot;: &quot;vue-cli-service serve&quot;,        &quot;lint&quot;: &quot;vue-cli-service lint --fix&quot;,        &quot;build:lib&quot;: &quot;webpack --config ./build/webpack.common.js&quot;    &#125;,    &quot;dependencies&quot;: &#123;        &quot;core-js&quot;: &quot;^3.6.5&quot;,        &quot;vue&quot;: &quot;^2.6.11&quot;    &#125;,    &quot;devDependencies&quot;: &#123;        &quot;webpack&quot;: &quot;^4.14.0&quot;,        &quot;webpack-cli&quot;: &quot;^4.9.1&quot;    &#125;&#125;</code></pre><h2 id="私有仓库"><a href="#私有仓库" class="headerlink" title="私有仓库"></a>私有仓库</h2><p>scoped 库<br>如果你的库是公开库，则直接 npm publish 就可以了（对了 publish 前记得 login 噢~）。</p><p>如果你的库名是 @name/subname，说明你的库是 scoped，那么你还要做这些事情：</p><ol><li><p>登录到 npm 网站，建立一个 @name 的组织：<a href="https://www.npmjs.com/org/create">https://www.npmjs.com/org/create</a> （填写 organization name 的时候 @ 符号不用填），付费还是公开按需自己的需要。首次发布，如果不先建立，是发不上去的，会报 Scope not found。</p></li><li><p>如果你的库名是 @name/subname，且按公开库发布，在运行 npm 发布命令时要加参数：npm publis –access public</p></li><li><p>第二步中如果不加参数，请在 package.json 中加上如下字段：</p></li></ol><p>{<br>“publishConfig”: {<br>“access”: “public”<br>}<br>}</p>]]></content>
       
       
       <categories>

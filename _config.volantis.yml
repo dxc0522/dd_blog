@@ -10,7 +10,7 @@ navbar:
     icon:
     title:
   menu:
-  # The following can be written in `blog/source/_data/menu.yml`
+    # The following can be written in `blog/source/_data/menu.yml`
 
     - name: 首页
       icon: fas fa-home
@@ -22,21 +22,20 @@ navbar:
       icon: fas fa-link
       url: friends/
     - name: 留言
-      icon: fas  fa-comments 
+      icon: fas  fa-comments
       url: message/
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-    
 
   search: 搜索...(◕ܫ◕) # Search bar placeholder
-  
+
 # 网站与文章封面
 cover:
   height_scheme: full # full, half
   layout_scheme: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
   logo: /assets/img/banner_logo.png
-  title: 
+  title:
   subtitle: #'开源社区主页'
   background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
   features:
@@ -60,13 +59,12 @@ cover:
     archive: false
     others: false # can be written in front-matter 'cover: true'
 
-
 # 主页、分类、归档等独立页面
 sidebar:
   # 主页、分类、归档等独立页面
   for_page: [blogger, category, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
-  for_post: [toc,]
+  for_post: [toc]
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------
@@ -121,8 +119,8 @@ sidebar:
       min_font: 14
       max_font: 24
       color: true
-      start_color: "#999"
-      end_color: "#555"
+      start_color: '#999'
+      end_color: '#555'
     # ---------------------------------------
     # 二维码部件
     donate:
@@ -147,30 +145,30 @@ sidebar:
       type:
         article:
           enable: true
-          text: "文章数目："
-          unit: "篇"
+          text: '文章数目：'
+          unit: '篇'
         runtime:
           enable: true
-          data: "2020/01/01" # 填写建站日期
-          text: "已运行时间："
-          unit: "天"
+          data: '2020/01/01' # 填写建站日期
+          text: '已运行时间：'
+          unit: '天'
         wordcount:
           enable: true
-          text: "本站总字数：" # 需要启用 wordcount
-          unit: "字"
+          text: '本站总字数：' # 需要启用 wordcount
+          unit: '字'
         siteuv:
           enable: true
-          text: "本站访客数：" # 需要启用 busuanzi
-          unit: "人"
+          text: '本站访客数：' # 需要启用 busuanzi
+          unit: '人'
         sitepv:
           enable: true
-          text: "本站总访问量：" # 需要启用 busuanzi
-          unit: "次"
+          text: '本站总访问量：' # 需要启用 busuanzi
+          unit: '次'
         lastupd:
           enable: true
           friendlyShow: true # 更友好的时间显示
-          text: "最后活动时间："
-          unit: "日"
+          text: '最后活动时间：'
+          unit: '日'
 
 # 文章布局
 article:
@@ -191,7 +189,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter,wordcount]
+    top_meta: [author, category, date, counter, wordcount]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -232,7 +230,7 @@ article:
           - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     # 从 meta_library 中取
-    bottom_meta: [updated, tags, share,]
+    bottom_meta: [updated, tags, share]
     # meta library
     meta_library:
       # 默认文章作者（可在 front-matter 中覆盖）
@@ -281,7 +279,6 @@ article:
         - id: telegram
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 
-
 # 通用文本部件
 repos:
   class: text
@@ -291,7 +288,7 @@ repos:
     title: 点个赞吧
     url: https://github.com/xaoxuu/
   content:
-    - "您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。"
+    - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。'
     - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/logo.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
     - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
     - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
@@ -361,7 +358,7 @@ custom_css:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, source_theme, hr, print,hr ,music]
+  layout: [home, hr, source_theme, hr, print, hr, music]
   # 可选功能项
   print:
     name: 打印页面
@@ -376,16 +373,16 @@ rightmenu:
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, br, copyright]
-  br: "<br/>一碗胡辣汤"
-  copyright: "[Copyright © 2019-2020 Mr. Dou](https://xaoxuu.com)"
+  br: '<br/>一碗胡辣汤'
+  copyright: '[Copyright © 2019-2020 Mr. Dou](https://xaoxuu.com)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
 
 # 组件
 comments:
   service: valine
   valine:
-    appId: qdFzg1YdBoon6he5A8fHRFOi-gzGzoHsz
-    appKey: Gd4Giq4nxJMKJr8Xc9TQPCnW
+    appId: hhGh8SbWrmd9zLe3yVYy49vO-MdYXbMMI
+    appKey: 35eSDgbmncpmG3V1k3IsxfXi
     js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
 # 插件
 plugins:
@@ -469,7 +466,6 @@ plugins:
     duration: 10000 # Duration (ms)
     fade: 1500 # fade duration (ms) (Not more than 1500)
     images: # For personal use only. At your own risk if used for commercial rposes !!!
-
       - /assets/img/background/4l8eeq.jpg
       - /assets/img/background/a9157f3e6709c93d57ad1296903df8dcd1005471.jpg
       - /assets/img/background/lm2762.jpg
@@ -482,24 +478,6 @@ plugins:
       - /assets/img/background/Z3yEo8.jpg
       - /assets/img/background/Z3yYYF.jpg
       - /assets/img/background/Z3yZFS.png
-
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
-      # - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -514,21 +492,21 @@ plugins:
     id: 1987569985 # song id / playlist id / album id / search keyword
     # Optional
     fixed: false # enable fixed mode
-    theme: "#1BCDFC" # main color
+    theme: '#1BCDFC' # main color
     autoplay: false # audio autoplay
     order: list # player play order, values: 'list', 'random'
     loop: all # player loop play, values: 'all', 'one', 'none'
     volume: 0.5 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
-    
+
   pjax:
     enable: true
     timeout: 5000 # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # nprogress, circle
     banUrl: # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-    - /artitalk/     # artitalk 不支持 pjax
+      - /artitalk/ # artitalk 不支持 pjax
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
@@ -537,7 +515,7 @@ plugins:
     # Set `layout: artitalk` to enable in page
     appID: hhGh8SbWrmd9zLe3yVYy49vO-MdYXbMMI # your appID
     appKEY: 35eSDgbmncpmG3V1k3IsxfXi # your appKEY
-    severurl: https://qdfzg1yd.lc-cn-n1-shared.com #leancloud绑定的安全域名，使用国际版的话不需要填写
+    severurl: https://hhgh8sbw.api.lncldglobal.com #leancloud绑定的安全域名，使用国际版的话不需要填写
     # slanguage: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # per: #每页说说的显示数量
     shuoPla: 粘贴图片到此处可以自动上传，填写邮箱可以收到邮件回复哦(●'◡'●) #在编辑说说的输入框中的占位符
@@ -547,7 +525,7 @@ plugins:
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
-            
+
   ##################################
   # 暗黑模式 darkmodejs
   # https://darkmodejs.learn.uno
@@ -557,11 +535,11 @@ plugins:
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     button: # button 使用默认或自行开发
       enable: true
-      bottom: "32px"
+      bottom: '32px'
       left: 16px
-      buttonDark: "#333"
-      buttonLight: "#ddd"
-      label: "🌓"
+      buttonDark: '#333'
+      buttonLight: '#ddd'
+      label: '🌓'
     compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 
 ############################### Analytics ############################### > start
