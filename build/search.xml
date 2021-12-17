@@ -4,6 +4,123 @@
   
     
     <entry>
+      <title></title>
+      <link href="2021/12/17/code/eslint/"/>
+      <url>2021/12/17/code/eslint/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://cn.eslint.org/docs/user-guide/configuring#extending-configuration-files">eslint 文档</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack4打包</title>
+      <link href="2021/12/17/code/webpack4/"/>
+      <url>2021/12/17/code/webpack4/</url>
+      
+        <content type="html"><![CDATA[<p>因打包需要 vue2 所以用的 <a href="http://webpack.html.cn/concepts/module-resolution.html">webpack4</a> 打包配置</p><h2 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h2><p><code>npm i -D webpack@4.14.0 webpack-cli@4.9.1</code></p><h2 id="配置文件分析"><a href="#配置文件分析" class="headerlink" title="配置文件分析"></a>配置文件分析</h2><p><a href="https://www.tangshuang.net/3343.html">externals 外部扩展</a><br><a href="https://github.com/ElemeFE/element/blob/dev/build/config.js">element-ui 配置参考</a></p><pre><code class="webpack.common.js">const path = require(&quot;path&quot;);const BundleAnalyzerPlugin = require(&#39;webpack-bundle-analyzer&#39;).BundleAnalyzerPlugin;const UglifyJsPlugin = require(&#39;uglifyjs-webpack-plugin&#39;);const resolve = (dir) =&gt; &#123;    return path.join(__dirname, dir)&#125;module.exports=&#123;    mode: &#39;production&#39;, // 指定是本地开发还是线上环境    entry:&#39;path/a&#39;|[&#123;a:&#39;page/*/1&#39;&#125;,&#123;b:&#39;page/*/2&#39;&#125;], // 入口js文件 一个或多个都行    output:&#123; // 导出配置        path: path.resolve(process.cwd(), &#39;./lib&#39;), // 导出路径设置        filename: &#39;[name].js&#39;, //多个的时候可以设置name为文件名        chunkFilename: &#39;[id].js&#39;,        libraryExport: &#39;default&#39;,        libraryTarget: &#39;commonjs2&#39;    &#125;,    resolve: &#123; //模块解析        extensions: [&#39;.js&#39;, &#39;.vue&#39;, &#39;.json&#39;], //解析那些文件        alias: &#123;//设置路径别名            &quot;~&quot;: resolve(&quot;../&quot;),        &#125;,        modules: [&#39;node_modules&#39;] // 指定模块文件夹名称    &#125;,    externals: &#123; // 将依赖包通过外部引用形式加载进来，减小包体积        vue: &#39;vue&#39;,    &#125;,    performance: &#123; // 性能关闭提示        hints: false    &#125;,    stats: &#39;none&#39;, // 统计，不显示统计信息    optimization: &#123;  // 不压缩代码        minimize: false    &#125;,    module: &#123; // 解析不同的文件内容        rules: [            &#123;                test: /\.(jsx?|babel|es6)$/,                include: process.cwd(),                // exclude: config.jsexclude,// 排除指定文件                loader: &#39;babel-loader&#39;            &#125;,        ]    &#125;,    plugins: [ //以各种方式自定义webpack构建过程        new UglifyJsPlugin(&#123; // 压缩插件            parallel: true,            sourceMap: false        &#125;),        new BundleAnalyzerPlugin(&#123; //分析包大小占比插件            analyzerPort: 8081        &#125;)    ]&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> webpack </tag>
+            
+            <tag> node </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>NPM包开发</title>
+      <link href="2021/06/11/code/npm/"/>
+      <url>2021/06/11/code/npm/</url>
+      
+        <content type="html"><![CDATA[<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>一般来说根目录下会存在这么几个文件夹：</p><p>src：源码源文件。<br>lib：依赖文件（没通过 npm，直接下载源码的那种）。<br>node_modules：npm 依赖文件。<br>bin：二进制可执行文件。<br>tests：单元测试或集成测试文件。<br>docs：文档、开发手册。<br>examples：示例代码或项目。<br>build：构建时所需文件。<br>dist：打包后的输出目录。</p><p>至于 npm publish 出来的文件包含上述哪些，你即可以在 package.json 的 files 里配置包含哪些，也可以在 .npmignore 里配置忽略哪些。</p><h2 id="须知"><a href="#须知" class="headerlink" title="须知"></a>须知</h2><p>package.json字段<br>以下是和发布到 npm 有密切关系的字段(但不仅限于这些字段)</p><p>name：库的名字。<br>version：库的版本号，发布的时候读取的就是这个字段。<br>author：库作者，会在 npm 网站库首页显示。<br>license：开源证书，会在 npm 网站库首页显示。<br>repository：代码库地址，会在 npm 网站库首页显示。<br>homepage：库的主页地址，会在 npm 网站库首页显示。<br>dependencies：你的库依赖的其他库，在开发者 install 你的库的时候会一并下载。</p><h2 id="私有仓库"><a href="#私有仓库" class="headerlink" title="私有仓库"></a>私有仓库</h2><p>scoped库<br>如果你的库是公开库，则直接 npm publish 就可以了（对了 publish 前记得 login 噢~）。</p><p>如果你的库名是 @name/subname，说明你的库是 scoped，那么你还要做这些事情：</p><ol><li><p>登录到 npm 网站，建立一个 @name 的组织：<a href="https://www.npmjs.com/org/create">https://www.npmjs.com/org/create</a> （填写 organization name 的时候 @ 符号不用填），付费还是公开按需自己的需要。首次发布，如果不先建立，是发不上去的，会报 Scope not found。</p></li><li><p>如果你的库名是 @name/subname，且按公开库发布，在运行 npm 发布命令时要加参数：npm publis –access public</p></li><li><p>第二步中如果不加参数，请在 package.json 中加上如下字段：</p></li></ol><p>{<br>      “publishConfig”: {<br>        “access”: “public”<br>      }<br> } </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nestjs学习</title>
+      <link href="2021/05/31/code/nest/"/>
+      <url>2021/05/31/code/nest/</url>
+      
+        <content type="html"><![CDATA[<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a href="https://docs.nestjs.cn/7/firststeps">中文文档</a><br><code>npm i -g @nestjs/cli</code><br><code>nest new project-name</code></p><h2 id="开发常见"><a href="#开发常见" class="headerlink" title="开发常见"></a>开发常见</h2><p>跨域: 在main.ts文件中<code> app.enableCors();</code><br>初始化：<code>nest g res filter-name [folder-name]</code>生成基本的代码结构</p><h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><h3 id="规范接口"><a href="#规范接口" class="headerlink" title="规范接口"></a>规范接口</h3><p>使用全局过滤，过滤错误结果 <code>nest g f filter-name [folder-name]</code> 生成全局过滤文件</p><pre><code>import &#123; ExceptionFilter, Catch, ArgumentsHost, HttpException, Logger, HttpStatus &#125; from &#39;@nestjs/common&#39;;import &#123; Request, Response &#125; from &#39;express&#39;;@Catch(HttpException)export class HttpExceptionFilter implements ExceptionFilter &#123;    catch(exception: HttpException, host: ArgumentsHost) &#123;        const ctx = host.switchToHttp();        const response = ctx.getResponse&lt;Response&gt;();        const request = ctx.getRequest&lt;Request&gt;();        // const status = exception.getStatus();        const message = exception.message;        Logger.log(&#39;错误提示&#39;, message);        const status = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;        // 设置返回的状态码、请求头、发送错误信息        response.status(status);        response.header(&#39;Content-Type&#39;, &#39;application/json; charset=utf-8&#39;);        response.send(&#123;          data: message, // 获取全部的错误信息          message: &#39;请求失败&#39;,          code: 1, // 自定义code          url: request.originalUrl, // 错误的url地址      &#125;);    &#125;&#125;</code></pre><p>使用全局拦截，拦截正确结果 <code>nest g in filter-name [folder-name]</code> 生成全局拦截文件</p><pre><code>import &#123;    Injectable,    NestInterceptor,    CallHandler,    ExecutionContext,&#125; from &#39;@nestjs/common&#39;;import &#123; map &#125; from &#39;rxjs/operators&#39;;import &#123; Observable &#125; from &#39;rxjs&#39;;interface Response&lt;T&gt; &#123;    data: T;    code?:number,&#125;@Injectable()export class TransformInterceptor&lt;T&gt;    implements NestInterceptor&lt;T, Response&lt;T&gt;&gt; &#123;    intercept(        context: ExecutionContext,        next: CallHandler&lt;T&gt;,    ): Observable&lt;Response&lt;T&gt;&gt; &#123;        return next.handle().pipe(            map((data,...params) =&gt; &#123;                // console.log(params);                return &#123;                    data,                    code: 0,                    message: &#39;请求成功&#39;,                &#125;;            &#125;),        );    &#125;&#125;</code></pre><p>最后在main.ts中进行引入注入</p><pre><code>  // 引用全局过滤  app.useGlobalFilters(new HttpExceptionFilter());  //拦截器  app.useGlobalInterceptors(new TransformInterceptor());</code></pre><h3 id="数据库引入"><a href="#数据库引入" class="headerlink" title="数据库引入"></a>数据库引入</h3><p>在 app.module.ts 中进行注入</p><pre><code>import &#123; Module &#125; from &#39;@nestjs/common&#39;;import &#123; AppController &#125; from &#39;./app.controller&#39;;import &#123; MongooseModule &#125; from &#39;@nestjs/mongoose&#39;;import &#123; PageModule &#125; from &#39;./page/page.module&#39;;@Module(&#123;  imports: [MongooseModule.forRoot(&#39;mongodb://localhost/nest&#39;), PageModule],  controllers: [AppController],  providers: [],&#125;)export class AppModule &#123; &#125;</code></pre><p>在schema.ts文件中设置模版类型</p><pre><code>import &#123; Prop, Schema, SchemaFactory &#125; from &#39;@nestjs/mongoose&#39;;import &#123; Document &#125; from &#39;mongoose&#39;;export type PageDocument = Page &amp; Document;@Schema()export class Page extends Document &#123;    @Prop(&#123;type:Object,default:null&#125;)    json: object;    @Prop(&#123;default:&#39;&#39;&#125;)    js: string;    @Prop(&#123;default:&#39;&#39;&#125;)    html: string;    @Prop(&#123;default:&#39;&#39;&#125;)    script: string;    @Prop(&#123;default:&#39;&#39;&#125;)    name: string;    @Prop(&#123;default:[]&#125;)    drawingItems: Array&lt;any&gt;;    @Prop(&#123;type:Object,default:null&#125;)    formConf: object;&#125;export const Pagechema = SchemaFactory.createForClass(Page);</code></pre><p>最后在service.ts文件中进行注入和操作</p><pre><code>import &#123; Injectable &#125; from &#39;@nestjs/common&#39;;import &#123; CreatePageDto &#125; from &#39;./dto/create-page.dto&#39;;import &#123; UpdatePageDto &#125; from &#39;./dto/update-page.dto&#39;;import &#123; InjectModel &#125; from &#39;@nestjs/mongoose&#39;;import &#123; Model &#125; from &#39;mongoose&#39;;import &#123; Page, PageDocument &#125; from &#39;./schemas/page.schema&#39;;@Injectable()export class PageService &#123;  constructor(@InjectModel(Page.name) private readonly pageModel: Model&lt;PageDocument&gt;) &#123;  &#125;  async create(createPage: CreatePageDto): Promise&lt;Page&gt; &#123;    const createdPage = new this.pageModel(createPage);    return createdPage.save();  &#125;  async findAll(): Promise&lt;Page[]&gt; &#123;    return this.pageModel.find().exec()  &#125;  findOne(id: string) &#123;    return this.pageModel.findOne(&#123; _id: id &#125;,&#123;__v:0&#125;);  &#125;  update(id: string, updatePageDto: UpdatePageDto) &#123;    return this.pageModel.updateOne(&#123; _id: id &#125;,updatePageDto);  &#125;  async remove(id: string) &#123;    await this.pageModel.remove(&#123; _id: id &#125;);    return &#39;删除成功&#39;  &#125;&#125;</code></pre><h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>生成中间件文件 <code>nest g mi filter-name [folder-name]</code> 可用两种中间件形式，类或者函数</p><pre><code>import &#123; Injectable, NestMiddleware &#125; from &#39;@nestjs/common&#39;;import &#123; Request, Response, NextFunction &#125; from &#39;express&#39;;@Injectable()export class LoggerMiddleware implements NestMiddleware &#123;    use(req: Request, res: Response, next: NextFunction) &#123;        // console.log(&quot;Request ......&quot;,req);        next()    &#125;&#125;// 函数式中间件export function logger(req, res, next) &#123;    next();  &#125;;</code></pre><p>main.ts中注入中间件</p><pre><code>import &#123; logger &#125; from &#39;./app.middleware&#39;;// 引用中间件  app.use(logger);</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后台 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker应用</title>
+      <link href="2021/05/02/code/docker/"/>
+      <url>2021/05/02/code/docker/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p><code>docker version</code><br>检查docker的版本，这样可以用来确认docker服务在运行并可通过客户端链接。<br><code>docker search 镜像名字</code><br>搜索可用的docker镜像<br><code>docker pull 镜像名字</code><br>通过docker命令下载tutorial镜像。<br>执行pull命令的时候要写完整的名字，比如”learn/tutorial”。<br><code>docker run learn/tutorial echo &quot;hello word&quot;</code><br>在docker容器中运行hello world!<br>docker run命令有两个参数，一个是镜像名，一个是要在镜像中运行的命令。<br>下一步我们要做的事情是在容器里面安装一个简单的程序(ping)。我们之前下载的tutorial镜像是基于ubuntu的，所以你可以使用ubuntu的apt-get命令来安装ping程序： apt-get install -y ping。</p><p>备注：apt-get 命令执行完毕之后，容器就会停止，但对容器的改动不会丢失。<br>在learn/tutorial镜像里面安装ping程序。<br>在执行apt-get 命令的时候，要带上-y参数。如果不指定-y参数的话，apt-get命令会进入交互模式，需要用户输入命令来进行确认，但在docker环境中是无法响应这种交互的。<br>docker run learn/tutorial apt-get install -y ping</p><p><code>docker ps -l</code><br>查看所有正在运行中的容器列表<br><code> docker inspect 容器id前几位</code><br>使用 docker inspect命令我们可以查看更详细的关于某一个容器的信息。<br><code>docker commit 698 learn/ping</code><br>保存对容器的修改<br>当你对某一个容器做了修改之后（通过在容器中运行某一个命令），可以把对容器的修改保存下来，这样下次可以从保存后的最新状态运行该容器。docker中保存状态的过程称之为committing，它保存的新旧状态之间的区别，从而产生一个新的版本。</p><p>目标：<br>首先使用 docker ps -l命令获得安装完ping命令之后容器的id。然后把这个镜像保存为learn/ping。</p><p>提示：</p><ol><li><p>运行docker commit，可以查看该命令的参数列表。</p></li><li><p>你需要指定要提交保存容器的ID。(译者按：通过docker ps -l 命令获得)</p></li><li><p>无需拷贝完整的id，通常来讲最开始的三至四个字母即可区分。（译者按：非常类似git里面的版本号)</p></li></ol><p>执行完docker commit命令之后，会返回新版本镜像的id号。</p><p>运行新的镜像<br>ok，到现在为止，你已经建立了一个完整的、自成体系的docker环境，并且安装了ping命令在里面。它可以在任何支持docker环境的系统中运行啦！</p><p>正确的命令：<br> docker run lean/ping ping <a href="http://www.google.com/">www.google.com</a></p><p> <code>docker images</code><br> 命令可以列出所有安装过的镜像。<br> <code>docker push</code><br> 可以将某一个镜像发布到官方网站。<br>  你只能将镜像发布到自己的空间下面。这个模拟器登录的是learn帐号。<br>  预期的命令：<br>docker push learn/ping<br><code>docker container prune</code><br>删除所有的容器<br><code>docker image prune</code><br><code>sudo docker rmi $(docker images -q)</code><br>删除所有的镜像</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mac 安装配置</title>
       <link href="2020/11/16/code/mac/"/>
       <url>2020/11/16/code/mac/</url>
@@ -302,31 +419,6 @@
     
     
     <entry>
-      <title>vscode</title>
-      <link href="2019/07/16/code/vscode/"/>
-      <url>2019/07/16/code/vscode/</url>
-      
-        <content type="html"><![CDATA[<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><pre><code class="json">&#123;    //$&#123;workspaceRoot&#125; the path of the folder opened in VS Code(VSCode中打开文件夹的路径)    //$&#123;workspaceRootFolderName&#125; (VSCode中打开文件夹的路径, 但不包含&quot;/&quot;)    //$&#123;file&#125; the current opened file(当前打开的文件)    //$&#123;relativeFile&#125; (当前打开的文件,相对于workspaceRoot)    //$&#123;fileBasename&#125; (当前打开文件的文件名, 不含扩展名)    //$&#123;fileDirname&#125; (当前打开文件的目录名)    //$&#123;fileExtname&#125; (当前打开文件的扩展名)    &quot;version&quot;: &quot;0.2.0&quot;,    &quot;configurations&quot;: [            &#123;            &quot;name&quot;: &quot;(gdb) Launch&quot;,// 配置名称，将会在启动配置的下拉菜单中显示            &quot;type&quot;: &quot;cppdbg&quot;,// 配置类型，这里只能为cppdbg            &quot;request&quot;: &quot;launch&quot;,// 请求配置类型，可以为launch（启动）或attach（附加）            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/detect/test/detect_demo&quot;,// 将要进行调试的程序的路径            &quot;args&quot;: [&quot;--rgb_video&quot;,&quot;/data/data/videos/car1_20170525.mp4&quot;],// 程序调试时传递给程序的命令行参数            &quot;stopAtEntry&quot;: false,// 设为true时程序将暂停在程序入口处，一般设置为false            &quot;cwd&quot;: &quot;$&#123;workspaceRoot&#125;/detect/test&quot;,// 可执行程序的启动路径            &quot;environment&quot;: [],            &quot;externalConsole&quot;: true,// 调试时是否显示控制台窗口，一般设置为true显示控制台            &quot;MIMode&quot;: &quot;gdb&quot;,            &quot;setupCommands&quot;: [                &#123;                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,                    &quot;ignoreFailures&quot;: true                &#125;            ]        &#125;    ]&#125;</code></pre><h2 id="调试静态文件"><a href="#调试静态文件" class="headerlink" title="调试静态文件"></a>调试静态文件</h2><pre><code class="json">&#123;  &quot;type&quot;: &quot;chrome&quot;,  &quot;request&quot;: &quot;launch&quot;,  &quot;name&quot;: &quot;静态文件 Chapter 4&quot;,  &quot;file&quot;: &quot;$&#123;workspaceFolder&#125;/Frontend dev-test/example/Chapter 4/index.html&quot;,  &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;&#125;,</code></pre><h2 id="调试服务器文件"><a href="#调试服务器文件" class="headerlink" title="调试服务器文件"></a>调试服务器文件</h2><pre><code class="json">&#123;    &quot;type&quot;: &quot;chrome&quot;,    &quot;request&quot;: &quot;launch&quot;,    &quot;sourceMaps&quot;: true,    &quot;name&quot;: &quot;Launch Chrome&quot;,    &quot;url&quot;: &quot;http://localhost:3000&quot;,    &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,    &quot;skipFiles&quot;: [        &quot;node_modules/**&quot;    ],    &quot;sourceMapPathOverrides&quot;: &#123;        &quot;webpack:///*&quot;: &quot;$&#123;webRoot&#125;/*&quot;,    &#125;&#125;</code></pre><h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>调试react项目</p><pre><code class="json">&#123;  &quot;type&quot;: &quot;chrome&quot;,  &quot;request&quot;: &quot;launch&quot;,  &quot;sourceMaps&quot;: true,  &quot;name&quot;: &quot;Launch Chrome&quot;,  &quot;url&quot;: &quot;http://localhost:3000&quot;,  &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,  &quot;skipFiles&quot;: [      &quot;node_modules/**&quot;  ],  &quot;sourceMapPathOverrides&quot;: &#123;      &quot;webpack:///*&quot;: &quot;$&#123;webRoot&#125;/*&quot;,  &#125;&#125;</code></pre><h2 id="远程SFTP调试服务器文件"><a href="#远程SFTP调试服务器文件" class="headerlink" title="远程SFTP调试服务器文件"></a>远程SFTP调试服务器文件</h2><p>使用vscode安装SFTP插件</p><pre><code class="json">&#123;    &quot;name&quot;: &quot;My Server&quot;,    &quot;host&quot;: &quot;ip address&quot;,    &quot;protocol&quot;: &quot;sftp&quot;,    &quot;port&quot;: 22,    &quot;username&quot;: &quot;login&quot;,    &quot;password&quot;: &quot;pwd&quot;,    &quot;remotePath&quot;: &quot;/&quot;,    &quot;connectTimeout&quot;:100000,    &quot;uploadOnSave&quot;: true&#125;</code></pre><h2 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>毛玻璃 <code>Vibrancy</code><br>VS内置浏览器 <code>Browser Preview</code><br>代码规范 <code>JavaScript Booster</code><br>自动匹配另一半标签 <code>Bracket Pair Colorizer</code><br>接口调试 <code>REST Client</code><br>代码截图 <code>Polacode-2019</code><br>注释高亮 <code>Better Comments</code></p><ul><li><code>！</code>红色注释</li><li><code>?</code>蓝色注释</li><li><code>//</code>灰色删除线注释</li><li><code>todo</code>橘红色注释</li><li><code>*</code>浅绿色注释</li></ul><p>深色皮肤 <code>Dracula Theme</code><br>紫色主题 <code>One Dark Pro</code><br>图片预览 <code>Image preview</code><br>运行网页热更新 <code>Live Server</code><br>网页快捷在浏览器打开 <code>open in browser</code><br>项目快捷运行脚本 <code>Quick Task</code><br>scss格式化 <code>SCSS Formatter</code><br>SFTP远程修改项目 <code>SFTP</code><br>高亮 <code>Smarty</code><br>TS格式化 <code>TSLint (deprecated)</code><br>VS图标 <code>vscode-icons</code><br>JSON 格式化 <code>vscode-json</code></p><h3 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h3><p>Flutter主体 <code>Flutter</code><br>Flutter快捷方式 <code>Awesome Flutter Snippets</code></p><h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>React提示及快捷方式 <code>ES7 React/Redux/GraphQL/React-Native snippets</code><br>Taro 快捷方式 <code>taroSnippets</code></p><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>Vue主体 <code>Vetur</code><br>wepy主体 <code>Vetur-wepy</code></p><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>便捷Git操作 <code>Git History</code></p><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>Python主题 <code>Python</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 开发 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vscode </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Taro.js</title>
       <link href="2019/07/16/code/taro/"/>
       <url>2019/07/16/code/taro/</url>
@@ -346,6 +438,31 @@
             <tag> react </tag>
             
             <tag> taro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vscode</title>
+      <link href="2019/07/16/code/vscode/"/>
+      <url>2019/07/16/code/vscode/</url>
+      
+        <content type="html"><![CDATA[<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><pre><code class="json">&#123;    //$&#123;workspaceRoot&#125; the path of the folder opened in VS Code(VSCode中打开文件夹的路径)    //$&#123;workspaceRootFolderName&#125; (VSCode中打开文件夹的路径, 但不包含&quot;/&quot;)    //$&#123;file&#125; the current opened file(当前打开的文件)    //$&#123;relativeFile&#125; (当前打开的文件,相对于workspaceRoot)    //$&#123;fileBasename&#125; (当前打开文件的文件名, 不含扩展名)    //$&#123;fileDirname&#125; (当前打开文件的目录名)    //$&#123;fileExtname&#125; (当前打开文件的扩展名)    &quot;version&quot;: &quot;0.2.0&quot;,    &quot;configurations&quot;: [            &#123;            &quot;name&quot;: &quot;(gdb) Launch&quot;,// 配置名称，将会在启动配置的下拉菜单中显示            &quot;type&quot;: &quot;cppdbg&quot;,// 配置类型，这里只能为cppdbg            &quot;request&quot;: &quot;launch&quot;,// 请求配置类型，可以为launch（启动）或attach（附加）            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/detect/test/detect_demo&quot;,// 将要进行调试的程序的路径            &quot;args&quot;: [&quot;--rgb_video&quot;,&quot;/data/data/videos/car1_20170525.mp4&quot;],// 程序调试时传递给程序的命令行参数            &quot;stopAtEntry&quot;: false,// 设为true时程序将暂停在程序入口处，一般设置为false            &quot;cwd&quot;: &quot;$&#123;workspaceRoot&#125;/detect/test&quot;,// 可执行程序的启动路径            &quot;environment&quot;: [],            &quot;externalConsole&quot;: true,// 调试时是否显示控制台窗口，一般设置为true显示控制台            &quot;MIMode&quot;: &quot;gdb&quot;,            &quot;setupCommands&quot;: [                &#123;                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,                    &quot;ignoreFailures&quot;: true                &#125;            ]        &#125;    ]&#125;</code></pre><h2 id="调试静态文件"><a href="#调试静态文件" class="headerlink" title="调试静态文件"></a>调试静态文件</h2><pre><code class="json">&#123;  &quot;type&quot;: &quot;chrome&quot;,  &quot;request&quot;: &quot;launch&quot;,  &quot;name&quot;: &quot;静态文件 Chapter 4&quot;,  &quot;file&quot;: &quot;$&#123;workspaceFolder&#125;/Frontend dev-test/example/Chapter 4/index.html&quot;,  &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;&#125;,</code></pre><h2 id="调试服务器文件"><a href="#调试服务器文件" class="headerlink" title="调试服务器文件"></a>调试服务器文件</h2><pre><code class="json">&#123;    &quot;type&quot;: &quot;chrome&quot;,    &quot;request&quot;: &quot;launch&quot;,    &quot;sourceMaps&quot;: true,    &quot;name&quot;: &quot;Launch Chrome&quot;,    &quot;url&quot;: &quot;http://localhost:3000&quot;,    &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,    &quot;skipFiles&quot;: [        &quot;node_modules/**&quot;    ],    &quot;sourceMapPathOverrides&quot;: &#123;        &quot;webpack:///*&quot;: &quot;$&#123;webRoot&#125;/*&quot;,    &#125;&#125;</code></pre><h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>调试react项目</p><pre><code class="json">&#123;  &quot;type&quot;: &quot;chrome&quot;,  &quot;request&quot;: &quot;launch&quot;,  &quot;sourceMaps&quot;: true,  &quot;name&quot;: &quot;Launch Chrome&quot;,  &quot;url&quot;: &quot;http://localhost:3000&quot;,  &quot;webRoot&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,  &quot;skipFiles&quot;: [      &quot;node_modules/**&quot;  ],  &quot;sourceMapPathOverrides&quot;: &#123;      &quot;webpack:///*&quot;: &quot;$&#123;webRoot&#125;/*&quot;,  &#125;&#125;</code></pre><h2 id="远程SFTP调试服务器文件"><a href="#远程SFTP调试服务器文件" class="headerlink" title="远程SFTP调试服务器文件"></a>远程SFTP调试服务器文件</h2><p>使用vscode安装SFTP插件</p><pre><code class="json">&#123;    &quot;name&quot;: &quot;My Server&quot;,    &quot;host&quot;: &quot;ip address&quot;,    &quot;protocol&quot;: &quot;sftp&quot;,    &quot;port&quot;: 22,    &quot;username&quot;: &quot;login&quot;,    &quot;password&quot;: &quot;pwd&quot;,    &quot;remotePath&quot;: &quot;/&quot;,    &quot;connectTimeout&quot;:100000,    &quot;uploadOnSave&quot;: true&#125;</code></pre><h2 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>毛玻璃 <code>Vibrancy</code><br>VS内置浏览器 <code>Browser Preview</code><br>代码规范 <code>JavaScript Booster</code><br>自动匹配另一半标签 <code>Bracket Pair Colorizer</code><br>接口调试 <code>REST Client</code><br>代码截图 <code>Polacode-2019</code><br>注释高亮 <code>Better Comments</code></p><ul><li><code>！</code>红色注释</li><li><code>?</code>蓝色注释</li><li><code>//</code>灰色删除线注释</li><li><code>todo</code>橘红色注释</li><li><code>*</code>浅绿色注释</li></ul><p>深色皮肤 <code>Dracula Theme</code><br>紫色主题 <code>One Dark Pro</code><br>图片预览 <code>Image preview</code><br>运行网页热更新 <code>Live Server</code><br>网页快捷在浏览器打开 <code>open in browser</code><br>项目快捷运行脚本 <code>Quick Task</code><br>scss格式化 <code>SCSS Formatter</code><br>SFTP远程修改项目 <code>SFTP</code><br>高亮 <code>Smarty</code><br>TS格式化 <code>TSLint (deprecated)</code><br>VS图标 <code>vscode-icons</code><br>JSON 格式化 <code>vscode-json</code></p><h3 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h3><p>Flutter主体 <code>Flutter</code><br>Flutter快捷方式 <code>Awesome Flutter Snippets</code></p><h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>React提示及快捷方式 <code>ES7 React/Redux/GraphQL/React-Native snippets</code><br>Taro 快捷方式 <code>taroSnippets</code></p><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>Vue主体 <code>Vetur</code><br>wepy主体 <code>Vetur-wepy</code></p><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>便捷Git操作 <code>Git History</code></p><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>Python主题 <code>Python</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
             
         </tags>
       
@@ -481,31 +598,6 @@
     
     
     <entry>
-      <title>拯救大吉他</title>
-      <link href="2019/06/24/learn/guita/"/>
-      <url>2019/06/24/learn/guita/</url>
-      
-        <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul><li>弹得一手好吉他</li><li>唱弹协调起来</li></ul><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><ul><li>1.尽量每天练琴最多隔一天</li><li>2.逐步进阶，但是要注重基础</li></ul><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul><li>1.左手手掌不能抓琴颈要往前推</li><li>2.手腕是可以平移的</li><li>3.往低音弦走的时候，手要是按不到，肩膀就要往下走，带动小臂和手掌往前推</li></ul><h2 id="学习进程"><a href="#学习进程" class="headerlink" title="学习进程"></a>学习进程</h2><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><ul><li>调琴弦与认识琴的结构是最基础的了。</li><li>左手尽量保持每个指头垂直按下琴，指头离品丝 1 毫米挨着即可。</li><li>右手大拇指与其他指头不在一个垂直线上，保证其他勾弦时不会影响到大拇指。</li></ul><h3 id="按弦"><a href="#按弦" class="headerlink" title="按弦"></a>按弦</h3><ul><li>在右手弹响第一个音后迅速按下第二个音，以此来实现拨弦一次发出两个音。</li></ul><h3 id="滑弦"><a href="#滑弦" class="headerlink" title="滑弦"></a>滑弦</h3><ul><li>在右手弹响第一个音后左手迅速滑向第二个音所在丝，以此实现拨弦一次发出两个音并带有滑音声音。</li></ul><h3 id="节拍"><a href="#节拍" class="headerlink" title="节拍"></a>节拍</h3><div class="video"><video controls preload><source src='/assets/media/1guitar.mp4' type='video/mp4'>Your browser does not support the video tag.</video></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 吉他 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>健身计划</title>
       <link href="2019/06/24/learn/keep/"/>
       <url>2019/06/24/learn/keep/</url>
@@ -548,6 +640,31 @@
         <tags>
             
             <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试题</title>
+      <link href="2019/06/21/other/face/"/>
+      <url>2019/06/21/other/face/</url>
+      
+        <content type="html"><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="浏览器运行机制"><a href="#浏览器运行机制" class="headerlink" title="浏览器运行机制"></a>浏览器运行机制</h3><p>1，构建DOM树，将标签转为DOM node（节点，包括js生成的标签）<br>2，构建渲染树：解析所有的css样式文件信息<br>3，布局渲染书：从根节点递归调用，计算每一个元素的大小位置给出精确坐标<br>4，绘制渲染书：遍历渲染树，使用UI层来绘制每个节点。</p><h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>指一个元素外观的改变所触发的浏览器行为，浏览器会根据元素的新属性进行新属性重新绘制，使元素呈现新的外观。<br>color，background-color等会触发重绘。</p><h3 id="重排（重构、回流、reflow）"><a href="#重排（重构、回流、reflow）" class="headerlink" title="重排（重构、回流、reflow）"></a>重排（重构、回流、reflow）</h3><p>当渲染树中的一部分或全部因为元素的规模尺寸布局隐藏等改变而需要重新构建，这就成为回流（reflow）。每个页面至少需要一次回流，就是在页面第一次加载的时候。<br>任何页面布局和几何属性改变都会触发重排。</p><h3 id="重绘和重排的关系"><a href="#重绘和重排的关系" class="headerlink" title="重绘和重排的关系"></a>重绘和重排的关系</h3><p>在回流的时候浏览器会使渲染树中收到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器就会重新绘制受影响的部分到屏幕中，该过程称为重绘。<br>所以，重排必定引发重绘，重绘不一定会引发重排。</p><h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>1、直接修改元素的className<br>2、先设置display:none;然后修改元素，然后在设置display：block；<br>3、让它脱离文档流<br>4、创建完dom一次性加入</p><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="React生命周期有哪些"><a href="#React生命周期有哪些" class="headerlink" title="React生命周期有哪些"></a>React生命周期有哪些</h3><p>初始化阶段<br>constructor 构造函数<br>getDefaultProps props默认值<br>getInitialState state默认值<br>挂载阶段<br>staticgetDerivedStateFromProps(props,state)<br>render<br>componentDidMount<br>getDerivedStateFromProps：组件每次被 rerender的时候，包括在组件构建之后(虚拟 dom之后，实际 dom挂载之前)，每次获取新的 props或 state之后；每次接收新的props之后都会返回一个对象作为新的 state，返回null则说明不需要更新 state；配合 componentDidUpdate，可以覆盖 componentWillReceiveProps的所有用法<br>更新阶段<br>staticgetDerivedStateFromProps(props,state)<br>shouldComponentUpdate<br>render<br>getSnapshotBeforeUpdate(prevProps,prevState)<br>componentDidUpdate<br>getSnapshotBeforeUpdate：触发时间: update发生的时候，在 render之后，在组件 dom渲染之前；返回一个值，作为 componentDidUpdate的第三个参数；配合 componentDidUpdate, 可以覆盖 componentWillUpdate的所有用法<br>卸载阶段<br>componentWillUnmount<br>错误处理<br>componentDidCatch<br>React16新的生命周期弃用了 componentWillMount、componentWillReceivePorps，componentWillUpdate新增了 getDerivedStateFromProps、getSnapshotBeforeUpdate来代替弃用的三个钩子函数。</p><p>React16并没有删除这三个钩子函数，但是不能和新增的钩子函数混用， React17将会删除这三个钩子函数，新增了对错误的处理（ componentDidCatch）</p><h3 id="setState是同步的还是异步的？"><a href="#setState是同步的还是异步的？" class="headerlink" title="setState是同步的还是异步的？"></a>setState是同步的还是异步的？</h3><p>在 React的生命周期和合成事件中， React仍然处于他的更新机制中，这时无论调用多少次 setState，都会不会立即执行更新，而是将要更新的·存入 _pendingStateQueue，将要更新的组件存入 dirtyComponent。</p><p>当上一次更新机制执行完毕，以生命周期为例，所有组件，即最顶层组件 didmount后会将批处理标志设置为 false。这时将取出 dirtyComponent中的组件以及 _pendingStateQueue中的 state进行更新。这样就可以确保组件不会被重新渲染多次。</p><p>所以。setState本身并不是异步的，而是 React的批处理机制给人一种异步的假象。</p><p>在原生事件中调用 setState并不会出发 React的批处理机制，所以立即能拿到最新结果。</p><h3 id="为什么有时连续多次setState只有一次生效？"><a href="#为什么有时连续多次setState只有一次生效？" class="headerlink" title="为什么有时连续多次setState只有一次生效？"></a>为什么有时连续多次setState只有一次生效？</h3><p>原因就是 React会批处理机制中存储的多个 setState进行合并，<br>注意， assign函数中对函数做了特殊处理，处理第一个参数传入的是函数，函数的参数 preState是前一次合并后的结果。</p><h3 id="虚拟Dom比普通Dom更快吗？"><a href="#虚拟Dom比普通Dom更快吗？" class="headerlink" title="虚拟Dom比普通Dom更快吗？"></a>虚拟Dom比普通Dom更快吗？</h3><p>直接操作 DOM是非常耗费性能的，这一点毋庸置疑。但是 React使用 VitrualDom也是无法避免操作 DOM的。<br>如果是首次渲染， VitrualDom不具有任何优势，甚至它要进行更多的计算，消耗更多的内存。<br>VitrualDom的优势在于 React的 Diff算法和批处理策略， React在页面更新之前，提前计算好了如何进行更新和渲染 DOM。实际上，这个计算过程我们在直接操作 DOM时，也是可以自己判断和实现的，但是一定会耗费非常多的精力和时间，而且往往我们自己做的是不如 React好的。所以，在这个过程中 React帮助我们”提升了性能”。</p><p>所以，我更倾向于说， VitrualDom帮助我们提高了开发效率，在重复渲染时它帮助我们计算如何更高效的更新，而不是它比 DOM操作更快。</p><h3 id="React如何实现自己的事件机制？"><a href="#React如何实现自己的事件机制？" class="headerlink" title="React如何实现自己的事件机制？"></a>React如何实现自己的事件机制？</h3><p>React事件并没有绑定在真实的 Dom节点上，而是通过事件代理，在最外层的 document上对事件进行统一分发。<br>组件挂载、更新时：</p><p>通过 lastProps、 nextProps判断是否新增、删除事件分别调用事件注册、卸载方法。<br>调用 EventPluginHub的 enqueuePutListener进行事件存储<br>获取 document对象。<br>根据事件名称（如 onClick、 onCaptureClick）判断是进行冒泡还是捕获。<br>判断是否存在 addEventListener方法，否则使用 attachEvent（兼容IE）。<br>给 document注册原生事件回调为 dispatchEvent(统一的事件分发机制）。<br>事件初始化：</p><p>EventPluginHub负责管理 React合成事件的 callback，它将 callback存储在 listenerBank中，另外还存储了负责合成事件的 Plugin。<br>获取绑定事件的元素的唯一标识 key。<br>将 callback根据事件类型，元素的唯一标识 key存储在 listenerBank中。<br>listenerBank的结构是： listenerBank[registrationName][key]。<br>触发事件时：</p><p>触发 document注册原生事件的回调 dispatchEvent<br>获取到触发这个事件最深一级的元素<br>遍历这个元素的所有父元素，依次对每一级元素进行处理。<br>构造合成事件。<br>将每一级的合成事件存储在 eventQueue事件队列中。<br>遍历 eventQueue。<br>通过 isPropagationStopped判断当前事件是否执行了阻止冒泡方法。<br>如果阻止了冒泡，停止遍历，否则通过 executeDispatch执行合成事件。<br>释放处理完成的事件。</p><h3 id="为何React事件要自己绑定this？"><a href="#为何React事件要自己绑定this？" class="headerlink" title="为何React事件要自己绑定this？"></a>为何React事件要自己绑定this？</h3><p>在上面提到的事件处理流程中， React在 document上进行统一的事件分发， dispatchEvent通过循环调用所有层级的事件来模拟事件冒泡和捕获。</p><p>在 React源码中，当具体到某一事件处理函数将要调用时，将调用 invokeGuardedCallback方法。</p><pre><code>function invokeGuardedCallback(name,func,a)&#123;    try&#123;        func(a);    &#125;    catch(x)&#123;        if(caughtError ===null)&#123;            caughtError =x;        &#125;    &#125;&#125;</code></pre><h3 id="原生事件和React事件的区别？"><a href="#原生事件和React事件的区别？" class="headerlink" title="原生事件和React事件的区别？"></a>原生事件和React事件的区别？</h3><p>React 事件使用驼峰命名，而不是全部小写。</p><p>通过 JSX , 你传递一个函数作为事件处理程序，而不是一个字符串。</p><p>在 React 中你不能通过返回 false 来阻止默认行为。必须明确调用 preventDefault。</p><h3 id="React和原生事件的执行顺序是什么？可以混用吗？"><a href="#React和原生事件的执行顺序是什么？可以混用吗？" class="headerlink" title="React和原生事件的执行顺序是什么？可以混用吗？"></a>React和原生事件的执行顺序是什么？可以混用吗？</h3><p>React的所有事件都通过 document进行统一分发。当真实 Dom触发事件后冒泡到 document后才会对 React事件进行处理。</p><p>所以原生的事件会先执行，然后执行 React合成事件，最后执行真正在 document上挂载的事件</p><p>React事件和原生事件最好不要混用。原生事件中如果执行了 stopPropagation方法，则会导致其他 React事件失效。因为所有元素的事件将无法冒泡到 document上，导致所有的 React事件都将无法被触发。。</p><h3 id="虚拟Dom是什么？"><a href="#虚拟Dom是什么？" class="headerlink" title="虚拟Dom是什么？"></a>虚拟Dom是什么？</h3><p>在原生的 JavaScript程序中，我们直接对 DOM进行创建和更改，而 DOM元素通过我们监听的事件和我们的应用程序进行通讯。</p><p>而 React会先将你的代码转换成一个 JavaScript对象，然后这个 JavaScript对象再转换成真实 DOM。这个 JavaScript对象就是所谓的虚拟 DOM。</p><p>当我们需要创建或更新元素时， React首先会让这个 VitrualDom对象进行创建和更改，然后再将 VitrualDom对象渲染成真实DOM。</p><p>当我们需要对 DOM进行事件监听时，首先对 VitrualDom进行事件监听， VitrualDom会代理原生的 DOM事件从而做出响应。</p><h3 id="为什么React组件首字母必须大写？"><a href="#为什么React组件首字母必须大写？" class="headerlink" title="为什么React组件首字母必须大写？"></a>为什么React组件首字母必须大写？</h3><p>babel在编译时会判断 JSX中组件的首字母，当首字母为小写时，其被认定为原生 DOM标签， createElement的第一个变量被编译为字符串；当首字母为大写时，其被认定为自定义组件， createElement的第一个变量被编译为对象；</p><h3 id="什么是高阶组件？如何实现？"><a href="#什么是高阶组件？如何实现？" class="headerlink" title="什么是高阶组件？如何实现？"></a>什么是高阶组件？如何实现？</h3><p>高阶组件可以看作 React对装饰模式的一种实现，高阶组件就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件。</p><h3 id="Hook有哪些优势？"><a href="#Hook有哪些优势？" class="headerlink" title="Hook有哪些优势？"></a>Hook有哪些优势？</h3><h4 id="减少状态逻辑复用的风险"><a href="#减少状态逻辑复用的风险" class="headerlink" title="减少状态逻辑复用的风险"></a>减少状态逻辑复用的风险</h4><p>Hook和 Mixin在用法上有一定的相似之处，但是 Mixin引入的逻辑和状态是可以相互覆盖的，而多个 Hook之间互不影响，这让我们不需要在把一部分精力放在防止避免逻辑复用的冲突上。在不遵守约定的情况下使用 HOC也有可能带来一定冲突，比如 props覆盖等等，使用 Hook则可以避免这些问题。</p><h4 id="避免地狱式嵌套"><a href="#避免地狱式嵌套" class="headerlink" title="避免地狱式嵌套"></a>避免地狱式嵌套</h4><p>大量使用 HOC的情况下让我们的代码变得嵌套层级非常深，使用 HOC，我们可以实现扁平式的状态逻辑复用，而避免了大量的组件嵌套。</p><h4 id="让组件更容易理解"><a href="#让组件更容易理解" class="headerlink" title="让组件更容易理解"></a>让组件更容易理解</h4><p>在使用 class组件构建我们的程序时，他们各自拥有自己的状态，业务逻辑的复杂使这些组件变得越来越庞大，各个生命周期中会调用越来越多的逻辑，越来越难以维护。使用 Hook，可以让你更大限度的将公用逻辑抽离，将一个组件分割成更小的函数，而不是强制基于生命周期方法进行分割。</p><h4 id="使用函数代替class"><a href="#使用函数代替class" class="headerlink" title="使用函数代替class"></a>使用函数代替class</h4><p>相比函数，编写一个 class可能需要掌握更多的知识，需要注意的点也越多，比如 this指向、绑定事件等等。另外，计算机理解一个 class比理解一个函数更快。Hooks让你可以在 classes之外使用更多 React的新特性。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源 </tag>
             
         </tags>
       
