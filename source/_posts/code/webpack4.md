@@ -19,60 +19,148 @@ tags:
 [externals 外部扩展](https://www.tangshuang.net/3343.html)
 [element-ui 配置参考](https://github.com/ElemeFE/element/blob/dev/build/config.js)
 
-```webpack.common.js
+```config.js
+
 const path = require("path");
+var fs = require('fs');
+var nodeExternals = require('webpack-node-externals');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const resolve = (dir) => {
     return path.join(__dirname, dir)
-}
+},
+    fileNameTag = process.env.NODE_ENV == 'prod' ? '.min' : '';
+const packagesList = fs.readdirSync(path.resolve(__dirname, '../packages')),
+    ComponentsList = {}, externals = {};
+packagesList.forEach(i => {
+    ComponentsList[i] = `~/packages/${i}/index.js`
+    externals[`~/packages/${i}`] = `./${i}${fileNameTag}`;
+})
+exports.ComponentsList = ComponentsList;
+exports.externals = [Object.assign({
+    vue: 'vue',
+    'element-ui': 'element-ui',
+}, externals), nodeExternals()];
 
-module.exports={
-    mode: 'production', // 指定是本地开发还是线上环境
-    entry:'path/a'|[{a:'page/*/1'},{b:'page/*/2'}], // 入口js文件 一个或多个都行
-    output:{ // 导出配置
-        path: path.resolve(process.cwd(), './lib'), // 导出路径设置
-        filename: '[name].js', //多个的时候可以设置name为文件名
+exports.alias = {
+    "~": resolve("../"),
+    "@": resolve("../examples"),
+    "main": resolve("../src"),
+    packages: resolve("../packages"),
+}
+const plugins = []
+
+if (process.env.NODE_ENV == 'prod') {
+    plugins.push(new UglifyJsPlugin({
+        parallel: true,
+        sourceMap: false
+    }))
+} else {
+    plugins.push(new BundleAnalyzerPlugin({
+        analyzerPort: 8081
+    }))
+}
+exports.plugins = plugins
+
+exports.filename = `[name]${fileNameTag}.js`
+
+```
+
+```webpack.common.js
+const path = require('path');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const chalk = require('chalk');
+const packageJSON = require('../package.json');
+const config = require('./config');
+const webpackConfig = {
+    mode: 'production',
+    entry: Object.assign(config.ComponentsList, {
+        "index.common": "~/src/index.js",
+    }),
+    output: {
+        path: path.resolve(process.cwd(), './lib'),
+        // publicPath: '/dist/',
+        filename: config.filename,
         chunkFilename: '[id].js',
         libraryExport: 'default',
         libraryTarget: 'commonjs2'
     },
-    resolve: { //模块解析
-        extensions: ['.js', '.vue', '.json'], //解析那些文件
-        alias: {//设置路径别名
-            "~": resolve("../"),
-        },
-        modules: ['node_modules'] // 指定模块文件夹名称
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: config.alias,
+        modules: ['node_modules']
     },
-    externals: { // 将依赖包通过外部引用形式加载进来，减小包体积
-        vue: 'vue',
-    },
-    performance: { // 性能关闭提示
+    externals: config.externals,
+    performance: {
         hints: false
     },
-    stats: 'none', // 统计，不显示统计信息
-    optimization: {  // 不压缩代码
+    stats: 'none',
+    optimization: {
         minimize: false
     },
-    module: { // 解析不同的文件内容
+    module: {
         rules: [
             {
                 test: /\.(jsx?|babel|es6)$/,
                 include: process.cwd(),
-                // exclude: config.jsexclude,// 排除指定文件
+                // exclude: config.jsexclude,
                 loader: 'babel-loader'
             },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    compilerOptions: {
+                        preserveWhitespace: false
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                loaders: [
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+                    // Translates CSS into CommonJS
+                    "css-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
+                ],
+            },
+            {
+                test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: path.posix.join('static', '[name].[hash:7].[ext]')
+                }
+            }
         ]
     },
-    plugins: [ //以各种方式自定义webpack构建过程
-        new UglifyJsPlugin({ // 压缩插件
-            parallel: true,
-            sourceMap: false
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: `[file]\nNPM：${packageJSON.name}\n作者：${packageJSON.author}\n版本号：${packageJSON.version}\n时间：${new Date()}`
         }),
-        new BundleAnalyzerPlugin({ //分析包大小占比插件
-            analyzerPort: 8081
-        })
+        new ProgressBarPlugin({
+            format:
+                chalk.green.bold(`${packageJSON.name} V${packageJSON.version} 构建中 `) +
+                '[:bar] ' +
+                chalk.green.bold(':percent') +
+                ' (:elapsed seconds)',
+            clear: false
+        }),
+        new VueLoaderPlugin(),
+        new CleanWebpackPlugin(),
+        ...config.plugins
     ]
-}
+};
+
+module.exports = webpackConfig;
 ```
