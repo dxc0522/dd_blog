@@ -241,6 +241,10 @@ function loadingPage() {
                 }
         }
     })
+    // 没有加载留言的时候自动刷新
+    // if (document.getElementById('lv-container') && !document.getElementById('lv-container').getElementsByTagName('iframe').length) {
+    //     location.reload()
+    // }
 }
 document.addEventListener('pjax:complete', function () {
     loadingPage()

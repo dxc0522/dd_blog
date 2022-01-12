@@ -27,7 +27,12 @@ navbar:
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-
+    - name: 更多
+      icon: fas fa-ellipsis-h
+      rows:
+        - name: 暗黑模式
+          icon: fas fa-moon
+          toggle: darkmode
   search: 搜索...(◕ܫ◕) # Search bar placeholder
 
 # 网站与文章封面
@@ -85,7 +90,7 @@ sidebar:
         - icon: fab fa-github
           url: https://github.com/dxc0522
         - icon: fas fa-headphones-alt
-          url: https://music.163.com/#/user/home?id=1293562262
+          url: https://y.qq.com/n/ryqq/playlist/7287041521
     # ---------------------------------------
     # toc widget (valid only in articles)
     #   文章目录部件
@@ -360,6 +365,9 @@ rightmenu:
   # hr: 分割线, music: 音乐控制器
   layout: [home, hr, source_theme, hr, print, hr, music]
   # 可选功能项
+  darkmode: # 需开启 plugins.darkmodejs
+    name: 暗黑模式
+    icon: fa fa-moon
   print:
     name: 打印页面
     icon: fa fa-print
@@ -417,7 +425,8 @@ plugins:
   highlightjs:
     enable: true # Please set hexo.config.highlight.enable = false !!!
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
-    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
+    # css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css  # 高亮色
+    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/atom-one-dark.css #  深色
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
@@ -466,7 +475,6 @@ plugins:
     duration: 10000 # Duration (ms)
     fade: 1500 # fade duration (ms) (Not more than 1500)
     images: # For personal use only. At your own risk if used for commercial rposes !!!
-      - /assets/img/background/4l8eeq.jpg
       - /assets/img/background/a9157f3e6709c93d57ad1296903df8dcd1005471.jpg
       - /assets/img/background/lm2762.jpg
       - /assets/img/background/p2dky9.jpg
@@ -484,19 +492,19 @@ plugins:
   aplayer:
     enable: true
     js:
-      - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
-      - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
+      meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
-    server: netease # netease, tencent, kugou, xiami, baidu
+    server: tencent # netease, tencent, kugou, xiami, baidu
     type: playlist # song, playlist, album, search, artist
-    id: 1987569985 # song id / playlist id / album id / search keyword
+    id: 7287041521 # song id / playlist id / album id / search keyword
     # Optional
-    fixed: false # enable fixed mode
+    fixed: true # enable fixed mode
     theme: '#1BCDFC' # main color
     autoplay: false # audio autoplay
     order: list # player play order, values: 'list', 'random'
     loop: all # player loop play, values: 'all', 'one', 'none'
-    volume: 0.5 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    volume: 0.4 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
 
@@ -510,17 +518,8 @@ plugins:
   # 暗黑模式 darkmodejs
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
-  darkmodejs:
+  darkmode:
     enable: true
-    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
-    button: # button 使用默认或自行开发
-      enable: true
-      bottom: '32px'
-      left: 16px
-      buttonDark: '#333'
-      buttonLight: '#ddd'
-      label: '🌓'
-    compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 
 ############################### Analytics ############################### > start
 analytics:
