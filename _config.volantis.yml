@@ -33,6 +33,7 @@ navbar:
         - name: 暗黑模式
           icon: fas fa-moon
           toggle: darkmode
+
   search: 搜索...(◕ܫ◕) # Search bar placeholder
 
 # 网站与文章封面
@@ -126,20 +127,7 @@ sidebar:
       color: true
       start_color: '#999'
       end_color: '#555'
-    # ---------------------------------------
-    # 二维码部件
-    # donate:
-    #   class: qrcode
-    #   display: [desktop] # [desktop, mobile]
-    #   height: 64px # Automatic height if not set
-    #   header:
-    #     icon: fas fa-qrcode
-    #     title: 联系我
-    #     url: /tags/
-    #   images:
-    #     - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    #     - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    # ---------------------------------------
+
     # webinfo widget
     webinfo:
       class: webinfo
@@ -363,11 +351,12 @@ custom_css:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, source_theme, hr, print, hr, music]
+  layout: [home, source_theme, hr, print, dark_mode, hr, music]
   # 可选功能项
-  darkmode: # 需开启 plugins.darkmodejs
+  dark_mode:
     name: 暗黑模式
-    icon: fa fa-moon
+    icon: fas fa-moon
+    toggle: darkmode
   print:
     name: 打印页面
     icon: fa fa-print
@@ -513,6 +502,22 @@ plugins:
     timeout: 5000 # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # nprogress, circle
+
+  message: # 音乐通知，播放、暂停、失败 时的图标
+    enable: true
+    icon: # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
+      default: fal fa-info-circle light-blue
+      quection: fal fa-question-circle light-blue
+    copyright: # 是否在复制时弹出版权提示
+      enable: false
+      title: '知识共享许可协议'
+      message: '请遵守 CC BY-NC-SA 4.0 协议。'
+      icon: 'fab fa-creative-commons light-blue'
+    aplayer:
+      enable: true
+      play: fal fa-play light-blue
+      pause: fal fa-pause light-blue
+      error: fal fa-exclamation-square red
 
   ##################################
   # 暗黑模式 darkmodejs
