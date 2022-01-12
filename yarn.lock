@@ -602,10 +602,10 @@ hexo-tag-bili@^1.0.0:
   resolved "https://registry.npm.taobao.org/hexo-tag-bili/download/hexo-tag-bili-1.0.0.tgz#4ed1bc9dac58d49da501a8d20f655960fc5ad7ab"
   integrity sha1-TtG8naxY1J2lAajSD2VZYPxa16s=
 
-hexo-theme-volantis@^4.0.0-rc.4:
-  version "4.0.0-rc.4"
-  resolved "https://registry.npm.taobao.org/hexo-theme-volantis/download/hexo-theme-volantis-4.0.0-rc.4.tgz#3e0aed2b8c1be450e1854d4a7abce40f261f776f"
-  integrity sha1-PgrtK4wb5FDhhU1KerzkDyYfd28=
+hexo-theme-volantis@^4.3.1:
+  version "4.3.1"
+  resolved "http://npm.beizengkeji.com/hexo-theme-volantis/-/hexo-theme-volantis-4.3.1.tgz#9f23a7b48cab089630e9344715e588ef29284eee"
+  integrity sha1-nyOntIyrCJYw6TRHFeWI7ykoTu4=
 
 hexo-util@^2.0.0, hexo-util@^2.1.0, hexo-util@^2.4.0, hexo-util@latest:
   version "2.4.0"

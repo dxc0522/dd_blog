@@ -78,8 +78,8 @@ sidebar:
       title: DouDou
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
-          url: atom.xml
+        # - icon: fas fa-rss
+        #   url: atom.xml
         - icon: fas fa-envelope
           url: mailto:809685229@qq.com
         - icon: fab fa-github
@@ -123,17 +123,17 @@ sidebar:
       end_color: '#555'
     # ---------------------------------------
     # 二维码部件
-    donate:
-      class: qrcode
-      display: [desktop] # [desktop, mobile]
-      height: 64px # Automatic height if not set
-      header:
-        icon: fas fa-qrcode
-        title: 联系我
-        url: /tags/
-      images:
-        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    # donate:
+    #   class: qrcode
+    #   display: [desktop] # [desktop, mobile]
+    #   height: 64px # Automatic height if not set
+    #   header:
+    #     icon: fas fa-qrcode
+    #     title: 联系我
+    #     url: /tags/
+    #   images:
+    #     - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    #     - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # ---------------------------------------
     # webinfo widget
     webinfo:
@@ -230,7 +230,7 @@ article:
           - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     # 从 meta_library 中取
-    bottom_meta: [updated, tags, share]
+    bottom_meta: [updated, tags, share, wordcount]
     # meta library
     meta_library:
       # 默认文章作者（可在 front-matter 中覆盖）
@@ -379,11 +379,11 @@ site_footer:
 
 # 组件
 comments:
-  service: valine
-  valine:
-    appId: hhGh8SbWrmd9zLe3yVYy49vO-MdYXbMMI
-    appKey: 35eSDgbmncpmG3V1k3IsxfXi
-    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+  service: livere
+  livere:
+    id: city
+    uid: MTAyMC81NTE5NC8zMTY2MQ==
+    js: https://cdn-city.livere.com/js/embed.dist.js
 # 插件
 plugins:
   ################ required plugins ################
@@ -505,26 +505,6 @@ plugins:
     timeout: 5000 # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # nprogress, circle
-    banUrl: # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      - /artitalk/ # artitalk 不支持 pjax
-
-  # Artitalk https://artitalk.js.org
-  # 配置过程请参考：https://artitalk.js.org/doc.html
-  # 除appID和appKEY外均为选填项
-  artitalk:
-    # Set `layout: artitalk` to enable in page
-    appID: hhGh8SbWrmd9zLe3yVYy49vO-MdYXbMMI # your appID
-    appKEY: 35eSDgbmncpmG3V1k3IsxfXi # your appKEY
-    severurl: https://hhgh8sbw.api.lncldglobal.com #leancloud绑定的安全域名，使用国际版的话不需要填写
-    # slanguage: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
-    # per: #每页说说的显示数量
-    shuoPla: 粘贴图片到此处可以自动上传，填写邮箱可以收到邮件回复哦(●'◡'●) #在编辑说说的输入框中的占位符
-    # placeholder2: #自定义头像url的输入框的占位符
-    # lazy: #加载动画的开关，1为开，0为关，默认为开
-    bgImg: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/valine/comment.webp #说说输入框背景图片url
-    # color1: #说说背景颜色1&按钮颜色1
-    # color2: #说说背景颜色2&按钮颜色2
-    # color3: #说说字体颜色
 
   ##################################
   # 暗黑模式 darkmodejs
@@ -544,9 +524,5 @@ plugins:
 
 ############################### Analytics ############################### > start
 analytics:
-  busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-  leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: qdFzg1YdBoon6he5A8fHRFOi-gzGzoHsz
-    app_key: Gd4Giq4nxJMKJr8Xc9TQPCnW
-    custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
+  busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 ############################### Analytics ############################### > end
