@@ -241,11 +241,6 @@ function loadingPage(type) {
                 }
         }
     })
-    console.log(type);
-    // 没有加载留言的时候自动刷新
-    if (type == 'complete') {
-        location.reload()
-    }
 }
 document.addEventListener('pjax:complete', function () {
     loadingPage('complete')

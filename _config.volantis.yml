@@ -387,11 +387,11 @@ site_footer:
 
 # 组件
 comments:
-  service: livere
-  livere:
-    id: city
-    uid: MTAyMC81NTE5NC8zMTY2MQ==
-    js: https://cdn-city.livere.com/js/embed.dist.js
+  service: valine
+  valine:
+    appId: xY1wNFTml6YlNW5wFqnd5kbe-gzGzoHsz
+    appKey: 8PVbNfnV1rnDm8HAtsFqSwro
+    path: /
 # 插件
 plugins:
   ################ required plugins ################
@@ -523,5 +523,8 @@ plugins:
 
 ############################### Analytics ############################### > start
 analytics:
+  leancloud:
+    app_id: xY1wNFTml6YlNW5wFqnd5kbe-gzGzoHsz
+    app_key: 8PVbNfnV1rnDm8HAtsFqSwro
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 ############################### Analytics ############################### > end
