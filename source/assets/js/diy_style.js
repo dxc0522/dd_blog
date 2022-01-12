@@ -1,5 +1,5 @@
 
-function loadingPage() {
+function loadingPage(type) {
     $(function () {
         var a_idx = 0;
         // 鼠标点击出现文字
@@ -241,14 +241,15 @@ function loadingPage() {
                 }
         }
     })
+    console.log(type);
     // 没有加载留言的时候自动刷新
-    // if (document.getElementById('lv-container') && !document.getElementById('lv-container').getElementsByTagName('iframe').length) {
-    //     location.reload()
-    // }
+    if (type == 'complete') {
+        location.reload()
+    }
 }
 document.addEventListener('pjax:complete', function () {
-    loadingPage()
+    loadingPage('complete')
 })
 document.addEventListener('DOMContentLoaded', function () {
-    loadingPage()
+    loadingPage('DOMContentLoaded')
 })
