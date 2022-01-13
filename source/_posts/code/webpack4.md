@@ -16,8 +16,7 @@ tags:
 
 ## 配置文件分析
 
-[externals 外部扩展](https://www.tangshuang.net/3343.html)
-[element-ui 配置参考](https://github.com/ElemeFE/element/blob/dev/build/config.js)
+[externals 外部扩展](https://www.tangshuang.net/3343.html) [element-ui 配置参考](https://github.com/ElemeFE/element/blob/dev/build/config.js)
 
 ```config.js
 
