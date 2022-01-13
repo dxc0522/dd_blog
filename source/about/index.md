@@ -6,10 +6,7 @@ sidebar: []
 valine:
   placeholder: 有什么想对我说的呢？
 ---
-      
 
-<link href="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.css" rel="stylesheet">
-<link href="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui-theme-default.css" rel="stylesheet">
 <style>
 .pop-container {
     padding: 2px 6px 6px;
@@ -25,5 +22,3 @@ valine:
   <p style="text-align: center;color:#ffffff">对话中...</p>
   <bot-ui></botui>
 </div>
-<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.8/botui.min.js"></script>

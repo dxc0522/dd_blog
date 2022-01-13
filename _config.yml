@@ -17,13 +17,13 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://doudou.netlify.app
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 # 资源文件夹，这个文件夹用来存放内容。
@@ -42,32 +42,39 @@ code_dir: downloads/code
 i18n_dir: :lang
 # 跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。
 skip_render:
-
+  - README.md
+  - '**/*.html'
+  - manifest.json
+  - start
+  - CNAME
+  - robots.txt
+  - assets/*
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
+auto_spacing: true
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
   exclude: ''
-filename_case: 0
+filename_case: 1
 render_drafts: false
 post_asset_folder: false
 relative_link: false
-future: true
+future: false
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: '    '
   wrap: true
   hljs: false
-prismjs:
-  enable: false
-  preprocess: true
-  line_number: true
-  tab_replace: ''
+# prismjs:
+#   enable: false
+#   preprocess: true
+#   line_number: true
+#   tab_replace: ''
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -104,7 +111,6 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
-  
 
 exclude:
 
@@ -132,5 +138,68 @@ import:
     - <link rel="manifest" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/site.webmanifest">
     - <link rel="shortcut icon" href="/assets/img/logo_blue.png">
     - <link href="/assets/css/base.css" rel="stylesheet">
+    - <link href="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.css" rel="stylesheet">
+    - <link href="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui-theme-default.css" rel="stylesheet">
   script:
+    - <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+    - <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.8/botui.min.js"></script>
     - <script src="/assets/js/diy_style.js"></script>
+
+# https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
+
+# npm i hexo-neat
+neat_enable: true
+
+# hexo-autonofollow
+nofollow:
+  enable: true
+  exclude:
+    - xaoxuu.com
+    - volantis.js.org
+    - volantis-x.js.org
+    - blog.mhuig.top
+    - colsrch.cn
+    - inkss.cn
+    - vlts.hin.cool
+
+# autoprefixer
+autoprefixer:
+  exclude:
+    - '*.min.css'
+
+# offline config passed to sw-precache.
+#offline:
+#  maximumFileSizeToCacheInBytes: 10485760
+#  staticFileGlobs:
+#    - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
+#  stripPrefix: public
+#  verbose: true
+#  runtimeCaching:
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: cdn.jsdelivr.net
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: cdnjs.cloudflare.com
+
+marked:
+  gfm: true
+  pedantic: false
+  breaks: true
+  smartLists: true
+  smartypants: false
+  modifyAnchors: 0
+  autolink: true
+  sanitizeUrl: false
+  headerIds: true
+  prependRoot: false
+  external_link:
+    enable: true
+    exclude: []
+    nofollow: true

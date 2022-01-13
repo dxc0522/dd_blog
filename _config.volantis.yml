@@ -27,12 +27,12 @@ navbar:
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-    - name: 更多
-      icon: fas fa-ellipsis-h
-      rows:
-        - name: 暗黑模式
-          icon: fas fa-moon
-          toggle: darkmode
+    # - name: 更多
+    #   icon: fas fa-ellipsis-h
+    #   rows:
+    #     - name: 暗黑模式
+    #       icon: fas fa-moon
+    #       toggle: darkmode
 
   search: 搜索...(◕ܫ◕) # Search bar placeholder
 
@@ -43,7 +43,7 @@ cover:
   logo: /assets/img/banner_logo.png
   title:
   subtitle: #'开源社区主页'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
+  background: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
   features:
     - name: 首页
       img: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/home.png
@@ -60,10 +60,6 @@ cover:
     - name: 关于
       img: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/about.png
       url: about/
-  display:
-    home: true
-    archive: false
-    others: false # can be written in front-matter 'cover: true'
 
 # 主页、分类、归档等独立页面
 sidebar:
@@ -272,65 +268,6 @@ article:
         - id: telegram
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 
-# 通用文本部件
-repos:
-  class: text
-  display: [desktop] # [desktop, mobile]
-  header:
-    icon: fab fa-github
-    title: 点个赞吧
-    url: https://github.com/xaoxuu/
-  content:
-    - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。'
-    - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/logo.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
-    - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
-    - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
-# 通用列表部件
-wiki-hexo-theme:
-  class: list
-  display: [desktop, mobile] # [desktop, mobile]
-  header:
-    icon: fas fa-chevron-left
-    title: Hexo Themes
-    url: /wiki/
-  rows:
-    - name: Volantis for Hexo
-      url: /wiki/volantis/
-    - name: Resume for Hexo
-      url: /wiki/resume/
-# 组索引
-group-1:
-  class: group
-  display: [desktop, mobile] # [desktop, mobile]
-  header:
-    icon: fab fa-apple
-    title: Developer
-    url: /wiki/ios/
-# 通用网格部件.
-feedback:
-  class: grid
-  display: [desktop, mobile]
-  header:
-    icon: fas fa-headset
-    title: 联系开发者
-    url: https://github.com/volantis-x/hexo-theme-volantis
-  fixed: true # 固定宽度
-  rows:
-    - name: 反馈BUG
-      icon: fas fa-bug
-      url: https://github.com/volantis-x/hexo-theme-volantis/issues/
-    - name: 疑问求助
-      icon: fas fa-question-circle
-      url: https://github.com/volantis-x/hexo-theme-volantis/issues/
-    - name: 提个建议
-      icon: fas fa-lightbulb
-      url: https://github.com/volantis-x/hexo-theme-volantis/issues/
-# 通用页面部件
-test:
-  class: page
-  display: [desktop, mobile]
-  pid: haha
-  content: excerpt # excerpt, more, content
 # 自定义样式
 custom_css:
   font_smoothing: true # font-smoothing for webkit
@@ -389,6 +326,8 @@ plugins:
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
 
+  parallax:
+    enable: true
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
@@ -430,7 +369,6 @@ plugins:
   # Codeblock Copy Button
   clipboard:
     enable: true
-    js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
 
