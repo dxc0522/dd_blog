@@ -3,17 +3,22 @@ title: 疑难杂症
 categories: 开发
 date: 2019-8-26 14:18:00
 ---
+
 ## 微信内置浏览器
+
 ### 微信须知
+
 安卓：
-  无法自动播放视频，无法自动播放音乐，需要点击后才可播放。
-  视频全屏模式的退出需要display即可。
-  华为全屏模式顶部有一段空白。
+无法自动播放视频，无法自动播放音乐，需要点击后才可播放。
+视频全屏模式的退出需要 display 即可。
+华为全屏模式顶部有一段空白。
 IOS：
-  缓存比较顽固，需要使劲刷新。
-  更换路径后不自动播放就加个autoplay就好了。
-长按二维码识别的功能监听可用touchstart监听开始自行判断是否有touchend判断是否是长按。
+缓存比较顽固，需要使劲刷新。
+更换路径后不自动播放就加个 autoplay 就好了。
+长按二维码识别的功能监听可用 touchstart 监听开始自行判断是否有 touchend 判断是否是长按。
+
 ### 刷新页面无效
+
 ```
   function refresh() {
       var timestamp = new Date().getTime();
@@ -42,9 +47,9 @@ IOS：
 
 ## 多媒体兼容
 
-所有的播放媒体都不要放在组件内，重新render的时候会刷新造成卡顿黑屏或停止播放等一堆问题。
+所有的播放媒体都不要放在组件内，重新 render 的时候会刷新造成卡顿黑屏或停止播放等一堆问题。
 
-### 可以覆盖在video标签上做交互视频
+### 可以覆盖在 video 标签上做交互视频
 
 ```
   playsinline="true"
@@ -54,11 +59,9 @@ IOS：
   x5-video-orientation="portrait"
 ```
 
-### audio自动播放
+### audio 自动播放
 
-
-
-``` audio自动播放
+```audio自动播放
   //  引入wx jssdk才可兼容微信
   //  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   window.audioBg = document.getElementById("bgAudio");
@@ -89,11 +92,11 @@ IOS：
     },
     false
   );
-``` 
+```
 
-### video自动播放
+### video 自动播放
 
-``` video自动播放
+```video自动播放
   //  引入wx jssdk才可兼容微信
   //  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   //  若浏览器支持自动播放则可直接播放若不支持则需要跳转至引导页
@@ -149,8 +152,9 @@ IOS：
   );
 ```
 
-### media  API
-  audio与video的部分属性事件都一致。
+### media API
+
+audio 与 video 的部分属性事件都一致。
 
 ```使用
   <!-- video 不支持 IE8及以下版本浏览器，支持三种视频格式：MP4，WebM 和 Ogg -->
@@ -193,7 +197,7 @@ IOS：
 
   属性：
 
-  currentSrc 	当前视频地址 
+  currentSrc 	当前视频地址
   currentTime	视频已播放时间
   videoWidth	视频本身的宽度
   videoHeight	视频本身的高度
@@ -212,7 +216,6 @@ IOS：
   defaultPlaybackRate	默认回放速度
   playbackRate	当前播放速度
 ```
-
 
 ```事件
   var video = document.getElementById('video')
@@ -247,33 +250,38 @@ IOS：
   x5videoenterfullscreen  进入全屏模式
   x5videoexitfullscreen   退出全屏模式
 ```
-## 3D全景图（pannellum）
+
+## 3D 全景图（pannellum）
+
 ### 介绍
+
 [多种方案介绍](https://blog.csdn.net/qq_42606051/article/details/83824034)
 国外的框架[pannellum](https://pannellum.org/)，实现简单。
 [krpano](http://www.krpano360.com/)这个框架最好但是收费，一年一百多欧元相当于一千左右人民币了。pass...
 [优秀操作手册](https://www.jianshu.com/p/fdbcb551d75b)
-###   注意
 
-- 图片可为4096宽的，注意图片跨域问题。
+### 注意
+
+- 图片可为 4096 宽的，注意图片跨域问题。
 - 热点图标不可更改不可替换。
-- 热点坐标拾取的时候设置hotSpotDebug: true，即可在控制台查看坐标信息。
+- 热点坐标拾取的时候设置 hotSpotDebug: true，即可在控制台查看坐标信息。
 - 热点内容不但可以是文字还可以是图片或者视频
 
-
 ### 开发
-首先下载对应css与js到本地引入项目。
 
-``` css
-  #panorama {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
+首先下载对应 css 与 js 到本地引入项目。
+
+```css
+#panorama {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
 ```
-``` body
+
+```body
   <div id="panorama"></div>
   <script>
     pannellum.viewer("panorama", {
@@ -301,13 +309,19 @@ IOS：
 ## 自动化部署
 
 ### 环境要求
-服务器需要node环境
-### 配置项目ssh
-在linux系统中的 /root/.ssh/  中
-复制id_rsa.pub文件中的内容去添加项目ssh
-### 服务端新建koa2项目
+
+服务器需要 node 环境
+
+### 配置项目 ssh
+
+在 linux 系统中的 /root/.ssh/ 中
+复制 id_rsa.pub 文件中的内容去添加项目 ssh
+
+### 服务端新建 koa2 项目
+
 配置一个简单的服务端项目，在接口被调用的时候运行命令。
-``` index.js
+
+```index.js
 const Koa = require("koa2"),
   Router = require("koa-router"),
   process = require("child_process"),
@@ -332,7 +346,8 @@ app.listen(888, () => {
   console.log("serve is start");
 });
 ```
-``` package.json
+
+```package.json
 {
   "dependencies": {
     "koa-router": "^7.4.0",
@@ -340,41 +355,120 @@ app.listen(888, () => {
   }
 }
 ```
-配置好项目后将项目拉至服务器合适的地方，安装相关安装包 
+
+配置好项目后将项目拉至服务器合适的地方，安装相关安装包
+
 ### 运行项目
 
-- 安装forever.js 运行npm install forever -g 
-- 到上述项目文件夹中运行 forever start index.js  即可让node服务在后台一直运行。
-- forever stop app.js  #关闭应用
-- forever restartall  #重启所有应用
-- forever list  显示所有运行的服务 
+- 安装 forever.js 运行 npm install forever -g
+- 到上述项目文件夹中运行 forever start index.js 即可让 node 服务在后台一直运行。
+- forever stop app.js #关闭应用
+- forever restartall #重启所有应用
+- forever list 显示所有运行的服务
 
-### 然后代码往github一推服务端就直接自动执行命令了
+### 然后代码往 github 一推服务端就直接自动执行命令了
 
-## 解决git clone速度太慢
+## 解决 git clone 速度太慢
 
-### 查询CDN
-[查询以下域名最快的cdn](https://www.ipaddress.com/)
+### 查询 CDN
 
-- github.com 
-- assets-cdn.github.com 
+[查询以下域名最快的 cdn](https://www.ipaddress.com/)
+
+- github.com
+- assets-cdn.github.com
 - github.global.ssl.fastly.net
 
-### 修改hosts文件
+### 修改 hosts 文件
+
 路径：C:\Windows\System32\drivers\etc
 
-``` hosts
+```hosts
 192.30.253.113 github.com
-185.199.108.153 assets-cdn.github.com   
+185.199.108.153 assets-cdn.github.com
 151.101.185.194 github.global.ssl.fastly.net
 ```
-### 刷新DNS缓存
-window：cmd中敲入   ipconfig /flushdns
 
-### 使用https下载火箭般的速度，怎一个爽字得了！
+### 刷新 DNS 缓存
 
+window：cmd 中敲入 ipconfig /flushdns
+
+### 使用 https 下载火箭般的速度，怎一个爽字得了！
 
 ## React
 
-### React不支持转义部分es6
-只能增加配置转义或者增加该api
+### React 不支持转义部分 es6
+
+只能增加配置转义或者增加该 api
+
+## js 动画
+
+requestAnimationFrame 方法制作循环动画最丝滑
+
+requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有两点：
+1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒 60 帧。 至于时间间隔为什么是 1000/60,这是因为大多数屏幕渲染的时间间隔是每秒 60 帧。
+2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+
+cancelAnimationFrame()接收一个参数 requestAnimationFrame 默认返回一个 id，cancelAnimationFrame 只需要传入这个 id 就可以停止了。
+
+```
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        #e{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            zoom: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="e"></div>
+<script>
+
+
+    var e = document.getElementById("e");
+    var flag = true;
+    var left = 0;
+    var rafId = null
+
+
+    function render() {
+        if(flag == true){
+            if(left>=100){
+                flag = false
+            }
+            e.style.left = ` ${left++}px`
+        }else{
+            if(left<=0){
+                flag = true
+            }
+            e.style.left = ` ${left--}px`
+        }
+    }
+
+    //requestAnimationFrame效果
+    (function animloop(time) {
+        console.log(time,Date.now())
+        render();
+        rafId = requestAnimationFrame(animloop);
+        //如果left等于50 停止动画
+        if(left == 50){
+            cancelAnimationFrame(rafId)
+        }
+    })();
+
+    //setInterval效果
+    // setInterval(function(){
+    //     render()
+    // },1000/60)
+
+</script>
+</body>
+</html>
+```
