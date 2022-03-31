@@ -76,4 +76,4 @@ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.
 ```
 
 ## nginx
-`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d  nginx`
+`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html -v C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d nginx`
