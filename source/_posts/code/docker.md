@@ -57,8 +57,23 @@ ok，到现在为止，你已经建立了一个完整的、自成体系的docker
   你只能将镜像发布到自己的空间下面。这个模拟器登录的是learn帐号。
   预期的命令：
 docker push learn/ping
-`docker container prune`
+
 删除所有的容器
+`docker container prune`
+删除所有的镜像
 `docker image prune`
 `sudo docker rmi $(docker images -q)`
-删除所有的镜像
+
+进入容器命令
+`docker exec -it db3 /bin/sh`
+## 可视化工具 portainer 
+
+
+``` shell
+docker pull portainer/portainer
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data swr.cn-north-1.myhuaweicloud.com/iivey/portainer-ce:2.1.1
+```
+
+## nginx
+`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html -v C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d nginx`
