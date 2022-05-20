@@ -11,12 +11,20 @@ tags:
 
 基于[hexo](https://hexo.io/zh-cn/)的[Volantis](https://xaoxuu.com/wiki/volantis/)博客主题模版开发
 
-## 免费 cdn 加速(不配置 cdn 会超级慢)
+## 免费 cdn 加速(不配置 cdn 会超级慢)  容易炸
 
 使用 jsDelivr 的方式配置个人 cdn，但是每次修改资源都需要重新发行。[传送门](https://www.cnblogs.com/zhsh666/p/11432956.html)
 贴图库申请个账号直接拉进去就能用，我把图片都放这个里面了。[传送门](http://www.tietuku.com)
 还有其他的 cdn 方法没有用过。[传送门](https://cloud.tencent.com/developer/article/1352398)
+[jsDelivr网络出错](https://github.com/volantis-x/hexo-theme-volantis/issues/759)
+## npm包加速
+https://unpkg.com/browse/volantis-static@0.0.1649552113628/文件路径  查看资源
 
+替换  https://unpkg.com/browse/ => https://npm.elemecdn.com/ 
+
+https://fastly.jsdelivr.net/ 还能用
+
+gcore.jsdelivr.net试一下
 ## 服务器配置
 
 上[阿里云](https://promotion.aliyun.com/ntms/act/campus2018.html?userCode=ahxhg8oc)买个学生的服务器就够使用，装个 nginx,然后开一个端口配置下路径即可。
