@@ -403,7 +403,6 @@ plugins:
     duration: 10000 # Duration (ms)
     fade: 1500 # fade duration (ms) (Not more than 1500)
     images: # For personal use only. At your own risk if used for commercial rposes !!!
-      - /assets/img/background/a9157f3e6709c93d57ad1296903df8dcd1005471.jpg
       - /assets/img/background/lm2762.jpg
       - /assets/img/background/p2dky9.jpg
       - /assets/img/background/wyx3px.png
