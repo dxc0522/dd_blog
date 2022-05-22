@@ -129,13 +129,10 @@ deploy:
 import:
   meta:
     - <meta name="msapplication-TileColor" content="#ffffff">
-    - <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/browserconfig.xml">
     - <meta name="theme-color" content="#ffffff">
   link:
-    - <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png">
     - <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo_blue.png">
     - <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_blue.png">
-    - <link rel="manifest" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/site.webmanifest">
     - <link rel="shortcut icon" href="/assets/img/logo_blue.png">
     - <link href="/assets/css/base.css" rel="stylesheet">
     - <link href="https://npm.elemecdn.com/botui@0.3.9/build/botui.min.css" rel="stylesheet">

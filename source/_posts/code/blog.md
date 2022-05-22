@@ -50,7 +50,7 @@ gcore.jsdelivr.net试一下
 
 ```hexo
 hexo d -g   生成静态文件后直接推送git
-{% fb_img https://cdn.jsdelivr.net/gh/dxc0522/cdn_assets@3.7/keep/1keep.jpg 健身 %} 插入的可放大的图片
+{% fb_img https://keep/1keep.jpg 健身 %} 插入的可放大的图片
 
 ```
 

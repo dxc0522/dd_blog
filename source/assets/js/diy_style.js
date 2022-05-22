@@ -234,7 +234,7 @@ function loadingPage(type) {
                         }).then(function () {
                             botui.message.bot({
                                 delay: 600,
-                                content: "![...](https://cdn.jsdelivr.net/gh/dxc0522/cdn_assets@3.7/img/custom/this_is_me.jpg)"
+                                content: "![...](/assets/img/blog/this_is_me.jpeg)"
                             })
                         })
                     })

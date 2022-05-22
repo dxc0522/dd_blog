@@ -282,7 +282,7 @@ class MyApp4 extends StatelessWidget {
             children: <Widget>[
               new CircleAvatar(
                 backgroundImage: new NetworkImage(
-                    "https://cdn.jsdelivr.net/gh/dxc0522/cdn_assets@3.7/img/custom/avatar.jpeg"),
+                    "https://custom/avatar.jpeg"),
                 radius: 50.0,
               ),
               new Container(
