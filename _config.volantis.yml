@@ -185,6 +185,7 @@ article:
       # ----------------
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
+        enable: false
         title: 参考资料
         icon: fas fa-quote-left
         # 在 front-matter 中:
@@ -257,10 +258,15 @@ article:
       # 分享
       share:
         - id: qq
+          img: /assets/img/blog/share/qq.png
         - id: qzone
+          img: /assets/img/blog/share/qzone.png
         - id: weibo
+          img: /assets/img/blog/share/weibo.png
         - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+          img: /assets/img/blog/share/wechat.png
         - id: telegram
+          img: /assets/img/blog/share/telegram.png
 
 # 自定义样式
 custom_css:
@@ -334,7 +340,6 @@ plugins:
     flying_pages: /assets/js/flying-pages.min.js
 
   # 图片懒加载
-  # https://www.npmjs.com/package/vanilla-lazyload
   lazyload:
     enable: true
     js: https://npm.elemecdn.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
