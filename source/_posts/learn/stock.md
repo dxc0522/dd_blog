@@ -8,7 +8,7 @@ tags:
 
 ## 链接
 
-[交易系统视频](https://www.bilibili.com/medialist/play/490965410?business=space&sort_field=pubtime)
+[交易系统视频](https://www.bilibili.com/video/BV13M4y1P7Rz?spm_id_from=333.999.0.0&vd_source=7b375be35b2f577c65ee6446b86f37e9)
 
 ## 韭菜须知
 
