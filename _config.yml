@@ -24,7 +24,7 @@ permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: false # Set to false to remove trailing '.html' from permalinks
-volantis_static_cdn: https://npm.elemecdn.com/volantis-static@0.0.1649552113628/ 
+volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1649552113628/ 
 # Directory
 # 资源文件夹，这个文件夹用来存放内容。
 source_dir: source
@@ -135,11 +135,11 @@ import:
     - <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_blue.png">
     - <link rel="shortcut icon" href="/assets/img/logo_blue.png">
     - <link href="/assets/css/base.css" rel="stylesheet">
-    - <link href="https://npm.elemecdn.com/botui@0.3.9/build/botui.min.css" rel="stylesheet">
-    - <link href="https://npm.elemecdn.com/botui@0.3.9/build/botui-theme-default.css" rel="stylesheet">
+    - <link href="https://unpkg.com/botui@0.3.9/build/botui.min.css" rel="stylesheet">
+    - <link href="https://unpkg.com/botui@0.3.9/build/botui-theme-default.css" rel="stylesheet">
   script:
-    - <script src="https://npm.elemecdn.com/vue@2.6.14/dist/vue.min.js"></script>
-    - <script src="https://npm.elemecdn.com/botui@0.3.9/build/botui.min.js"></script>
+    - <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    - <script src="https://unpkg.com/botui@0.3.9/build/botui.min.js"></script>
     - <script src="/assets/js/diy_style.js"></script>
 
 # https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap
