@@ -18,9 +18,9 @@ tags:
 还有其他的 cdn 方法没有用过。[传送门](https://cloud.tencent.com/developer/article/1352398)
 [jsDelivr网络出错](https://github.com/volantis-x/hexo-theme-volantis/issues/759)
 ## npm包加速
-https://unpkg.com/browse/文件路径      查看资源
+https://unpkg.zhimg.com/browse/文件路径      查看资源
 
-替换  https://unpkg.com/browse/ => https://unpkg.com/ 
+替换  https://unpkg.zhimg.com/browse/ => https://unpkg.zhimg.com/ 或  https://unpkg.zhimg.com/  或 cdn.cbd.int
 
 https://fastly.jsdelivr.net/ 还能用
 
