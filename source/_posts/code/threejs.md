@@ -10,8 +10,18 @@ tags:
 
 ## 了解 ThreeJS
 
-[入门教程](https://www.bilibili.com/read/readlist/rl594352)
+[入门教程](https://www.bilibili.com/video/BV1Gg411X7FY)
 threejs 由场景，相机，物体，控制四部分组成，物体有大小形状和材质等，相机有多种角度模式，场景是物体对应场景，控制可以设置如何控制物体或者视角。
+
+| 名词   | 单词     | 解释                                             |
+| :----- | :------- | :----------------------------------------------- |
+| 场景   | scene    | 放置物体、灯光和摄像机的地方。                   |
+| 几何体 | geometry | 物体外形的结构模型                               |
+| 材质   | texture  | 用于填充几何体，确定几何体透光性等特性           |
+| 纹理   | material | 对材质贴上纹理                                   |
+| 灯光   | light    | 设置光源，决定物体的阴影和反光等特性效果         |
+| 控制   | controls | 控制器用于设置与物体的交互方式                   |
+| 摄像机 | camera   | 摄像机用于模拟人眼，决定渲染的内容和看到的角度等 |
 
 ### 简单入门
 
@@ -112,8 +122,10 @@ npm i gsap 安装包 就可以直接添加指定数据和进度曲线的动画 [
         animation1.isActive() ? animation1.pause() : animation1.play()
     })
 ```
+
 ### 界面调整参数库
-npm i dat.gui 安装gui库，可以在页面直接调整数据，从而快速调整参数从而达到效果。
+
+npm i dat.gui 安装 gui 库，可以在页面直接调整数据，从而快速调整参数从而达到效果。
 
 ```
     // 创建gui  界面参数调整
@@ -123,7 +135,7 @@ npm i dat.gui 安装gui库，可以在页面直接调整数据，从而快速调
     }).onFinishChange(value => {
         console.log('onFinishChange', value)
     })
-    // 修改物体颜色 
+    // 修改物体颜色
     const params = {
         color: "#FFFF00",
         fn() {
@@ -142,3 +154,8 @@ npm i dat.gui 安装gui库，可以在页面直接调整数据，从而快速调
     const folder = gui.addFolder("设置立方体")
     folder.add(cube.material, "wireframe")
 ```
+
+### UV 法向属性
+
+图形摊开后以左上角为坐标轴的坐标点为 uv，下图以正方体为例。
+{%  image /assets/img/threejs/uv.png %}
