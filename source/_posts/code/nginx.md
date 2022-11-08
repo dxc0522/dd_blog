@@ -102,6 +102,10 @@ nginx.conf 文件是Nginx总配置文件，在我们搭建服务器时经常调�
         root   /usr/share/nginx/html;     #服务默认启动目录
         index  index.html index.htm;    #默认访问文件
       }
+      location /file {
+        root   /usr/share/nginx/html;     #服务默认启动目录
+        try_files $uri /$uri.html /index.html #按指定的file顺序查找存在的文件，并使用第一个找到的文件进行请求处理
+      }
       error_page  404              /404.html;   # 配置404页面
       redirect server error pages to the static page /50x.html
       error_page   500 502 503 504  /50x.html;   #错误状态码的显示页面，配置后需要重启
