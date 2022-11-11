@@ -14,22 +14,25 @@ HOME_DIR=$(
 HOME_DIR=$(dirname "$HOME_DIR")
 PROJECT_NAME=$(basename "$PWD")
 REMOTE_PATH=""
+REMOTE_FULL_PATH=""
 LOCAL_PATH="build"
 USER="dou"
 HOST="192.168.30.196"
 run() {
+    npm run build
     # PROJECT_NAME=$(cat $HOME_DIR/package.json | grep "name" | tr ":" " " | awk '{print $2}' | tr "," " " | awk '{print $1}' | tr "\"" " " | awk '{print $1}')
     # package.json 的name
     if [[ "$1" == "test" ]]; then
-        REMOTE_PATH="/opt/fe/test/$PROJECT_NAME"
+        REMOTE_PATH="/opt/fe/test/"
     else
-        REMOTE_PATH="/opt/fe/prod/$PROJECT_NAME"
+        REMOTE_PATH="/opt/fe/prod/"
     fi
+    REMOTE_FULL_PATH="$REMOTE_PATH$PROJECT_NAME"
     CURRENT_TIME=$(date "+%Y%m%d%H%M%S")
-    npm run build
-    ssh $USER@$HOST "cd $REMOTE_PATH; cp -rf $LOCAL_PATH $LOCAL_PATH@$CURRENT_TIME; rm -rf $LOCAL_PATH; mkdir $LOCAL_PATH;"
-    scp -r $HOME_DIR/$LOCAL_PATH ${USER}@${HOST}:${REMOTE_PATH}
+
+    ssh $USER@$HOST "cd $REMOTE_PATH; cp -rf $PROJECT_NAME $PROJECT_NAME@$CURRENT_TIME; rm -rf $PROJECT_NAME;"
+    echo -e '\n上传中...\n'
+    scp -r -q $HOME_DIR/$LOCAL_PATH ${USER}@${HOST}:${REMOTE_FULL_PATH}
+    echo -e '\n发布完成\n'
 }
-if [ -f "$HOME_DIR/package.json" ]; then
-    run
-fi
+run
