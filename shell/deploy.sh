@@ -1,11 +1,3 @@
-###
-# @Author: zhaozhong
-# @Date: 2022-11-02 14:30:11
- # @LastEditTime: 2022-11-07 11:30:27
- # @LastEditors: zhaozhong
-# @Description:
-# Copyright 2022 zhaozhong, All Rights Reserved.
-###
 #!/bin/sh
 HOME_DIR=$(
     cd "$(dirname "$0")"
@@ -20,8 +12,6 @@ USER="dou"
 HOST="192.168.30.196"
 run() {
     npm run build
-    # PROJECT_NAME=$(cat $HOME_DIR/package.json | grep "name" | tr ":" " " | awk '{print $2}' | tr "," " " | awk '{print $1}' | tr "\"" " " | awk '{print $1}')
-    # package.json 的name
     if [[ "$1" == "test" ]]; then
         REMOTE_PATH="/opt/fe/test/"
     else
