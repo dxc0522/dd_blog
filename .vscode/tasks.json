@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [{
+			"label": "Deploy prod",
+			"type": "shell",
+			"command": "./shell/deploy.sh",
+			"dependsOn": ["Build"],
+			"windows": {
+				"options": {
+					"shell": {
+						"executable": "sh"
+					}
+				}
+			},
+			"detail": "部署正式环境",
+			"problemMatcher": []
+		}
+	]
+}
