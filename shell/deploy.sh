@@ -21,8 +21,8 @@ run() {
     CURRENT_TIME=$(date "+%Y%m%d%H%M%S")
 
     ssh $USER@$HOST "cd $REMOTE_PATH; cp -rf $PROJECT_NAME $PROJECT_NAME@$CURRENT_TIME; rm -rf $PROJECT_NAME;"
-    echo -e '\n上传中...\n'
+    echo '\n上传中...\n'
     scp -r -q $HOME_DIR/$LOCAL_PATH ${USER}@${HOST}:${REMOTE_FULL_PATH}
-    echo -e '\n发布完成\n'
+    echo '\n发布完成\n'
 }
 run
