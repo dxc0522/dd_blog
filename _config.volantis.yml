@@ -44,6 +44,7 @@ cover:
   title:
   subtitle: #'开源社区主页'
   background:  /assets/img/blog/046.jpeg
+  search: 一碗胡辣汤的博客
   features:
     - name: 首页
       img: /assets/img/blog/menu/home.png
