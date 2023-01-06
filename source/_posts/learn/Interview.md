@@ -192,3 +192,27 @@ micro-task 因为其高优先级特性，能确保队列中的微任务在一次
 ### Vue.extend 原理
 
 创建缓存，获取扩展名称，继承父类原型，子类 constructor 指向自己，创建子类 cid，合并 options，初始化 props，computed，添加组件，返回子类。
+
+## vuex 源码
+
+[vuex 源码](https://juejin.cn/post/6844903507057704974)
+
+### 安装
+
+install 代码做了两件事情，一件是防止 Vuex 被重复安装，另一件是执行 applyMixin，目的是执行 vuexInit 方法初始化 Vuex。Vuex 针对 Vue1.0 与 2.0 分别进行了不同的处理，如果是 Vue1.0，Vuex 会将 vuexInit 方法放入 Vue 的\_init 方法中，而对于 Vue2.0，则会将 vuexinit 混淆进 Vue 的 beforeCreacte 钩子中。
+
+```js
+/*Vuex的init钩子，会存入每一个Vue实例等钩子列表*/
+function vuexInit() {
+	const options = this.$options;
+	// store injection
+	if (options.store) {
+		/*存在store其实代表的就是Root节点，直接执行store（function时）或者使用store（非function）*/
+		this.$store =
+			typeof options.store === 'function' ? options.store() : options.store;
+	} else if (options.parent && options.parent.$store) {
+		/*子组件直接从父组件中获取$store，这样就保证了所有组件都公用了全局的同一份store*/
+		this.$store = options.parent.$store;
+	}
+}
+```
