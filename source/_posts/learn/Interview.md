@@ -1,218 +1,199 @@
 ---
-title: 前端八股文
-categories: 学习
-date: 2022-12-07 10:36:00
+title: 前端面试八股文
+authorDesc: 豆豆
+categories: 开发
+date: 2019-6-21 16:41:01
+updated: 2023-03-29 16:55:00
 tags:
-  - 面试
+  - 前端面试
 ---
 
-## 相关资源
+## 面试资源入口
 
-[vue2 源码](https://zhuanlan.zhihu.com/p/419896443)
+[ES6](https://es6.ruanyifeng.com/)
+[手写防抖、节流](https://juejin.cn/post/7032905194736189477)
+[算法学习-力扣](https://leetcode.cn/study-plan/algorithms/?progress=xhnxl4w6)
+[前端面试题 1](https://muyiy.cn/question/)
+[前端面试题 2](https://lucifer.ren/fe-interview/#/)
 
-## vue2 源码解析
+## HTML
 
-### new Vue 初始化
+### 浏览器运行机制
 
-#### 大体流程
+1，构建 DOM 树，将标签转为 DOM node（节点，包括 js 生成的标签）
+2，构建渲染树：解析所有的 css 样式文件信息
+3，布局渲染书：从根节点递归调用，计算每一个元素的大小位置给出精确坐标
+4，绘制渲染书：遍历渲染树，使用 UI 层来绘制每个节点。
 
-init 函数 每个 vue 斗湖有个 uid，然后合并全局 options 到当前实例的$options,触发回调`beforeCreate`,初始化state,然后触发回调`created`，到这里初始化完成，接着挂载$mount 函数。
+### 重绘
 
-$mount 函数中获取挂载的属性节点，优先看有没有 render 函数，有的话直接用，没有的话就看 template 模版，如果都没有就拿节点的 outerHTML（包括当前节点的 dom 节点），如果是 template 则将其转换为生成 render 函数进行 mount 挂载（ 直接写 render 函数对 vue 编译效率会更好 ）。
+指一个元素外观的改变所触发的浏览器行为，浏览器会根据元素的新属性进行新属性重新绘制，使元素呈现新的外观。
+color，background-color 等会触发重绘。
 
-mountComponent 函数中先触发 `beforeMount` 回调，然后定义一个更新渲染 render 的函数，生成一个 new Watcher 实例，每次页面依赖（this）修改的时候都会触发更新渲染 render 的函数，同时 Watcher 实例每次更新触发的 before 函数都会触发`beforeUpdate`函数。最后 mountComponent 函数触发`mounted`回调,挂载完成。
+### 重排（重构、回流、reflow）
 
-#### 挂载时
+当渲染树中的一部分或全部因为元素的规模尺寸布局隐藏等改变而需要重新构建，这就成为回流（reflow）。每个页面至少需要一次回流，就是在页面第一次加载的时候。
+任何页面布局和几何属性改变都会触发重排。
 
-mountComponent 函数中生成一个渲染 watcher 每次页面依赖的数据更新后会调用 updateComponent 进行渲染
+### 重绘和重排的关系
 
-```js
-new Watcher(
-	vm,
-	updateComponent,
-	() => {},
-	{
-		before() {
-			callHook(vm, 'beforeUpdate');
-		},
-	},
-	true
-);
+在回流的时候浏览器会使渲染树中收到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器就会重新绘制受影响的部分到屏幕中，该过程称为重绘。
+所以，重排必定引发重绘，重绘不一定会引发重排。
+
+### 优化方案
+
+1、直接修改元素的 className
+2、先设置 display:none;然后修改元素，然后在设置 display：block；
+3、让它脱离文档流
+4、创建完 dom 一次性加入
+
+## React
+
+### React 生命周期有哪些
+
+初始化阶段
+constructor 构造函数
+getDefaultProps props 默认值
+getInitialState state 默认值
+挂载阶段
+staticgetDerivedStateFromProps(props,state)
+render
+componentDidMount
+getDerivedStateFromProps：组件每次被 rerender 的时候，包括在组件构建之后(虚拟 dom 之后，实际 dom 挂载之前)，每次获取新的 props 或 state 之后；每次接收新的 props 之后都会返回一个对象作为新的 state，返回 null 则说明不需要更新 state；配合 componentDidUpdate，可以覆盖 componentWillReceiveProps 的所有用法
+更新阶段
+staticgetDerivedStateFromProps(props,state)
+shouldComponentUpdate
+render
+getSnapshotBeforeUpdate(prevProps,prevState)
+componentDidUpdate
+getSnapshotBeforeUpdate：触发时间: update 发生的时候，在 render 之后，在组件 dom 渲染之前；返回一个值，作为 componentDidUpdate 的第三个参数；配合 componentDidUpdate, 可以覆盖 componentWillUpdate 的所有用法
+卸载阶段
+componentWillUnmount
+错误处理
+componentDidCatch
+React16 新的生命周期弃用了 componentWillMount、componentWillReceivePorps，componentWillUpdate 新增了 getDerivedStateFromProps、getSnapshotBeforeUpdate 来代替弃用的三个钩子函数。
+
+React16 并没有删除这三个钩子函数，但是不能和新增的钩子函数混用， React17 将会删除这三个钩子函数，新增了对错误的处理（ componentDidCatch）
+
+### setState 是同步的还是异步的？
+
+在 React 的生命周期和合成事件中， React 仍然处于他的更新机制中，这时无论调用多少次 setState，都会不会立即执行更新，而是将要更新的·存入 \_pendingStateQueue，将要更新的组件存入 dirtyComponent。
+
+当上一次更新机制执行完毕，以生命周期为例，所有组件，即最顶层组件 didmount 后会将批处理标志设置为 false。这时将取出 dirtyComponent 中的组件以及 \_pendingStateQueue 中的 state 进行更新。这样就可以确保组件不会被重新渲染多次。
+
+所以。setState 本身并不是异步的，而是 React 的批处理机制给人一种异步的假象。
+
+在原生事件中调用 setState 并不会出发 React 的批处理机制，所以立即能拿到最新结果。
+
+### 为什么有时连续多次 setState 只有一次生效？
+
+原因就是 React 会批处理机制中存储的多个 setState 进行合并，
+注意， assign 函数中对函数做了特殊处理，处理第一个参数传入的是函数，函数的参数 preState 是前一次合并后的结果。
+
+### 虚拟 Dom 比普通 Dom 更快吗？
+
+直接操作 DOM 是非常耗费性能的，这一点毋庸置疑。但是 React 使用 VitrualDom 也是无法避免操作 DOM 的。
+如果是首次渲染， VitrualDom 不具有任何优势，甚至它要进行更多的计算，消耗更多的内存。
+VitrualDom 的优势在于 React 的 Diff 算法和批处理策略， React 在页面更新之前，提前计算好了如何进行更新和渲染 DOM。实际上，这个计算过程我们在直接操作 DOM 时，也是可以自己判断和实现的，但是一定会耗费非常多的精力和时间，而且往往我们自己做的是不如 React 好的。所以，在这个过程中 React 帮助我们"提升了性能"。
+
+所以，我更倾向于说， VitrualDom 帮助我们提高了开发效率，在重复渲染时它帮助我们计算如何更高效的更新，而不是它比 DOM 操作更快。
+
+### React 如何实现自己的事件机制？
+
+React 事件并没有绑定在真实的 Dom 节点上，而是通过事件代理，在最外层的 document 上对事件进行统一分发。
+组件挂载、更新时：
+
+通过 lastProps、 nextProps 判断是否新增、删除事件分别调用事件注册、卸载方法。
+调用 EventPluginHub 的 enqueuePutListener 进行事件存储
+获取 document 对象。
+根据事件名称（如 onClick、 onCaptureClick）判断是进行冒泡还是捕获。
+判断是否存在 addEventListener 方法，否则使用 attachEvent（兼容 IE）。
+给 document 注册原生事件回调为 dispatchEvent(统一的事件分发机制）。
+事件初始化：
+
+EventPluginHub 负责管理 React 合成事件的 callback，它将 callback 存储在 listenerBank 中，另外还存储了负责合成事件的 Plugin。
+获取绑定事件的元素的唯一标识 key。
+将 callback 根据事件类型，元素的唯一标识 key 存储在 listenerBank 中。
+listenerBank 的结构是： listenerBank[registrationName][key]。
+触发事件时：
+
+触发 document 注册原生事件的回调 dispatchEvent
+获取到触发这个事件最深一级的元素
+遍历这个元素的所有父元素，依次对每一级元素进行处理。
+构造合成事件。
+将每一级的合成事件存储在 eventQueue 事件队列中。
+遍历 eventQueue。
+通过 isPropagationStopped 判断当前事件是否执行了阻止冒泡方法。
+如果阻止了冒泡，停止遍历，否则通过 executeDispatch 执行合成事件。
+释放处理完成的事件。
+
+### 为何 React 事件要自己绑定 this？
+
+在上面提到的事件处理流程中， React 在 document 上进行统一的事件分发， dispatchEvent 通过循环调用所有层级的事件来模拟事件冒泡和捕获。
+
+在 React 源码中，当具体到某一事件处理函数将要调用时，将调用 invokeGuardedCallback 方法。
+
 ```
-
-vue 初次渲染时 watcher 内部调用了 updateComponent 方法
-
-```js
-# updateComponent 整个渲染周期最关键的几行。
-let updateComponent = () => {
-     //获取到虚拟 dom 调用 update 进行渲染
-     vm.update(vm._render())
+function invokeGuardedCallback(name,func,a){
+    try{
+        func(a);
+    }
+    catch(x){
+        if(caughtError ===null){
+            caughtError =x;
+        }
+    }
 }
 ```
 
-Watcher 类
+### 原生事件和 React 事件的区别？
 
-```js
-export class Watcher {
-	constructor(vm, expOrFn, cb, options) {
-		if (typeof expOrFn === 'function') {
-			// 保留 updateComponent 方法
-			this.getters = expOrFn;
-		}
-		this.get();
-	}
-	get() {
-		pushTarget(this);
-		let value;
-		// 这里调用了 updateComponent 方法
-		value = this.getters.call(this.vm, this.vm);
-		popTarget();
-		return value;
-	}
-}
-```
+React 事件使用驼峰命名，而不是全部小写。
 
-#### render 函数
+通过 JSX , 你传递一个函数作为事件处理程序，而不是一个字符串。
 
-调用\_render 拿到 Vnode，接着 vm.update diff 对比两次的 Vnode
+在 React 中你不能通过返回 false 来阻止默认行为。必须明确调用 preventDefault。
 
-```js
-Vue.prototype.update = function (vnode) {
-	let vm = this;
-	// 获取到上一次的 Vnode 用于 diff 对比
-	const prevVnode = vm._vnode;
-	if (!prevVnode) {
-		//首次渲染走这里
-		vm.$el = patch(vm.$el, vnode);
-	} else {
-		//数据更新驱动视图更新走这里
-		vm.$el = patch(prevVnode, vnode);
-	}
-	//保留 Vnode
-	vm._vnode = vnode;
-};
-```
+### React 和原生事件的执行顺序是什么？可以混用吗？
 
-#### patch 对比 Vnode 函数
+React 的所有事件都通过 document 进行统一分发。当真实 Dom 触发事件后冒泡到 document 后才会对 React 事件进行处理。
 
-首先判断 tag 是否是组件，如果是就创建组件直接 return 空，然后拿到 data，拿到子元素 children，拿到 tag 标签，创建根元素 tag，接着如果判断有子节点则递归渲染子节点，并插入父元素，如果是注释则创建注释节点，如果都不是则创建文本节点并插入父元素。
+所以原生的事件会先执行，然后执行 React 合成事件，最后执行真正在 document 上挂载的事件
 
-```js
-return function patch(el, vnode, hydrating, removeOnly) {
-	//首次渲染使用 Vnode 创建真实 dom
-	createElm(vnode, false, el);
-	return vnode.elm;
-};
-function createElm(
-	vnode, //虚拟dom
-	insertedVnodeQueue,
-	parentElm //父节点
-) {
-	// 查看元素 tag 是不是组件，如果是组件就创建组件
-	if (createComponent(vnode, insertedVnodeQueue, parentElm)) {
-		return;
-	}
-	const data = vnode.data; //得到 data 数据
-	const children = vnode.children; //得到子元素
-	const tag = vnode.tag; //获取标签名
-	vnode.elm = document.createElement(tag);
-	if (isDef(tag)) {
-		//如果有子节点递归渲染子节点
-		createChildren(vnode, children, insertedVnodeQueue);
-		//给父元素插入子元素
-		parentElm.appendChild(elm);
-	} else if (isTrue(vnode.isComment)) {
-		//创建注释节点
-		vnode.elm = document.createComment(vnode.text);
-		//给父元素插入注释节点
-		parentElm.appendChild(elm);
-	} else {
-		//创建文本节点
-		vnode.elm = document.createTextNode(vnode.text);
-		//给父元素插入文本节点
-		parentElm.appendChild(elm);
-	}
-}
-function createChildren(vnode, children, insertedVnodeQueue) {
-	if (Array.isArray(children)) {
-		for (let i = 0; i < children.length; ++i) {
-			//渲染子节点
-			createElm(children[i], insertedVnodeQueue, vnode.elm);
-		}
-	}
-}
-```
+React 事件和原生事件最好不要混用。原生事件中如果执行了 stopPropagation 方法，则会导致其他 React 事件失效。因为所有元素的事件将无法冒泡到 document 上，导致所有的 React 事件都将无法被触发。。
 
-### 双向数据绑定原理
+### 虚拟 Dom 是什么？
 
-Object.defineProperty(obj, prop, descriptor)其中：obj 要在其上定义属性的对象。prop 要定义或修改的属性的名称。descriptor 将被定义或修改的属性描述符。
+在原生的 JavaScript 程序中，我们直接对 DOM 进行创建和更改，而 DOM 元素通过我们监听的事件和我们的应用程序进行通讯。
 
-其实，简单点来说，就是通过此方法来定义一个值。
-调用，使用到了 get 方法，
-赋值，使用到了 set 方法。
+而 React 会先将你的代码转换成一个 JavaScript 对象，然后这个 JavaScript 对象再转换成真实 DOM。这个 JavaScript 对象就是所谓的虚拟 DOM。
 
-vue 双向绑定内部核心就是利用了两个类， Dep 类和 watcher 类
-简单来说就是初始化 data 的时候会调用 observe 方法给，data 里的属性重写 get 方法和 set 方法，到渲染真实 dom 的时，渲染 watcher 会去访问页面上使用的属性变量，给属性的 Dep 都加上渲染函数，每次修改数据时通知渲染 watcher 更新视图
+当我们需要创建或更新元素时， React 首先会让这个 VitrualDom 对象进行创建和更改，然后再将 VitrualDom 对象渲染成真实 DOM。
 
-observe 方法会对基本属性直接返回 空，object 属性的参数递归用 Observe 类进行深度监听，用封装的 defineProperty 方法进行监听如果是数组的话重写原型方法（重写的原型方法就是当使用 push 等方法时触发 dep 的更新视图方法）再次尝试监听。
+当我们需要对 DOM 进行事件监听时，首先对 VitrualDom 进行事件监听， VitrualDom 会代理原生的 DOM 事件从而做出响应。
 
-Dep 类主要就是收集用于 watcher。并可以触发所收集 watcher 的渲染函数，也可以设置 Dep 类的 target 和删除 target。
+### 为什么 React 组件首字母必须大写？
 
-watcher 类 dep 实例在其中判断去重并管理 watcher 。watcher 类中用在被页面访问时会标记 target 给属性重写 get 添加 watch，然后弹出 target 防止 data 每个属性都产生依赖，只有页面上使用的变量需要依赖。渲染函数就是重新触发 get 方法 从而刷新页面。
+babel 在编译时会判断 JSX 中组件的首字母，当首字母为小写时，其被认定为原生 DOM 标签， createElement 的第一个变量被编译为字符串；当首字母为大写时，其被认定为自定义组件， createElement 的第一个变量被编译为对象；
 
-defineProperty 方法中都会有一个 dep 实例，封装的 get 方法渲染期间，渲染的阶段才会有 Dep 类上的 target 的时候，才给给每个页面中的变量添加 watcher，正常访问是没有的，set 方法判断数值一致则会 return 空，否则若有会更新子属性的 dep，赋值，并触发 dep 的更新视图。
+### 什么是高阶组件？如何实现？
 
-### Watch 监听的实现
+高阶组件可以看作 React 对装饰模式的一种实现，高阶组件就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件。
 
-页面 watch 中的监听实现，首先遍历 watch 对象，如果一个 watch 函数中传入的 hander 是数组就创建多个 watcher，不是则直接创建 createWatcher。
+### Hook 有哪些优势？
 
-createWatcher 中首先拿出 hander 方法，然后通过$watch 函数使用 Watcher 类创建设置监听实例。通过设置 user 为 true 标识为该 watcher 为用户自定义，将在每次更新 data 的时候触发 run 函数中调用用户传入 hander 方法。
+#### 减少状态逻辑复用的风险
 
-### computed 实现
+Hook 和 Mixin 在用法上有一定的相似之处，但是 Mixin 引入的逻辑和状态是可以相互覆盖的，而多个 Hook 之间互不影响，这让我们不需要在把一部分精力放在防止避免逻辑复用的冲突上。在不遵守约定的情况下使用 HOC 也有可能带来一定冲突，比如 props 覆盖等等，使用 Hook 则可以避免这些问题。
 
-`initComputed` 首先创建一个 watchers 空对象，遍历 computed，用拿到的计算属性函数创建一个 watcher 并设置 lazy:true(默认不执行 get,读取时才执行)，并赋值给空 watchers 并初始化该计算属性方法。
-判断计算属性参数是对象还是函数，然后封装到 Object.defineProperty。其中传入的 get 方法经过封装判断 watcher 实例中的 watch.dirty 从而判断是否需要从新求值，若需要则 watch.evaluate()重新渲染如果不需要则直接返回，如果渲染还未结束，则给 computed 函数内部的属性添加渲染 watcher。
+#### 避免地狱式嵌套
 
-重点：计算属性方法内部变量的 Dep 上会有两个 watcher 分别是是计算属性 wathcer 和渲染 watcher，计算属性 watcher 的作用只需要控制是否需要重新计算，跟着调用依赖的渲染 watcher 重新计算属性
+大量使用 HOC 的情况下让我们的代码变得嵌套层级非常深，使用 HOC，我们可以实现扁平式的状态逻辑复用，而避免了大量的组件嵌套。
 
-### nextTick 原理
+#### 让组件更容易理解
 
-大白话：调用 nextTick 会向 callbacks 中 push 函数，该函数会等写个微任务等微任务完成前面的计算应该都结束了然后依次触发回调。
+在使用 class 组件构建我们的程序时，他们各自拥有自己的状态，业务逻辑的复杂使这些组件变得越来越庞大，各个生命周期中会调用越来越多的逻辑，越来越难以维护。使用 Hook，可以让你更大限度的将公用逻辑抽离，将一个组件分割成更小的函数，而不是强制基于生命周期方法进行分割。
 
-vue 的降级策略（兼容策略，浏览器兼容）promise -> MutationObserver -> setImmediate -> setTimeout
-原理：利用异步队列
-在每个 macro-task（微任务） 运行完以后，UI 都会重渲染，那么在 miscro-task （异步事件回调） 中就完成数据更新，当前 次事件循环 结束就可以得到最新的 UI 了。反之如果新建一个 macro-task 来做数据更新，那么渲染就会进行两次。
+#### 使用函数代替 class
 
-vue 用异步队列的方式来控制 DOM 更新和 nextTick 回调先后执行
-
-micro-task 因为其高优先级特性，能确保队列中的微任务在一次事件循环前被执行完毕
-
-因为兼容性问题，vue 不得不做了 microtask 向 macrotask 的降级方案
-
-### Vue.extend 原理
-
-创建缓存，获取扩展名称，继承父类原型，子类 constructor 指向自己，创建子类 cid，合并 options，初始化 props，computed，添加组件，返回子类。
-
-## vuex 源码
-
-[vuex 源码](https://juejin.cn/post/6844903507057704974)
-
-### 安装
-
-install 代码做了两件事情，一件是防止 Vuex 被重复安装，另一件是执行 applyMixin，目的是执行 vuexInit 方法初始化 Vuex。Vuex 针对 Vue1.0 与 2.0 分别进行了不同的处理，如果是 Vue1.0，Vuex 会将 vuexInit 方法放入 Vue 的\_init 方法中，而对于 Vue2.0，则会将 vuexinit 混淆进 Vue 的 beforeCreacte 钩子中。
-
-```js
-/*Vuex的init钩子，会存入每一个Vue实例等钩子列表*/
-function vuexInit() {
-	const options = this.$options;
-	// store injection
-	if (options.store) {
-		/*存在store其实代表的就是Root节点，直接执行store（function时）或者使用store（非function）*/
-		this.$store =
-			typeof options.store === 'function' ? options.store() : options.store;
-	} else if (options.parent && options.parent.$store) {
-		/*子组件直接从父组件中获取$store，这样就保证了所有组件都公用了全局的同一份store*/
-		this.$store = options.parent.$store;
-	}
-}
-```
+相比函数，编写一个 class 可能需要掌握更多的知识，需要注意的点也越多，比如 this 指向、绑定事件等等。另外，计算机理解一个 class 比理解一个函数更快。Hooks 让你可以在 classes 之外使用更多 React 的新特性。
