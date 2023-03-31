@@ -99,16 +99,9 @@ reactive：将「引用类型」数据转换为「响应式」数据；
 ref： 可将基本类型和引用类型都变成响应式，通过监听类的 value 属性的 get 和 set 实现，但是当传入的值为引用类型时实际上内部还是使用 reactive 方法进行的处理。
 ref 经修改实现方式后性能更高，推荐使用 ref 一把梭。
 
-调用 ref 函数时会 new 一个类，这个类监听了 value 属性的 get 和 set ，实现了在 get 中收集依赖，在 set 中触发依赖，而如果需要对传入参数深层监听的话，就会调用 reactive 方法。
+ref 方法会 new 一个类 返回的是一个 RefImpl 实例，这个类监听了 value 属性的 get 和 set ，实现了在 get 中收集依赖，在 set 中触发依赖，而如果需要对传入参数深层监听的话，就会调用 reactive 方法。
 
-reactive 方法实际调用的是 createReactiveObject，调用 Proxy 代理 target，handler 根据数据类型判断传入集合处理器还是基础处理器。传入的处理器配置的 get 和 set 方法分别由 createGetter 和 createSetter 创建，
-createGetter 中核心是 track 函数的执行，他会进行收集 effect 操作。
-
-当我们执行函数更新函数的时候，执行 render，触发响应式数据的 get，然后对应的 key 对应的 dep 就会收集到当前的 effect。
-
-响应式对象与 dep 在数据结构上的关系：vue3 使用一个 targetMap 全局 WeakMap 实例来存储，他的键是我们的 target，值是一个 Map 实例，该 Map 实例的键是 target 的键，值是对应的键收集的 effect 集合（Set）。
-
-ref 返回的是一个 RefImpl 实例，它使用 get set 存取器，在 get 中收集依赖，在 set 中触发依赖，与 reactive 不同的是 ref 的依赖集合保存在自身的 dep 属性，而不是全局的 targetMap 对象。
+reactive 方法实际调用的是 createReactiveObject，调用 Proxy 代理 target，使用一个 targetMap 全局 WeakMap 实例来存储依赖。
 
 ## vuex 源码
 
