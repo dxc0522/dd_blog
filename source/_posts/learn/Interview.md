@@ -1,7 +1,7 @@
 ---
 title: 前端面试八股文
 authorDesc: 豆豆
-categories: 开发
+categories: 学习
 date: 2019-6-21 16:41:01
 updated: 2023-03-29 16:55:00
 tags:
