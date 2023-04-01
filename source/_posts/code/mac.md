@@ -3,7 +3,7 @@ title: mac 安装配置
 categories: 开发
 date: 2020-11-16 16:40:00
 tags: 
- - 系统
+ - 操作系统
 ---
 
 ## 环境建立

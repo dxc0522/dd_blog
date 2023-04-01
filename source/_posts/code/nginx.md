@@ -3,8 +3,6 @@ title: Nginx
 categories: 开发
 date: 2019-12-20 16:30:00
 tags:
-  - 系统
-  - 开发
   - 服务器
 ---
 

@@ -292,12 +292,12 @@ custom_css:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, source_theme, hr, print, dark_mode, hr, music]
+  layout: [home, source_theme, hr, print,  hr, music]
   # 可选功能项
-  dark_mode:
-    name: 暗黑模式
-    icon: fas fa-moon
-    toggle: darkmode
+  # dark_mode:
+  #   name: 暗黑模式
+  #   icon: fas fa-moon
+  #   toggle: darkmode
   print:
     name: 打印页面
     icon: fa fa-print
@@ -465,7 +465,7 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmode:
-    enable: true
+    enable: false
 
 ############################### Analytics ############################### > start
 analytics:

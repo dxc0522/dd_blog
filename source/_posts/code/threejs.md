@@ -3,9 +3,7 @@ title: ThreeJS
 categories: 开发
 date: 2022-8-03 09:49:00
 tags:
-  - 3D
-  - 模型
-  - AR
+  - ThreeJS
 ---
 
 ## 入门ThreeJS

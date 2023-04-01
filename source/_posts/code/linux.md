@@ -3,7 +3,6 @@ title: Linux
 categories: 开发
 date: 2020-04-17 21:14:00
 tags:
-  - 系统
   - 服务器
 ---
 ## 基础操作
