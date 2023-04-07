@@ -15,7 +15,7 @@ tags:
 [算法学习-力扣](https://leetcode.cn/study-plan/algorithms/?progress=xhnxl4w6)
 [前端面试题 1](https://muyiy.cn/question/)
 [前端面试题 2](https://lucifer.ren/fe-interview/#/)
-
+[你不知道的 async、await 魔鬼细节](https://blog.csdn.net/qq_41581588/article/details/129681857)
 ## HTML
 
 ### 浏览器运行机制
