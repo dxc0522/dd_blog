@@ -10,12 +10,17 @@ tags:
 
 ## 面试资源入口
 
+[flex](https://ruanyifeng.com/blog/2015/07/flex-grammar.html)
+[position](https://zhuanlan.zhihu.com/p/34486016)
 [ES6](https://es6.ruanyifeng.com/)
 [手写防抖、节流](https://juejin.cn/post/7032905194736189477)
+[设计模式](https://juejin.cn/post/7052148234097000462)
 [算法学习-力扣](https://leetcode.cn/study-plan/algorithms/?progress=xhnxl4w6)
 [前端面试题 1](https://muyiy.cn/question/)
 [前端面试题 2](https://lucifer.ren/fe-interview/#/)
 [你不知道的 async、await 魔鬼细节](https://blog.csdn.net/qq_41581588/article/details/129681857)
+[八股文](https://juejin.cn/post/7016593221815910408#heading-17)
+
 ## HTML
 
 ### 浏览器运行机制
