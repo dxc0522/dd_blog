@@ -7,7 +7,7 @@ tags:
   - 面试
 ---
 
-## vue2 源码解析
+## vue2 
 
 [VUE2 源码解析](https://zhuanlan.zhihu.com/p/419896443)
 
@@ -69,7 +69,7 @@ micro-task 因为其高优先级特性，能确保队列中的微任务在一次
 
 子组件创建过程中没有 el ，vue 渲染组件的时候内部自动调用 child.$mount(undefined) 不会挂载到页面上，而是放在 vnode.componentInstance.el 上，通过父组件压入到页面上。
 
-## vue3 源码
+## vue3 
 
 [VUE3 mini-vue 仓库](https://github.com/cuixiaorui/mini-vue)
 
@@ -103,7 +103,7 @@ ref 方法会 new 一个类 返回的是一个 RefImpl 实例，这个类监听�
 
 reactive 方法实际调用的是 createReactiveObject，调用 Proxy 代理 target，使用一个 targetMap 全局 WeakMap 实例来存储依赖。
 
-## vuex 源码
+## vuex 
 
 [vuex 源码](https://juejin.cn/post/6844903507057704974)
 
