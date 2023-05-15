@@ -38,7 +38,8 @@ go env -w GOPROXY=https://proxy.golang.com.cn,direct
 
 # Gorm
 
-[传送门](https://juejin.cn/post/7195352760450023481#heading-5)
+[官方传送门](https://gorm.io/zh_CN/docs/)
+[使用传送门](https://juejin.cn/post/7195352760450023481#heading-5)
 Gorm 是 Go 语言目前比较热门的数据库 ORM 操作库，对开发者也比较友好，使用非常简单，使用上主要就是把 struct 类型和数据库表记录进行映射，操作数据库的时候不需要直接手写 SQL 代码。
 
 ## 安装
