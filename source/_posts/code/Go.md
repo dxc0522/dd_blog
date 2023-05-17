@@ -14,10 +14,14 @@ tags:
 
 ```shell
 # 强制go为GOPATH模式运行,防止无法自动运行go test
-go env -w GO111MODULE=off
+go env -w GO111MODULE=auto
 # 设置不同源
 go env -w GOPROXY=https://proxy.golang.com.cn,direct
 ```
+
+- 必须设置
+- GOROOT：GOROOT 就是 Go 的安装目录
+- GOPATH：GOPATH 是我们的工作空间,保存 go 项目代码和第三方依赖包.所有项目都应该在此文件夹.
 
 # 须知
 
