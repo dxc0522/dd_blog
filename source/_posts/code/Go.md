@@ -22,7 +22,21 @@ go env -w GOPROXY=https://proxy.golang.com.cn,direct
 - 必须设置
 - GOROOT：GOROOT 就是 Go 的安装目录
 - GOPATH：GOPATH 是我们的工作空间,保存 go 项目代码和第三方依赖包.所有项目都应该在此文件夹.
-
+## vscode运行
+launch.json
+```json
+{
+      "name": "local-suc-planing",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}/internal/sucplanning/cmd/sucplanning.pen.go",
+      "cwd": "${workspaceFolder}/internal/sucplanning",
+      "env": {
+        "SERVER_PORT": "10087"
+      }
+    },
+```
 # 须知
 
 ## 特殊符号语句
@@ -34,7 +48,7 @@ go env -w GOPROXY=https://proxy.golang.com.cn,direct
 5. _ 是空白符号，用于丢弃不需要的参数
 
 ## 基本用法
-## 基础用法
+### 基础用法
 
 ```go
 // 变量：系统自动赋予它该类型的零值：int 为 0，float 为 0.0，bool 为 false，string 为空字符串，指针为 nil。记住，所有的内存在 Go 中都是经过初始化的。
@@ -129,6 +143,25 @@ mut.Lock()
 mut.Unlock()
 ```
 	
+### 多路选择/超时控制
+``` go
+// 多渠道选择
+select {
+	case ret := <-AsyncService():
+		t.Logf('result %s',ret)
+	case ret := <-AsyncService2():
+		t.Logf('result2 %s',ret)
+    default:
+        t.Error("No one returned")
+	}
+// 超时控制
+select {
+	case ret := <-AsyncService():
+		t.Log(ret)
+	case <-time.After(time.Second * 1):
+		t.Error("time out")
+	}
+```
 ### Chanel 通道
 
 通道（channel）是用来传递数据的一个数据结构。
