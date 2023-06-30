@@ -6,7 +6,9 @@ date: 2019-10-14 19:48:00
 tags:
   - Git
 ---
-
+## 特殊
+### 取消跟踪某个文件
+git update-index --assume-unchanged .yarn/install-state.gz
 ## 常用命令
 
 ``` git

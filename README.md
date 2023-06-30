@@ -1,1 +1,4 @@
 # 豆豆的个人博客
+%6|1688046211.271|FAIL|rdkafka#producer-1| [thrd:data-pvg-mtm-stg.dbplatform.tesla.com:32500/bootstrap]: data-pvg-mtm-stg.dbplatform.tesla.com:32500/bootstrap: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 13ms in state APIVERSION_QUERY)
+%6|1688046211.529|FAIL|rdkafka#producer-1| [thrd:data-pvg-mtm-stg.dbplatform.tesla.com:32500/bootstrap]: data-pvg-mtm-stg.dbplatform.tesla.com:32500/bootstrap: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 14ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+% ERROR: Failed to acquire metadata: Local: Broker transport failure (Are the brokers reachable? Also try increasing the metadata timeout with -m <timeout>?)

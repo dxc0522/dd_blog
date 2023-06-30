@@ -12,7 +12,7 @@ tags:
 nvm 用git下载下来，然后在目录里，
 
 ## brew 安装
-`/usr/bin/ruby -e "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install)"`
+`/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"`
 ## docker 安装
 新版的直接命令安装 `brew install --cask --appdir=/Applications docker`
 [旧电脑选择旧版的支持](https://docs.docker.com/desktop/release-notes/#docker-desktop-450)
