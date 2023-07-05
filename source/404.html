@@ -8,8 +8,8 @@
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
-  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='/'>
+  <link rel="preconnect" href="/" crossorigin>
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -662,7 +662,7 @@ var loadCSS = function( href, before, media, attributes ){
   loadCSS("https://cdn.cbd.int/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
   
   
-  loadCSS("https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css", window.volantis.loadcss);
+  loadCSS("/assets/css/font-awesome-animation.min.css", window.volantis.loadcss);
   
   
   loadCSS("https://cdn.bootcdn.net/ajax/libs/node-waves/0.7.6/waves.min.css", window.volantis.loadcss);
@@ -716,8 +716,8 @@ var loadCSS = function( href, before, media, attributes ){
   };
   function SCload_fancybox() {
     if ($(".md .gallery").find("img").length == 0) return;
-    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
-    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    loadCSS("/assets/css/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('/assets/js/jquery.fancybox.min.js', pjax_fancybox)
   };
   $(function () {
     SCload_fancybox();
@@ -1144,7 +1144,7 @@ var loadCSS = function( href, before, media, attributes ){
   let APlayerController = new Object();
   APlayerController.id = '7287041521';  // 设定全局音乐播放ID
   APlayerController.volume = '0.4';
-  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  loadCSS("/assets/css/APlayer.min.css", window.volantis.loadcss);
   // APlayer 需要在  MetingJS 之前加载
   loadScript("https://cdn.cbd.int/aplayer@1.10/dist/APlayer.min.js")
   window.volantis.APlayerLoaded=0 // APlayer加载完成状态
@@ -1206,7 +1206,7 @@ var loadCSS = function( href, before, media, attributes ){
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiCDN: '/',
       emojiMaps: emojiMaps,
     }))
   }
@@ -1231,7 +1231,7 @@ var loadCSS = function( href, before, media, attributes ){
 <!-- optional -->
 
   <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const SearchServiceimagePath="/assets/img/";
 const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
 
 $('.input.u-search-input').one('focus',function(){
@@ -1699,14 +1699,14 @@ document.addEventListener("pjax:success", listennSidebarTOC);
 	    
 
 
-<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+<script src=/assets/js/pjax.min.js"></script>
 
 
 <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
 
 <div class="pjax-animate">
   
-    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <script src="/assets/js/nprogress.min.js"></script>
     <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
     <script>
       window.ShowLoading = function() {
