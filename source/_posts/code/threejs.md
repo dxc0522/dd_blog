@@ -3,7 +3,7 @@ title: ThreeJS
 categories: 开发
 date: 2022-8-03 09:49:00
 tags:
-  - ThreeJS
+  - Canvas
 ---
 
 ## 入门ThreeJS

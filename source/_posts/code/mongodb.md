@@ -1,10 +1,10 @@
 ---
-title: mongodb
+title: MongoDB
 categories: 开发
 date: 2019-9-11 11:06:00
 tags:
-  - 服务器
-  - 数据库
+  - DB
+  - MongoDB
 ---
 
 ## 安装

@@ -4,7 +4,7 @@ authorDesc: 豆豆
 categories: 开发
 date: 2023-06-13 08:48:00
 tags:
-  - 后端
+  - DB
   - SQL
 ---
 ## 常用sql

@@ -5,7 +5,7 @@ categories: 系统
 date: 2019-6-20 14:00:00
 comments: true
 tags: 
- - 资源
+ - License
 ---
 ## 开发
 [sublime下载](https://download.sublimetext.com/Sublime%20Text%20Build%203207%20x64%20Setup.exe)

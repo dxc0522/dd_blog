@@ -3,7 +3,7 @@ title: 基金入门
 categories: 学习
 date: 2020-04-05 15:13:00
 tags:
-  - 基金
+  - 投资
 ---
 ## 相关资源
 [B站力哥讲财经](https://www.bilibili.com/video/BV1dE411N7cy)

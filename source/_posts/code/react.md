@@ -1,9 +1,9 @@
 ---
-title: 搭建react项目
+title: 搭建React项目
 categories: 开发
 date: 2019-6-25 11:21:00
 tags: 
- - react
+ - React
 ---
 ## 创建项目
 自行配置node环境

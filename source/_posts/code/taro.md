@@ -3,8 +3,7 @@ title: Taro.js
 categories: 开发
 date: 2019-7-16 10:25:00
 tags: 
- - react
- - taro
+ - React
 ---
 ## 初始化项目
 ### 创建项目

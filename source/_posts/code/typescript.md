@@ -3,7 +3,7 @@ title: TypeScript
 categories: 开发
 date: 2020-02-14 11:13:00
 tags:
-  - TypeScript
+  - TS
 ---
 
 ## 了解TypeScript
