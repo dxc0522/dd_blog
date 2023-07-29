@@ -101,145 +101,145 @@ function loadingPage(type) {
                 "》");
         })
         // 关于我
-        if ($("#bot-ui").length) {
-            var botui = new BotUI("bot-ui");
-            botui.message.bot({
-                delay: 800,
-                content: "Hi, my friend👋👋👋"
-            }).then(function () {
-                botui.message.bot({
-                    delay: 1100,
-                    content: "这里是 豆豆的空间"
-                }).then(function () {
-                    botui.message.bot({
-                        delay: 1100,
-                        content: "一个可爱的蓝孩子~"
-                    }).then(function () {
-                        botui.action.button({
-                            delay: 1600,
-                            action: [{
-                                text: "你好呀！ 😃",
-                                value: "sure"
-                            }, {
-                                text: "打住！ 🙄",
-                                value: "skip"
-                            }]
-                        }).then(function (a) {
-                            "sure" == a.value && sure();
-                            "skip" == a.value && end()
-                        })
-                    })
-                })
-            });
-            var sure = function () {
-                botui.message.bot({
-                    delay: 600,
-                    content: "😘"
-                }).then(function () {
-                    secondpart()
-                })
-            },
-                end = function () {
-                    botui.message.bot({
-                        delay: 600,
-                        content: "![...](https://view.moezx.cc/images/2018/05/06/a1c4cd0452528b572af37952489372b6.md.jpg)"
-                    })
-                },
-                secondpart = function () {
-                    botui.message.bot({
-                        delay: 1500,
-                        content: "目前在上海工作"
-                    }).then(function () {
-                        botui.message.bot({
-                            delay: 1500,
-                            content: "是一名不正经的前端开发攻城狮"
-                        }).then(function () {
-                            botui.message.bot({
-                                delay: 1200,
-                                content: "一入编程深似海，即将淹死在这海中"
-                            }).then(function () {
-                                botui.message.bot({
-                                    delay: 1500,
-                                    content: "主要开发公众号，小程序，网站这些"
-                                }).then(function () {
-                                    botui.message.bot({
-                                        delay: 1500,
-                                        content: "什么vue、react、小程序啥的一路撸了过来"
-                                    }).then(function () {
-                                        botui.message.bot({
-                                            delay: 1800,
-                                            content: "平时也喜欢健身学些其他东西"
-                                        }).then(function () {
-                                            botui.action.button({
-                                                delay: 1100,
-                                                action: [{
-                                                    text: "最喜欢做什么呢？ 😮",
-                                                    value: "why-mashiro"
-                                                }]
-                                            }).then(function (a) {
-                                                thirdpart()
-                                            })
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                },
-                thirdpart = function () {
-                    botui.message.bot({
-                        delay: 1E3,
-                        content: "挣钱~"
-                    }).then(function () {
-                        botui.action.button({
-                            delay: 1500,
-                            action: [{
-                                text: "除了这个？ 😒",
-                                value: "why-cat"
-                            }]
-                        }).then(function (a) {
-                            fourthpart()
-                        })
-                    })
-                },
-                fourthpart = function () {
-                    botui.message.bot({
-                        delay: 1E3,
-                        content: "泡健身房撸铁 "
-                    }).then(function () {
-                        botui.message.bot({
-                            delay: 1100,
-                            content: "写写字弹弹吉他啥的！"
-                        }).then(function () {
-                            botui.action.button({
-                                delay: 1500,
-                                action: [{
-                                    text: "为什么喜欢这些呢？",
-                                    value: "why-domain"
-                                }]
-                            }).then(function (a) {
-                                fifthpart()
-                            })
-                        })
-                    })
-                },
-                fifthpart = function () {
-                    botui.message.bot({
-                        delay: 1E3,
-                        content: "为了成为更好的自己！💪💪💪"
-                    }).then(function () {
-                        botui.message.bot({
-                            delay: 1600,
-                            content: "我先上图为敬！"
-                        }).then(function () {
-                            botui.message.bot({
-                                delay: 600,
-                                content: "![...](/assets/img/blog/this_is_me.jpeg)"
-                            })
-                        })
-                    })
-                }
-        }
+        // if ($("#bot-ui").length) {
+        //     var botui = new BotUI("bot-ui");
+        //     botui.message.bot({
+        //         delay: 800,
+        //         content: "Hi, my friend👋👋👋"
+        //     }).then(function () {
+        //         botui.message.bot({
+        //             delay: 1100,
+        //             content: "这里是 豆豆的空间"
+        //         }).then(function () {
+        //             botui.message.bot({
+        //                 delay: 1100,
+        //                 content: "一个可爱的蓝孩子~"
+        //             }).then(function () {
+        //                 botui.action.button({
+        //                     delay: 1600,
+        //                     action: [{
+        //                         text: "你好呀！ 😃",
+        //                         value: "sure"
+        //                     }, {
+        //                         text: "打住！ 🙄",
+        //                         value: "skip"
+        //                     }]
+        //                 }).then(function (a) {
+        //                     "sure" == a.value && sure();
+        //                     "skip" == a.value && end()
+        //                 })
+        //             })
+        //         })
+        //     });
+        //     var sure = function () {
+        //         botui.message.bot({
+        //             delay: 600,
+        //             content: "😘"
+        //         }).then(function () {
+        //             secondpart()
+        //         })
+        //     },
+        //         end = function () {
+        //             botui.message.bot({
+        //                 delay: 600,
+        //                 content: "![...](https://view.moezx.cc/images/2018/05/06/a1c4cd0452528b572af37952489372b6.md.jpg)"
+        //             })
+        //         },
+        //         secondpart = function () {
+        //             botui.message.bot({
+        //                 delay: 1500,
+        //                 content: "目前在上海工作"
+        //             }).then(function () {
+        //                 botui.message.bot({
+        //                     delay: 1500,
+        //                     content: "是一名不正经的前端开发攻城狮"
+        //                 }).then(function () {
+        //                     botui.message.bot({
+        //                         delay: 1200,
+        //                         content: "一入编程深似海，即将淹死在这海中"
+        //                     }).then(function () {
+        //                         botui.message.bot({
+        //                             delay: 1500,
+        //                             content: "主要开发公众号，小程序，网站这些"
+        //                         }).then(function () {
+        //                             botui.message.bot({
+        //                                 delay: 1500,
+        //                                 content: "什么vue、react、小程序啥的一路撸了过来"
+        //                             }).then(function () {
+        //                                 botui.message.bot({
+        //                                     delay: 1800,
+        //                                     content: "平时也喜欢健身学些其他东西"
+        //                                 }).then(function () {
+        //                                     botui.action.button({
+        //                                         delay: 1100,
+        //                                         action: [{
+        //                                             text: "最喜欢做什么呢？ 😮",
+        //                                             value: "why-mashiro"
+        //                                         }]
+        //                                     }).then(function (a) {
+        //                                         thirdpart()
+        //                                     })
+        //                                 })
+        //                             })
+        //                         })
+        //                     })
+        //                 })
+        //             })
+        //         },
+        //         thirdpart = function () {
+        //             botui.message.bot({
+        //                 delay: 1E3,
+        //                 content: "挣钱~"
+        //             }).then(function () {
+        //                 botui.action.button({
+        //                     delay: 1500,
+        //                     action: [{
+        //                         text: "除了这个？ 😒",
+        //                         value: "why-cat"
+        //                     }]
+        //                 }).then(function (a) {
+        //                     fourthpart()
+        //                 })
+        //             })
+        //         },
+        //         fourthpart = function () {
+        //             botui.message.bot({
+        //                 delay: 1E3,
+        //                 content: "泡健身房撸铁 "
+        //             }).then(function () {
+        //                 botui.message.bot({
+        //                     delay: 1100,
+        //                     content: "写写字弹弹吉他啥的！"
+        //                 }).then(function () {
+        //                     botui.action.button({
+        //                         delay: 1500,
+        //                         action: [{
+        //                             text: "为什么喜欢这些呢？",
+        //                             value: "why-domain"
+        //                         }]
+        //                     }).then(function (a) {
+        //                         fifthpart()
+        //                     })
+        //                 })
+        //             })
+        //         },
+        //         fifthpart = function () {
+        //             botui.message.bot({
+        //                 delay: 1E3,
+        //                 content: "为了成为更好的自己！💪💪💪"
+        //             }).then(function () {
+        //                 botui.message.bot({
+        //                     delay: 1600,
+        //                     content: "我先上图为敬！"
+        //                 }).then(function () {
+        //                     botui.message.bot({
+        //                         delay: 600,
+        //                         content: "![...](/assets/img/blog/this_is_me.jpeg)"
+        //                     })
+        //                 })
+        //             })
+        //         }
+        // }
     })
 }
 document.addEventListener('pjax:complete', function () {

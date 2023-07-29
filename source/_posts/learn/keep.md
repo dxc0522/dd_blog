@@ -33,12 +33,12 @@ tags:
 
 #### 腿部热身
 
-{% videos, 3 %}
- {% video /assets/media/18keep.mp4 %}
- {% video /assets/media/4keep.mp4 %}
- {% video /assets/media/3keep.mp4 %}
- {% video /assets/media/8keep.mp4 %}
- {% video /assets/media/10keep.mp4 %}
+{% videos::3 %}
+{% video /assets/media/18keep.mp4 %}
+{% video /assets/media/4keep.mp4 %}
+{% video /assets/media/3keep.mp4 %}
+{% video /assets/media/8keep.mp4 %}
+{% video /assets/media/10keep.mp4 %}
 {% endvideos %}
 
 
@@ -126,16 +126,16 @@ tags:
 
 ### 4.肩部训练
 
-  {% videos, 3 %}
-    {% video /assets/media/1keep.mp4 %}
-    {% video /assets/media/19keep.mp4 %}
-    {% video /assets/media/6keep.mp4 %}
-    {% video /assets/media/7keep.mp4 %}
-    {% video /assets/media/14keep.mp4 %}
-    {% video /assets/media/9keep.mp4 %}
-    {% video /assets/media/11keep.mp4 %}
-    {% video /assets/media/5keep.mp4 %}
-  {% endvideos %}
+{% videos::3 %}
+{% video /assets/media/1keep.mp4 %}
+{% video /assets/media/19keep.mp4 %}
+{% video /assets/media/6keep.mp4 %}
+{% video /assets/media/7keep.mp4 %}
+{% video /assets/media/14keep.mp4 %}
+{% video /assets/media/9keep.mp4 %}
+{% video /assets/media/11keep.mp4 %}
+{% video /assets/media/5keep.mp4 %}
+{% endvideos %}
 
 #### 颈前推举
 

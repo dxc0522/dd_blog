@@ -16,15 +16,14 @@ language:
 timezone: 'Asia/Shanghai'
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://doudou.netlify.app
-root: /
-permalink: :year/:month/:day/:title/
+permalink: "/:title/"
 permalink_defaults:
 pretty_urls:
-  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: false # Set to false to remove trailing '.html' from permalinks
-volantis_static_cdn: https://cdn.cbd.int/volantis-static@0.0.1649552113628/ 
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
 # Directory
 # 资源文件夹，这个文件夹用来存放内容。
 source_dir: source
@@ -49,32 +48,25 @@ skip_render:
   - CNAME
   - robots.txt
   - assets/*
+
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
-auto_spacing: true
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
   exclude: ''
-filename_case: 1
+filename_case: 0
 render_drafts: false
 post_asset_folder: false
 relative_link: false
-future: false
+future: true
+
 highlight:
   enable: false
-  line_number: true
-  auto_detect: false
-  tab_replace: '    '
-  wrap: true
-  hljs: false
-# prismjs:
-#   enable: false
-#   preprocess: true
-#   line_number: true
-#   tab_replace: ''
+prismjs:
+  enable: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -110,10 +102,8 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
-include:
-
-exclude:
-
+# include:
+# exclude:
 ignore:
 
 # Extensions
@@ -122,81 +112,24 @@ ignore:
 theme: volantis
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
 
 import:
-  meta:
+  head_begin:
     - <meta name="msapplication-TileColor" content="#ffffff">
     - <meta name="theme-color" content="#ffffff">
-  link:
     - <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo_blue.png">
     - <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_blue.png">
     - <link rel="shortcut icon" href="/assets/img/logo_blue.png">
-    - <link href="/assets/css/base.css" rel="stylesheet">
-    - <link href="https://cdn.cbd.int/botui@0.3.9/build/botui.min.css" rel="stylesheet">
-    - <link href="https://cdn.cbd.int/botui@0.3.9/build/botui-theme-default.css" rel="stylesheet">
-  script:
-    - <script src="https://cdn.cbd.int/vue@2.6.14/dist/vue.min.js"></script>
-    - <script src="https://cdn.cbd.int/botui@0.3.9/build/botui.min.js"></script>
+    # - <link href="/assets/css/base.css" rel="stylesheet">
+    # - <link href="https://cdn.cbd.int/botui@0.3.9/build/botui.min.css" rel="stylesheet">
+    # - <link href="https://cdn.cbd.int/botui@0.3.9/build/botui-theme-default.css" rel="stylesheet">
+    # - <script src="https://cdn.cbd.int/vue@2.6.14/dist/vue.min.js"></script>
+    # - <script src="https://cdn.cbd.int/botui@0.3.9/build/botui.min.js"></script>
+  head_end:
+  body_begin:
+  body_end:
+    - <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     - <script src="/assets/js/diy_style.js"></script>
-
-# https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap
-sitemap:
-  path: sitemap.xml
-  tag: false
-  category: false
-
-# npm i hexo-neat
-neat_enable: true
-
-# hexo-autonofollow
-nofollow:
-  enable: true
-  exclude:
-    - xaoxuu.com
-    - volantis.js.org
-    - volantis-x.js.org
-    - blog.mhuig.top
-    - colsrch.cn
-    - inkss.cn
-    - vlts.hin.cool
-
-# autoprefixer
-autoprefixer:
-  exclude:
-    - '*.min.css'
-
-# offline config passed to sw-precache.
-#offline:
-#  maximumFileSizeToCacheInBytes: 10485760
-#  staticFileGlobs:
-#    - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
-#  stripPrefix: public
-#  verbose: true
-#  runtimeCaching:
-#    - urlPattern: /*
-#      handler: cacheFirst
-#      options:
-#        origin: cdn.jsdelivr.net
-#    - urlPattern: /*
-#      handler: cacheFirst
-#      options:
-#        origin: cdnjs.cloudflare.com
-
-marked:
-  gfm: true
-  pedantic: false
-  breaks: true
-  smartLists: true
-  smartypants: false
-  modifyAnchors: 0
-  autolink: true
-  sanitizeUrl: false
-  headerIds: true
-  prependRoot: false
-  external_link:
-    enable: true
-    exclude: []
-    nofollow: true

@@ -1,8 +1,8 @@
-#veditor {
+.gsc-comment-box-textarea {
     background: url(https://static-5c984a0c-f1c3-4611-945e-6567b7297f8e.bspapp.com/blogImages/valine/comment.webp) 100% 100% no-repeat;
 }
 
-#veditor:focus {
+.gsc-comment-box-textarea:focus {
     background-position-y: 400px;
     transition: all 0.2s ease-in-out 0s;
 }

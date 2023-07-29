@@ -53,5 +53,6 @@ hexo d -g   生成静态文件后直接推送git
 {% fb_img https://keep/1keep.jpg 健身 %} 插入的可放大的图片
 
 ```
-
+## 编辑
+[markdown style](https://volantis.js.org/v6/tag-plugins/?keyword=large#text)
 ## 然后就没有然后了

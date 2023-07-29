@@ -30,12 +30,6 @@ navbar:
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-    # - name: 更多
-    #   icon: fas fa-ellipsis-h
-    #   rows:
-    #     - name: 暗黑模式
-    #       icon: fas fa-moon
-    #       toggle: darkmode
 
   search: 搜索...(◕ܫ◕) # Search bar placeholder
 
@@ -84,8 +78,6 @@ sidebar:
       title: DouDou
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        # - icon: fas fa-rss
-        #   url: atom.xml
         - icon: fas fa-envelope
           url: mailto:809685229@qq.com
         - icon: fab fa-github
@@ -114,10 +106,10 @@ sidebar:
         title: 文章分类
         url: /categories/
     # ---------------------------------------
-    #   标签云部件
+    # tagcloud widget
     tagcloud:
       class: tagcloud
-      display: [desktop] # [desktop, mobile]
+      display: [desktop, mobile] # [desktop, mobile]
       header:
         icon: fas fa-tags
         title: 热门标签
@@ -149,14 +141,15 @@ sidebar:
           enable: true
           text: '本站总字数：' # 需要启用 wordcount
           unit: '字'
-        siteuv:
-          enable: true
-          text: '本站访客数：' # 需要启用 busuanzi
-          unit: '人'
-        sitepv:
-          enable: true
-          text: '本站总访问量：' # 需要启用 busuanzi
-          unit: '次'
+        visitcounter:
+          siteuv:
+            enable: true
+            text: '本站访客数：'
+            unit: '人'
+          sitepv:
+            enable: true
+            text: '本站总访问量：' # 需要启用 busuanzi
+            unit: '次'
         lastupd:
           enable: true
           friendlyShow: true # 更友好的时间显示
@@ -248,10 +241,6 @@ article:
       counter:
         icon: fas fa-eye
         unit: '次浏览'
-      # 文章评论数量：只支持 valine
-      valinecount:
-        icon: fas fa-comment-dots
-        desc: '' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fas fa-keyboard
@@ -289,123 +278,61 @@ custom_css:
   sidebar:
     effect: [shadow] # [shadow, floatable, blur]
 # 鼠标右键
+# 自定义右键菜单
 rightmenu:
   enable: true
+  faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
   # hr: 分割线, music: 音乐控制器
-  layout: [home, source_theme, hr, print,  hr, music]
-  # 可选功能项
-  # dark_mode:
-  #   name: 暗黑模式
-  #   icon: fas fa-moon
-  #   toggle: darkmode
-  print:
+  layout: [home, hr, print, darkmode, reading,customPicUrl,hr, music]
+  ### 可选功能项 ###
+  print:                  # 只有文章页才允许自定义打印
     name: 打印页面
     icon: fa fa-print
-    onclick: document.execCommand('print')
-  # 自定义菜单的格式如下
-  source_theme:
-    name: 主题源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/hexo-theme-volantis/
+  darkmode:        # 需开启 plugins.darkmodejs
+    name: 暗黑模式
+    icon: fa fa-moon
+  reading:
+    name: 阅读模式
+    icon: fa fa-book-open
+  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
+    enable: true  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
+    old: #https://static.inkss.cn/img/article/
+    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
+  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+    alwaysShow: true
+############################### Rightmenu ############################### > end
 # 底部文字
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, br, copyright]
   br: '<br/>一碗胡辣汤'
-  copyright: '[Copyright © 2019-2020 Mr. Dou](https://xaoxuu.com)'
+  copyright: '[Copyright © 2019-2023 Mr. Dou](https://doudou.netlify.app)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-
-# 组件
-comments:
-  service: valine
-  valine:
-    appId: xY1wNFTml6YlNW5wFqnd5kbe-gzGzoHsz
-    appKey: 8PVbNfnV1rnDm8HAtsFqSwro
-    path: /
 # 插件
 plugins:
   ################ required plugins ################
-  # jquery
-  jquery: https://cdn.cbd.int/jquery@3.5/dist/jquery.min.js
-  # fontawesome
-  fontawesome: https://cdn.cbd.int/@fortawesome/fontawesome-free@5.14/css/all.min.css
-
+  darkmode:
+    enable: true
+  search:
+    enable: true
+    service: hexo  # hexo, algolia, meilisearch
+    algolia:
+      searchAsYouType: true # If false, triggers the search only on submit.
+      hitsPerPage: 5 # Set the number of hits per page.
+      placeholder: 'Search...' # The placeholder text of the input.
+    meilisearch:
+      placeholder: 'Search...'
+      searchKey: ''
+      indexName: ''
+      hostUrl: ''
+      
   parallax:
     enable: true
-  ################ optional plugins ################
-
-  ######## Plugins to improve loading speed:
-
-  # 预加载
-  preload:
-    enable: true
-    service: flying_pages # instant_page, flying_pages
-    instant_page: /assets/js/instant_page.js
-    flying_pages: /assets/js/flying-pages.min.js
-
-  # 图片懒加载
-  lazyload:
-    enable: true
-    js: https://cdn.cbd.int/vanilla-lazyload@17.1.0/dist/lazyload.min.js
-    onlypost: false
-    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
-    blurIn: true # 模糊加载效果 （loadingImg为空时有效）
-  ######## Plugins to optimize the experience:
-
-  # highlight.js
-  highlightjs:
-    enable: true # Please set hexo.config.highlight.enable = false !!!
-    js: https://cdn.cbd.int/highlight.js@9.18.1/lib/highlight.js
-    # css: https://cdn.cbd.int/highlight.js@9.18.1/styles/solarized-light.css  # 高亮色
-    css: https://cdn.cbd.int/highlight.js@9.18.1/styles/atom-one-dark.css #  深色
-    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
-
-  # https://scrollrevealjs.org/api/reveal.html
-  scrollreveal:
-    enable: true
-    js: https://cdn.cbd.int/scrollreveal@4.0.6/dist/scrollreveal.min.js
-    distance: 32px
-    duration: 800 # ms
-    interval: 20 # ms
-    scale: 1 # 0.1~1
-
-  # Codeblock Copy Button
-  clipboard:
-    enable: true
-    js: https://cdn.cbd.int/clipboard@2/dist/clipboard.min.js
-
-  ######## Plugins for SEO:
-
-  # npm i hexo-wordcount
-  wordcount:
-    enable: true
-
-  ######## Plugins for ...
-  # Button Ripple Effect
-  nodewaves:
-    enable: true
-    css: https://cdn.bootcdn.net/ajax/libs/node-waves/0.7.6/waves.min.css
-    js: https://cdn.bootcdn.net/ajax/libs/node-waves/0.7.6/waves.min.js
-
-  # fontawesome animation
-  fontawesome_animation:
-    enable: true
-    # css: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
-
-  # Typing Effects
-  comment_typing:
-    enable: true
-    js: /assets/js/comment_typing.js
-
-  # Slide Background
-  backstretch:
-    enable: true
-    js: https://cdn.cbd.int/jquery.backstretch@2.1.15/jquery.backstretch.min.js
-    position: fixed # cover: sticky on the cover.   fixed: Fixed as background for e site.
-    shuffle: true # shuffle playlist
-    duration: 10000 # Duration (ms)
-    fade: 1500 # fade duration (ms) (Not more than 1500)
-    images: # For personal use only. At your own risk if used for commercial rposes !!!
+    position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    shuffle: true         # shuffle playlist
+    duration: 10000       # Duration (ms)
+    fade: 1500            # fade duration (ms) (Not more than 1500)
+    images:               # For personal use only. At your own risk if used for commercial purposes !!!
       - /assets/img/background/lm2762.jpg
       - /assets/img/background/p2dky9.jpg
       - /assets/img/background/wyx3px.png
@@ -416,6 +343,21 @@ plugins:
       - /assets/img/background/Z3yEo8.jpg
       - /assets/img/background/Z3yYYF.jpg
       - /assets/img/background/Z3yZFS.png
+  
+  # 代码高亮
+  code_highlight: highlightjs # highlightjs or prismjs
+  # highlight.js
+  highlightjs:
+    copy_code: true
+    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
+    # # 不再支持 v11.1.0 以下版本
+    js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/atom-one-dark.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
+ 
+  ################ optional plugins ################
+
+  ######## Plugins to improve loading speed:
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -438,39 +380,29 @@ plugins:
     list_max_height: 320px # list max height
     list_folded: true
 
-  pjax:
-    enable: true
-    timeout: 5000 # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: false # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: nprogress # nprogress, circle
-
-  message: # 音乐通知，播放、暂停、失败 时的图标
-    enable: true
-    icon: # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
-      default: fal fa-info-circle light-blue
-      quection: fal fa-question-circle light-blue
-    copyright: # 是否在复制时弹出版权提示
-      enable: false
-      title: '知识共享许可协议'
-      message: '请遵守 CC BY-NC-SA 4.0 协议。'
-      icon: 'fab fa-creative-commons light-blue'
-    aplayer:
-      enable: true
-      play: fal fa-play light-blue
-      pause: fal fa-pause light-blue
-      error: fal fa-exclamation-square red
-
-  ##################################
-  # 暗黑模式 darkmodejs
-  # https://darkmodejs.learn.uno
-  # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
-  darkmode:
-    enable: false
-
 ############################### Analytics ############################### > start
 analytics:
-  leancloud:
-    app_id: xY1wNFTml6YlNW5wFqnd5kbe-gzGzoHsz
-    app_key: 8PVbNfnV1rnDm8HAtsFqSwro
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 ############################### Analytics ############################### > end
+
+comments:
+  service: giscus
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    # 以下配置按照 yml 格式增删填写即可
+    repo: dxc0522/dd_blog
+    repo-id: R_kgDOGqW1Hw
+    category: Announcements
+    category-id: DIC_kwDOGqW1H84CYNEl
+    mapping: "title"
+    reactions-enabled: "1"
+    emit-metadata: "0"
+    input-position: "top"
+    lang: "zh-CN"
+    crossorigin: "anonymous"
+    # 以上配置按照 yml 格式增删填写即可
+    theme:
+      light: "light" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: "dark" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
