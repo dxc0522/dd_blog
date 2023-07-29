@@ -3,7 +3,7 @@ title: 搭建koa2项目
 categories: 开发
 date: 2019-7-5 11:46:00
 tags: 
- - 后台
+ - 后端
 ---
 ## 创建项目
 安装脚手架 npm install -g koa-generator

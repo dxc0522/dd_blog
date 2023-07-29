@@ -3,7 +3,7 @@ title: egg+mongodb开发后台
 date: 2019-8-16 17:13:00
 categories: 开发
 tags:
-  - 后台
+  - 后端
 ---
 ## 注意
 - mongoose中根据id查的时候不用转ObjectId
