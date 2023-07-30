@@ -87,6 +87,26 @@ sidebar: []
     .poem-border {
         width: 18%;
     }
+    .poem-wrap{
+        width: 90%;
+        max-width: 90%;
+    }
+    .poem-wrap h1 {
+        font-size: 1.6em;
+    }
+    .poem-wrap h1::before {
+        display: none;
+    }
+    .poem-wrap p {
+        width: 85%;
+    }
+    .poem-wrap p#poem {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .poem-wrap p#info {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 500px) {
