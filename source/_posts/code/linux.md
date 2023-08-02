@@ -34,7 +34,7 @@ L3 cache:              30720K
 NUMA node0 CPU(s):     0-3
 ```
 
-查看安装位置
+### 查看安装位置
 `ps  -ef | grep nginx`
  查看nginx配置文件位置
 `nginx -t`
@@ -47,6 +47,18 @@ nvm安装
 列出可安装目录，LTS为稳定版
 `nvm ls-remote`
 
+### 传输 scp
+``` shell
+scp local_file remote_username@remote_ip:remote_folder 
+# 或者 
+scp local_file remote_username@remote_ip:remote_file 
+# 或者 
+scp local_file remote_ip:remote_folder 
+# 或者 
+scp local_file remote_ip:remote_file 
+# 或者
+scp -i key.pm file_path remote:remote_file
+```
 ## git安装
 [传送门](https://www.cnblogs.com/wulixia/p/11016684.html)
 

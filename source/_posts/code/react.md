@@ -232,7 +232,7 @@ yarn add redux redux-thunk react-redux
 ### 开始
 [官网传送](https://react-bootstrap.netlify.com/getting-started/introduction/)
 
-![Small Picture](/assets/img/Bootstrap.png)
+![Small Picture](https://cdn.cbd.int/dd_blog_assets@1.0.0/img/Bootstrap.png)
 ### 安装
 
 yarn add react-bootstrap bootstrap

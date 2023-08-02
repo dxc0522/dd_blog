@@ -9,7 +9,7 @@ tags:
 [真的，搞懂 Kafka 看这一篇就够了！](https://juejin.cn/post/6963101806402469902)
 ## 基础
 Apache Kafka 是消息引擎系统，也是一个分布式流处理平台.
-{%  image /assets/img/kafka/8b28137150c70d66200f649e26ff2395.webp %}
+{%  image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/kafka/8b28137150c70d66200f649e26ff2395.webp %}
 ### version
 版本号：
 大 + 小 + patch
@@ -44,7 +44,7 @@ Kafka Streams改进；建议版本2.0；
 - 消费者位移：Consumer Offset。表征消费者消费进度，每个消费者都有自己的消费者位移。
 - 消费者组：Consumer Group。多个消费者实例共同组成的一个组，同时消费多个分区以实现高吞吐。
 - 重平衡：Rebalance。消费者组内某个消费者实例挂掉后，其他消费者实例自动重新分配订阅主题分区的过程。Rebalance 是 Kafka 消费者端实现高可用的重要手段。
-{%  image /assets/img/kafka/58c35d3ab0921bf0476e3ba14069d291.webp %}
+{%  image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/kafka/58c35d3ab0921bf0476e3ba14069d291.webp %}
 
 ### 集群架构
 
