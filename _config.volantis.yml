@@ -396,7 +396,7 @@ comments:
     repo-id: R_kgDOGqW1Hw
     category: Announcements
     category-id: DIC_kwDOGqW1H84CYNEl
-    mapping: "title"
+    mapping: "pathname"
     reactions-enabled: "1"
     emit-metadata: "0"
     input-position: "top"
