@@ -53,9 +53,11 @@ CMD ["./main"]
 EXPOSE 8888
 ```
 
-COMMAND `docker build --build-arg MODULE_NAME=gin-study -t gin-study .`
+COMMAND 
+`docker build --build-arg MODULE_NAME=gin-study -t gin-study .`
 
 #### web
+
 ```nginx.conf
 server {
     listen 80;
@@ -69,6 +71,7 @@ server {
     }
 }
 ```
+
 ```Dockerfile
 FROM nginx
 
@@ -79,3 +82,7 @@ EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 ```
+
+COMMAND
+1. `docker build --build-arg MODULE_NAME=vue-app -t vue-app .`
+2. `docker run -d -p 80:80 --rm --name vue-app vue-app`
