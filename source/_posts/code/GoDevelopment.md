@@ -31,3 +31,51 @@ tags:
 ### code gen 
 [传送门](https://ldej.nl/post/generating-go-from-openapi-3/)
 [oapi-codegen](https://github.com/deepmap/oapi-codegen)
+
+### docker 
+
+#### go
+
+```Dockerfile
+FROM golang:1.21
+
+ARG MODULE_NAME
+ENV MODULE_PATH=internal/${MODULE_NAME}
+
+COPY go.mod go.sum  /app/
+COPY vendor/ /app/vendor/
+COPY internal/${MODULE_NAME}/ /app/${MODULE_PATH}
+WORKDIR /app
+RUN ls -al
+WORKDIR /app/${MODULE_PATH}
+RUN GOOS=linux GOARCH=amd64  go build main.go
+CMD ["./main"]
+EXPOSE 8888
+```
+
+COMMAND `docker build --build-arg MODULE_NAME=gin-study -t gin-study .`
+
+####web
+```nginx.conf
+server {
+    listen 80;
+    server_name dou.com;
+
+    root /var/www/html/;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+```Dockerfile
+FROM nginx
+
+ARG MODULE_NAME
+COPY /${MODULE_NAME}/nginx.conf /etc/nginx/conf.d/default.conf
+COPY /${MODULE_NAME}/dist/ /var/www/html/
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+```
