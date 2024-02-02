@@ -27,3 +27,7 @@ tags:
 #### gen sql struct command
 
 `sql2struct --dsn "mysql://root:123456@tcp(127.0.0.1:3306)/go_test?charset=utf8mb4&parseTime=True&loc=Local" -t "users" -t "table_test"`
+
+### code gen 
+[传送门](https://ldej.nl/post/generating-go-from-openapi-3/)
+[oapi-codegen](https://github.com/deepmap/oapi-codegen)
