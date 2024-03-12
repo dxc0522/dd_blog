@@ -4,7 +4,8 @@ authorDesc: 豆豆
 categories: 开发
 date: 2021-5-2 18:00:00
 tags: 
-  - Deploy
+  - Docker
+  - 服务器
 ---
 ## 基本命令
 `docker version`

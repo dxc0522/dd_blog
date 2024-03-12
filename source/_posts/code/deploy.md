@@ -4,7 +4,7 @@ authorDesc: 豆豆
 categories: 开发
 date: 2022-11-11 17:41:01
 tags:
-  - Deploy
+  - 服务器
 ---
 
 # 1.服务器免登录配置
