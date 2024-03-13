@@ -46,7 +46,7 @@ Helm 安装 charts 到 Kubernetes 集群中，每次安装都会创建一个新�
 * 删除release `helm uninstall happy-panda`
 * helm lint `helm lint`
 
-> 打包流程
+#### 打包流程
 
 1. 创建charts `helm create deis-workflow`
 2. 打包chart  `helm package deis-workflow`
