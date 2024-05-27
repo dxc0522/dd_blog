@@ -1,5 +1,5 @@
 ---
-title: Advancing in GO
+title: Go进阶
 authorDesc: 豆豆
 categories: 开发
 date: 2023-08-02 19:53:00
