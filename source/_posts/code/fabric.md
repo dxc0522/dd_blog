@@ -4,6 +4,7 @@ categories: 开发
 date: 2019-7-8 14:53:00
 tags: 
  - Canvas
+ - 前端
 ---
 ## 入门须知
 [官网传送](http://fabricjs.com/)

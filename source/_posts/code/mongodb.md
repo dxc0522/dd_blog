@@ -3,8 +3,9 @@ title: MongoDB
 categories: 开发
 date: 2019-9-11 11:06:00
 tags:
-  - DB
+  - 数据库
   - MongoDB
+  - 运维
 ---
 
 ## 安装

@@ -4,6 +4,8 @@ categories: 开发
 date: 2022-8-03 09:49:00
 tags:
   - Canvas
+  - 3D
+  - 前端
 ---
 
 ## 入门ThreeJS

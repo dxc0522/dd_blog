@@ -4,6 +4,7 @@ categories: 开发
 date: 2021-12-17 17:57:00
 tags:
   - webpack
+  - 前端
 ---
 
 因打包需要 vue2 所以用的 [webpack4](http://webpack.html.cn/concepts/module-resolution.html) 打包配置

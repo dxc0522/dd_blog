@@ -3,7 +3,7 @@ title: Linux
 categories: 开发
 date: 2020-04-17 21:14:00
 tags:
-  - 服务器
+  - 运维
 ---
 ## 基础操作
 ### 显示cpu架构信息

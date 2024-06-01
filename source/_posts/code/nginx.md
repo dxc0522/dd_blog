@@ -3,7 +3,7 @@ title: Nginx
 categories: 开发
 date: 2019-12-20 16:30:00
 tags:
-  - 服务器
+  - 运维
 ---
 
 ## 了解

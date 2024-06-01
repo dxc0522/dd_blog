@@ -4,6 +4,7 @@ categories: 开发
 date: 2019-6-25 13:45:00
 tags: 
  - Vue
+ - 前端
 ---
 ## 创建项目
 自行配置node环境

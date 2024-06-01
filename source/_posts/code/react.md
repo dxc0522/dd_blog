@@ -4,6 +4,7 @@ categories: 开发
 date: 2019-6-25 11:21:00
 tags: 
  - React
+ - 前端
 ---
 ## 创建项目
 自行配置node环境
