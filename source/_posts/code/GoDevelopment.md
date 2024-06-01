@@ -18,6 +18,8 @@ tags:
 ### 常用命令
 
 > 更新依赖 `go mod tidy && go mod vendor`
+> 检查api文件配置 ` goctl api validate --api app.api`
+> 格式化api文件 ` goctl api format -dir .`
 > 更新api文件 `rm -rf internal/handler && rm -rf internal/types/types.go  && goctl api go -api app.api -dir .`
 > 生成dbmodel `goctl model mysql datasource --url "root:123456@tcp(127.0.0.1:3306)/local" -t "users" -t "charging_data"`
 
@@ -26,7 +28,8 @@ tags:
 2. 创建API项目 `goctl api new [name]`
 3. 调试API对应的handler、logic `goctl api go -api [name].api -dir .`
 4. 从[仓库](https://github.com/dxc0522/go-template/tree/main/common) 复制所需的模块 
-
+5. 自动补全先执行`goctl completion zsh -h` 根据系统执行命令 然后安装到命令`goctl completion zsh ` 或者可以直接用(fig)[https://fig.io/docs/guides/autocomplete-for-internal-tools#a-automatically-with-our-cli-framework-integrations]实现
+   
 ### 模块修改
 若修改template ` goctl template init` 先初始化默认的模版
 #### 若修改响应值
@@ -110,7 +113,7 @@ func JwtUnauthorizedResult(w http.ResponseWriter, r *http.Request, err error) {
 * 生成app.json 如果没有doc目录，需要先创建然后更换自己本地地址执行 `docker run -d --name swag -p 8087:8080 -e SWAGGER_JSON=/opt/app.json -v /Users/dou/go/src/github.com/go-template/app/doc/:/opt swaggerapi/swagger-ui`
   
 ### 连接Mysql
-使用命令 `goctl model mysql datasource --url "root:123456@tcp(127.0.0.1:3306)/local" -t "media" -d dbmodel` 生成对应dbmodel
+使用命令 `goctl model mysql datasource --url "root:123456@tcp(127.0.0.1:3306)/local" -t "media" -d dbmodel` 生成对应dbmodel 表名可用通配符`*`或者匹配字符`user_*`或-t "user,order"
 
 ```go
 // servicecontext.go 文件修改
@@ -160,25 +163,10 @@ if err != nil {
 ### docker build
 
 #### go
-```Dockerfile
-FROM golang:1.21
 
-ARG MODULE_NAME
-ENV MODULE_PATH=internal/${MODULE_NAME}
-
-COPY go.mod go.sum  /app/
-COPY vendor/ /app/vendor/
-COPY internal/${MODULE_NAME}/ /app/${MODULE_PATH}
-WORKDIR /app
-RUN ls -al
-WORKDIR /app/${MODULE_PATH}
-RUN GOOS=linux GOARCH=amd64  go build main.go
-CMD ["./main"]
-EXPOSE 8888
-```
-
-COMMAND 
-`docker build --build-arg MODULE_NAME=gin-study -t gin-study .`
+1. 项目目录下生成Dockerfile文件`goctl docker --exe study-go --go app.go --port 8888  --version 1.21.6` --exe指定文件名称 --go指定main文件 --version指定go版本
+2. 打包image` docker build -f app/Dockerfile -t study-go:latest  .` 如果Dockerfile文件内没有复制根目录之外的文件则不用加-f指定Dockerfile文件.
+3. 运行image `docker run -d --network my-network --name study-go -p 6666:8888 study-go:latest` 注意容器之间的网络状态.
 
 #### web
 
