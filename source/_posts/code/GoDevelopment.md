@@ -211,6 +211,10 @@ COMMAND
 1. `docker build --build-arg MODULE_NAME=vue-app -t vue-app .`
 2. `docker run -d -p 80:80 --rm --name vue-app vue-app`
 
+#### 链接
+
+[部署问题](https://www.fengfengzhidao.com/article/dtyibo4BEG4v2tWkcxXp#%E8%BF%9E%E6%8E%A5%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1)
+
 ## 相关资源
 
 ### Gin服务模版

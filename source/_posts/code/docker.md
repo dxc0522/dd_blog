@@ -9,21 +9,21 @@ tags:
 ---
 #### 基本命令
 
-| 作用             | 命令                                                                               | 参数                                                                                                                                           |
-| :--------------- | :--------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| 检查docker的版本 | `docker version`                                                                   | -                                                                                                                                              |
-| 搜索镜像         | `docker search 镜像名字`                                                           | -                                                                                                                                              |
-| 下载镜像         | `docker pull 镜像名字` <br/> **例:** `docker run learn/tutorial echo "hello word"` | -                                                                                                                                              |
-| 运行镜像         | `docker run -d --network my-network --name study-go -p 6666:8888 study-go:latest`  | -d  后台运行 <br/> --network my-network 指定网络 <br/> --name study-go 指定容器名称 <br/> -p 6666:8888 指定端口映射左为主机端口,右为容器内端口 |
-| 查看所有容器     | `docker ps`                                                                        | -a 查看所有容器                                                                                                                                |
-| 查看容器详情     | `docker inspect 容器名称/容器ID` <br/> **例:** `docker inspect study-go`           | -                                                                                                                                              |
-| 查看所有镜像     | `docker images`                                                                    | -                                                                                                                                              |
-| 发布镜像         | `docker push [镜像名]` <br/> **例:** `docker push learn/ping`                      | -                                                                                                                                              |
-| 停止容器         | `docker stop 容器名`                                                               | -                                                                                                                                              |
-| 删除容器         | `docker container rm 容器名`                                                       | -                                                                                                                                              |
-| 删除所有的容器   | `docker container prune`                                                           | -                                                                                                                                              |
-| 删除所有的镜像   | `docker container image` <br/> **例:** `sudo docker rmi $(docker images -q)`       | -                                                                                                                                              |
-| 进入容器         | `docker exec -it db3 /bin/sh`                                                      | 其中/bin/sh是容器内的文件                                                                                                                      |
+| 作用             | 命令                                                                                                                                                   | 参数                                                                                                                                                                                                     |
+| :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 检查docker的版本 | `docker version`                                                                                                                                       | -                                                                                                                                                                                                        |
+| 搜索镜像         | `docker search 镜像名字`                                                                                                                               | -                                                                                                                                                                                                        |
+| 下载镜像         | `docker pull 镜像名字` <br/> **例:** `docker run learn/tutorial echo "hello word"`                                                                     | -                                                                                                                                                                                                        |
+| 运行镜像         | `docker run -d --network my-network --name study-go -v \\User\\dou\\go_study\\go-study\\settings.yaml:/app/settings.yaml -p 6666:8888 study-go:latest` | -d  后台运行 <br/> --network my-network 指定网络 <br/> --name study-go 指定容器名称 <br/> -p 6666:8888 指定端口映射左为主机端口,右为容器内端口 <br/> -v 映射本地文件到容器内左侧为主机文件右侧为映射文件 |
+| 查看所有容器     | `docker ps`                                                                                                                                            | -a 查看所有容器                                                                                                                                                                                          |
+| 查看容器详情     | `docker inspect 容器名称/容器ID` <br/> **例:** `docker inspect study-go`                                                                               | -                                                                                                                                                                                                        |
+| 查看所有镜像     | `docker images`                                                                                                                                        | -                                                                                                                                                                                                        |
+| 发布镜像         | `docker push [镜像名]` <br/> **例:** `docker push learn/ping`                                                                                          | -                                                                                                                                                                                                        |
+| 停止容器         | `docker stop 容器名`                                                                                                                                   | -                                                                                                                                                                                                        |
+| 删除容器         | `docker container rm 容器名`                                                                                                                           | -                                                                                                                                                                                                        |
+| 删除所有的容器   | `docker container prune`                                                                                                                               | -                                                                                                                                                                                                        |
+| 删除所有的镜像   | `docker container image` <br/> **例:** `sudo docker rmi $(docker images -q)`                                                                           | -                                                                                                                                                                                                        |
+| 进入容器         | `docker exec -it db3 /bin/sh`                                                                                                                          | 其中/bin/sh是容器内的文件                                                                                                                                                                                |
 
 #### 可视化工具 portainer
 
@@ -40,6 +40,67 @@ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.
 #### mysql
 
 `docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`
+
+### docker-compose
+Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。
+#### 命令
+docker-compose下的常用命令常用的列出
+| 作用           | 命令                      | 备注                        |
+| :------------- | :------------------------ | :-------------------------- |
+| 运行容器       | `docker-compose up xxx`   | 详细下面展开                |
+| 停止容器       | `docker-compose stop xxx` | 默认按顺序停止,也可停止某个 |
+| 停止并删除容器 | `docker-compose down xxx` |                             |
+| 容器下执行命令 | `docker-compose exec xxx` |                             |
+
+docker up 下常的常用参数
+| 作用          | 命令                                  |
+| :------------ | :------------------------------------ |
+| 后台运行      | `-d`                                  |
+| 重新build镜像 | `--build`                             |
+| 重新创建容器  | `---force-recreate`                   |
+| 指定某个服务  | **eg:**` docker-compose up study-go2` |
+
+#### yaml文件配置
+
+```yaml
+version: '3.7'
+
+services:
+  web: # 服务名称
+    image: nginx:latest # 镜像和dockerfile存一个
+    container_name: my_nginx_container # 容器名称
+    ports: # 端口映射
+      - "8080:80"
+    volumes: # 文件映射
+      - ./html:/usr/share/nginx/html
+    environment: # 环境变量
+      - ENV_VAR=example
+    networks: #网络
+      - my_network
+    depends_on: # 依赖关系 表明关联服务启动后才能启动该服务
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    container_name: my_mysql_container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=my_database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - my_network
+
+networks:
+  my_network: # 创建了一个新的网络
+    driver: bridge # 驱动为桥接模式
+
+volumes:
+  db_data: #定义后其他服务也可以引用数据轴
+
+```
 
 ## Helm基础
 
