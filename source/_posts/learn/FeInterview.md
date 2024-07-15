@@ -282,7 +282,7 @@ Watcher: 数据的订阅者，数据的变化会通知到 Watcher，然后由 Wa
 
 Dep: Observer 与 Watcher 的纽带，当数据变化时，会被 Observer 观察到，然后由 Dep 通知到 Watcher
 
-{% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/Interview/Vue.png %}
+{% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/Interview/Vue.png %}
 
 Observe 中创建 Dep 实例然后使用 Object.defineProperty 定义监听`__ob__`属性的 this 内容，然后如果是数组则重写方法后再尝试监听。递归监听会使用 defineProperty 方法监听对象属性，创建 Dep 实例后，函数中的 Object.defineProperty 会再 get 方法内添加判断，渲染的期间给每个放在页面上的变量添加 watcher，因为只有渲染阶段才会 Dep.target ，有正常访问 target 是没有的，如果有 Dep.target 则添加 watcher 监听。set 方法内在修改后调用 observe，更新数组或者对象的时候也要创建一个新的 dep 给 childDep。并调用 dep 的 notify 方法通知 watcher 更新视图。
 

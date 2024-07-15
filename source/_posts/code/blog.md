@@ -10,6 +10,8 @@ tags:
 ## 博客开发
 
 基于[hexo](https://hexo.io/zh-cn/)的[Volantis](https://xaoxuu.com/wiki/volantis/)博客主题模版开发
+## 常用命令
+[标签](https://volantis.js.org/v6/tag-plugins/)
 
 ## 免费 cdn 加速(不配置 cdn 会超级慢)  容易炸
 

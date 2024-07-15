@@ -1,0 +1,65 @@
+name: Assign Issue to Team Member
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign issue to team member
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.ACTION_TOKEN }}
+          script: |
+            const { data: assignees } = await github.request('GET /repos/{owner}/{repo}/assignees', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const availableAssignees = assignees.map((assignee) => assignee.login);
+            if (availableAssignees.length) {
+              await github.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                assignees: availableAssignees,
+              });
+            }
+
+      - name: Auto set issue label
+        id: get-issue-template
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.ACTION_TOKEN }}
+          script: |
+            const { data:issueInfo } = await github.request(
+              'GET /repos/{owner}/{repo}/issues/{issue_number}',
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+              }
+            );
+            const issueBody = issueInfo.body;
+            const firstLine = issueBody.split('\n')[0].trim();
+            const issueMap={
+                'bug':'bug',
+                'feature':'feature',
+            }
+            var issueLabel = ''
+            for(let i in issueMap){
+                if(firstLine.includes(i)){
+                  issueLabel = issueMap[i]
+                  break;
+                }
+            }
+            if (issueLabel) {
+              await github.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                labels: [issueLabel]
+              });
+            }

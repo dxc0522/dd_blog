@@ -3,11 +3,12 @@ title: Docker应用
 authorDesc: 豆豆
 categories: 开发
 date: 2021-5-2 18:00:00
+update: 2024-7-11 09:46:00
 tags: 
   - Docker
   - 运维
 ---
-#### 基本命令
+### 基本命令
 
 | 作用             | 命令                                                                                                                                                   | 参数                                                                                                                                                                                                     |
 | :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,34 +26,79 @@ tags:
 | 删除所有的镜像   | `docker container image` <br/> **例:** `sudo docker rmi $(docker images -q)`                                                                           | -                                                                                                                                                                                                        |
 | 进入容器         | `docker exec -it db3 /bin/sh`                                                                                                                          | 其中/bin/sh是容器内的文件                                                                                                                                                                                |
 
-#### 可视化工具 portainer
+> 创建网络`docker create network --driver bridge my-network` 驱动分为bridge、host、none 
 
-``` shell
-docker pull portainer/portainer
+### Dockerfile
+```Dockerfile
+####### GoLang #######
+FROM golang:1.21.6-alpine AS builder
 
-docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data swr.cn-north-1.myhuaweicloud.com/iivey/portainer-ce:2.1.1
+LABEL stage=gobuilder
+
+ENV CGO_ENABLED 0
+ENV GOPROXY https://goproxy.cn,direct
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+RUN apk update --no-cache && apk add --no-cache tzdata
+
+WORKDIR /build
+
+ADD go.mod .
+ADD go.sum .
+RUN go mod download
+COPY . .
+COPY app/etc /app/etc
+RUN go build -ldflags="-s -w" -o /app/study-go app/app.go
+
+# 空镜像仅用于运行go
+FROM scratch
+WORKDIR /app
+COPY --from=builder /app/study-go /app/study-go
+COPY --from=builder /app/etc /app/etc
+CMD ["./study-go", "-f", "etc/app-prd.yaml"]
+####### Web #######
+FROM node:20.15.0 AS builder
+WORKDIR /app
+COPY . .
+RUN npm i -g pnpm
+RUN pnpm config set registry https://registry.npmmirror.com/
+RUN pnpm i
+RUN pnpm build
+
+FROM scratch
+WORKDIR /app
+COPY --from=builder /app/dist ./
+COPY --from=builder /app/nginx.conf ./
+
+CMD [""]
+####### Nginx #######
+FROM nginx:alpine
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/Shanghai
+ENV TZ Asia/Shanghai
+
+COPY app/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+# 不可出现两个
+CMD ["nginx", "-g", "daemon off;"]
 ```
-
-#### nginx
-
-`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html -v C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d nginx`
-
-#### mysql
-
-`docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`
 
 ### docker-compose
 Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。
 #### 命令
 docker-compose下的常用命令常用的列出
-| 作用           | 命令                      | 备注                        |
-| :------------- | :------------------------ | :-------------------------- |
-| 运行容器       | `docker-compose up xxx`   | 详细下面展开                |
-| 停止容器       | `docker-compose stop xxx` | 默认按顺序停止,也可停止某个 |
-| 停止并删除容器 | `docker-compose down xxx` |                             |
-| 容器下执行命令 | `docker-compose exec xxx` |                             |
+| 作用               | 命令                                   | 备注                                                                                                                                             |
+| :----------------- | :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 运行容器           | `docker-compose up xxx`                | 详细下面展开                                                                                                                                     |
+| 停止容器           | `docker-compose stop xxx`              | 默认按顺序停止,也可停止某个                                                                                                                      |
+| 停止并删除容器     | `docker-compose down xxx`              |                                                                                                                                                  |
+| 清理临时停止的容器 | `docker-compose down --remove-orphans` | 即已经停止但未被移除的容器                                                                                                                       |
+| 清理未使用的镜像   | `docker-compose down --rmi 'local'`    | 停止并移除服务，并删除所有本地的镜像。--rmi 'local' 参数告诉 docker-compose 只删除本地的镜像，而不删除通过 build 或者 image 指令定义的远程镜像。 |
+| 容器下执行命令     | `docker-compose exec xxx`              |                                                                                                                                                  |
 
-docker up 下常的常用参数
+docker-compose up 下常的常用参数
 | 作用          | 命令                                  |
 | :------------ | :------------------------------------ |
 | 后台运行      | `-d`                                  |
@@ -60,7 +106,7 @@ docker up 下常的常用参数
 | 重新创建容器  | `---force-recreate`                   |
 | 指定某个服务  | **eg:**` docker-compose up study-go2` |
 
-#### yaml文件配置
+#### docker-compose.yml文件配置
 
 ```yaml
 version: '3.7'
@@ -73,36 +119,135 @@ services:
       - "8080:80"
     volumes: # 文件映射
       - ./html:/usr/share/nginx/html
+    build:
+      context: ./web/admin-web # 上下文路径
+      dockerfile: ./Dockerfile # 基于上下文路径的文件
     environment: # 环境变量
       - ENV_VAR=example
     networks: #网络
       - my_network
     depends_on: # 依赖关系 表明关联服务启动后才能启动该服务
       - mysql
-
-  mysql:
-    image: mysql:latest
-    container_name: my_mysql_container
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=my_database
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
+  nginx:
+      container_name: nginx
+      image: nginx
+      volumes:
+        - ~/docker/nginx/html:/usr/share/nginx/html
+        - ~/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+        - ~/docker/nginx/conf/conf.d:/etc/nginx/conf.d
+        - ~/docker/nginx/logs:/var/log/nginx
+      ports:
+        - "80:80"
+      networks:
+        - public
+      restart: always
+      deploy:
+        resources:
+          limits:
+            cpus: '0.2'
+            memory: 20M
+          reservations:
+            cpus: '0.1'
+            memory: 10M
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    ports:
+      - "9000:9000"
     volumes:
-      - db_data:/var/lib/mysql
+      - /var/run/docker.sock:/var/run/docker.sock # 操作docker
+      - portainer_data:/data
     networks:
-      - my_network
+      - public
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 150M
+        reservations:
+          cpus: '0.2'
+          memory: 100M
+  mysql:
+    container_name: mysql
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+    networks:
+      - public
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M
+        reservations:
+          cpus: '0.3'
+          memory: 100M
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:latest
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_data:/var/jenkins_home # 持久化数据
+      - jenkins_docker_certs:/certs/client # 持久化数据
+      - /var/run/docker.sock:/var/run/docker.sock # 访问docker
+      - /usr/local/bin/docker:/usr/bin/docker # 访问docker
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    networks:
+      - public
+    user: root
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M
+        reservations:
+          cpus: '0.3'
+          memory: 100M
 
 networks:
-  my_network: # 创建了一个新的网络
-    driver: bridge # 驱动为桥接模式
+  public: # 网络
+    external: true # 外部网络
 
 volumes:
-  db_data: #定义后其他服务也可以引用数据轴
-
+  portainer_data: # 定义卷
+    external: true # 外部卷
+  mysql_data: 
+  jenkins_data: 
+  jenkins_docker_certs:
 ```
 
-## Helm基础
+``` conf
+server { # 对应web容器内配置, server 不可写localhost
+    listen       8081;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+### 相关应用
+#### 可视化工具 portainer
+
+``` shell
+docker pull portainer/portainer
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data swr.cn-north-1.myhuaweicloud.com/iivey/portainer-ce:2.1.1
+```
+
+
+## K8s基础
 
 ### K8s、Helm、Kubectl 之间的关系
 

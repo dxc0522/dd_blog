@@ -6,7 +6,7 @@ pages:
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/logo_blue_small.png
+    img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/logo_blue_small.png
     icon:
     title:
   menu:
@@ -37,26 +37,26 @@ navbar:
 cover:
   height_scheme: full # full, half
   layout_scheme: search # search (搜索), dock (坞), featured (精选), focus (焦点)
-  logo: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/banner_logo.png
+  logo: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/banner_logo.png
   title:
   subtitle: #'开源社区主页'
-  background:  https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/046.jpeg
+  background:  https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/046.jpeg
   search: 一碗胡辣汤的博客
   features:
     - name: 首页
-      img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/menu/home.png
+      img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/menu/home.png
       url: /
     - name: 文档
-      img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/menu/archive.png
+      img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/menu/archive.png
       url: archives/
     - name: 留言
-      img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/menu/comments.png
+      img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/menu/comments.png
       url: message/
     - name: 随笔
-      img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/menu/link.png
+      img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/menu/link.png
       url: note/
     - name: 关于
-      img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/menu/about.png
+      img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/menu/about.png
       url: about/
 
 # 主页、分类、归档等独立页面
@@ -72,7 +72,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/avatar.jpg
+      avatar: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/avatar.jpg
       shape: rectangle # circle, rectangle
       url: /about/
       title: DouDou
@@ -162,7 +162,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/svg/1f4cc.svg
+    pin_icon: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/svg/1f4cc.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -199,7 +199,7 @@ article:
         icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
-        placeholder_img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/046.jpeg
+        placeholder_img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/046.jpeg
       # ----------------
       # 版权声明组件 (for layout: post/docs)
       copyright:
@@ -222,7 +222,7 @@ article:
       # 默认文章作者（可在 front-matter 中覆盖）
       author:
         name: 豆豆
-        avatar: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/avatar.jpg
+        avatar: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/avatar.jpg
         url: /
       # 文章创建日期
       date:
@@ -251,28 +251,28 @@ article:
       # 分享
       share:
         - id: qq
-          img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/share/qq.png
+          img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/share/qq.png
         - id: qzone
-          img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/share/qzone.png
+          img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/share/qzone.png
         - id: weibo
-          img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/share/weibo.png
+          img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/share/weibo.png
         - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/share/wechat.png
+          img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/share/wechat.png
         - id: telegram
-          img: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/share/telegram.png
+          img: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/share/telegram.png
 
 # 自定义样式
 custom_css:
   font_smoothing: true # font-smoothing for webkit
   cursor:
     enable: true
-    text: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/text.png
-    pointer: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/pointer.png
-    default: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/left_ptr.png
-    not-allowed: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/circle.png
-    zoom-out: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/zoom-out.png
-    zoom-in: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/zoom-in.png
-    grab: https://cdn.cbd.int/dd_blog_assets@1.0.0/img/blog/cursor/openhand.png
+    text: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/text.png
+    pointer: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/pointer.png
+    default: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/left_ptr.png
+    not-allowed: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/circle.png
+    zoom-out: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/zoom-out.png
+    zoom-in: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/zoom-in.png
+    grab: https://cdn.cbd.int/dd_blog_assets@2.0.0/img/blog/cursor/openhand.png
   navbar:
     effect: [shadow, blur, floatable] # [shadow, floatable, blur]
   sidebar:
@@ -333,16 +333,16 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/lm2762.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/p2dky9.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/wyx3px.png
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3y1e0.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3y3wV.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3y6YD.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3yBex.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3yEo8.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3yYYF.jpg
-      - https://cdn.cbd.int/dd_blog_assets@1.0.0/img/background/Z3yZFS.png
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/lm2762.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/p2dky9.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/wyx3px.png
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3y1e0.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3y3wV.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3y6YD.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3yBex.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3yEo8.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3yYYF.jpg
+      - https://cdn.cbd.int/dd_blog_assets@2.0.0/img/background/Z3yZFS.png
   
   # 代码高亮
   code_highlight: highlightjs # highlightjs or prismjs

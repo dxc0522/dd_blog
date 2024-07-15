@@ -82,9 +82,9 @@ oct(x )                 将一个整数转换为一个八进制字符串
 
 Python math 模块、cmath 模块
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/11.png" %}
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/12.png" %}
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/13.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/11.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/12.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/13.png" %}
 #### Python字符串
 字符串或串(String)是由数字、字母、下划线组成的一串字符。
 
@@ -130,15 +130,15 @@ del list1[2]
 
 Python列表脚本操作符
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/19.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/19.png" %}
 
 Python列表截取
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/20.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/20.png" %}
 
 Python列表函数&方法
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/21.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/21.png" %}
 
 #### Python 元组
 
@@ -181,8 +181,8 @@ Python列表函数&方法
 
 Python 转义字符
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/14.png" %}
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/15.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/14.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/15.png" %}
 
 Python 字符串格式化
 
@@ -201,8 +201,8 @@ print "My name is %s and weight is %d kg!" % ('Zara', 21)
 My name is Zara and weight is 21 kg!
 ```
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/16.png" %}
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/17.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/16.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/17.png" %}
 
 Python 三引号
 
@@ -262,7 +262,7 @@ python的字符串内建函数
 这些方法实现了string模块的大部分方法，如下表所示列出了目前字符串内建支持的方法，所有的方法都包含了对Unicode的支持，有一些甚至是专门用于Unicode的。
 ```
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/18.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/18.png" %}
 
 #### Python 字典
 
@@ -299,26 +299,26 @@ This is two
 
 字典内置函数&方法
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/22.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/22.png" %}
 
 ### Python数据类型转换
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/01.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/01.png" %}
 ### Python算术运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/02.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/02.png" %}
 ### Python比较运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/03.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/03.png" %}
 ### Python赋值运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/04.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/04.png" %}
 ### Python位运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/05.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/05.png" %}
 ### Python逻辑运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/06.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/06.png" %}
 ### Python成员运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/07.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/07.png" %}
 ### Python身份运算符
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/08.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/08.png" %}
 ### Python运算符优先级
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/09.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/09.png" %}
 ## Python 条件语句
 
 if 判断条件：
@@ -328,7 +328,7 @@ else：
 
 ## Python 循环语句
 
-{%  img "https://cdn.cbd.int/dd_blog_assets@1.0.0/img/python/10.png" %}
+{%  img "https://cdn.cbd.int/dd_blog_assets@2.0.0/img/python/10.png" %}
 
 ### Python While 循环语句
 

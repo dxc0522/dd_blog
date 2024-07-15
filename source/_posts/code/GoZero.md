@@ -16,7 +16,7 @@ tags:
 * [官方文档](https://go-zero.dev/docs/tutorials?_highlight=syntax#api-%E8%AF%AD%E6%B3%95%E6%A0%87%E8%AE%B0) 有但是不全
 * [源码文档页面](https://dohyeon5626.github.io/github-html-preview-page/?https://github.com/zeromicro/go-zero-pages/blob/491478350847eeb7eefb6634e875386a9f58309b/cn/api-grammar.html)
 
-{%  image /assets/img/go/goctl-cn.svg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/go/goctl-cn.svg %}
 
 ``` go
 // tag 有四种 分别是 json、path、form、header

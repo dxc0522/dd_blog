@@ -34,11 +34,11 @@ tags:
 #### 腿部热身
 
 {% videos::3 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/18keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/4keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/3keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/8keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/10keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/18keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/4keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/3keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/8keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/10keep.mp4 %}
 {% endvideos %}
 
 
@@ -67,17 +67,17 @@ tags:
 ### 2.背部训练
 
  #### 杠铃划船
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/9keep.jpg, height=200px, bg=#1D0C04, alt=双脚与肩同宽，挺胸抬头背部挺直，双膝微屈，双手正握单杠宽比双腿宽一点点，上身保持并向下尽力趴下去。肘部保持夹紧，放松时双臂放松，单杠在膝盖前一点，然后背部发力带动双臂将单杠沿着膝盖拖到小腹为止，然后再缓慢收回。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/9keep.jpg, height=200px, bg=#1D0C04, alt=双脚与肩同宽，挺胸抬头背部挺直，双膝微屈，双手正握单杠宽比双腿宽一点点，上身保持并向下尽力趴下去。肘部保持夹紧，放松时双臂放松，单杠在膝盖前一点，然后背部发力带动双臂将单杠沿着膝盖拖到小腹为止，然后再缓慢收回。 %}
 #### 哑铃划船
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/1keep.jpg, height=200px, bg=#1D0C04, alt=左边为例，右腿跪在坐垫，右手稍微弯曲扶着坐垫。左腿向后撤，左手垂直侧正拿哑铃，发力时以背部带动左手向左后方发力实现背部的左下方肌肉得到锻炼。反之亦然 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/1keep.jpg, height=200px, bg=#1D0C04, alt=左边为例，右腿跪在坐垫，右手稍微弯曲扶着坐垫。左腿向后撤，左手垂直侧正拿哑铃，发力时以背部带动左手向左后方发力实现背部的左下方肌肉得到锻炼。反之亦然 %}
 #### 高位下拉
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/3keep.jpg, height=200px, bg=#1D0C04, alt=坐在哑铃上，双臂抓横杠，保持肩胛骨收紧，挺胸抬头收腹，发力时胸部向前挺，拉至横杠于胸部上方。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/3keep.jpg, height=200px, bg=#1D0C04, alt=坐在哑铃上，双臂抓横杠，保持肩胛骨收紧，挺胸抬头收腹，发力时胸部向前挺，拉至横杠于胸部上方。 %}
 #### 坐姿划船
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/2keep.jpg, height=200px, bg=#1D0C04, alt=坐在哑铃上，挺胸抬头，肩胛骨收紧，发力时胸部向前挺，肘部夹紧，将把手拉直肚脐处为止，收力时身体稍微向前送出。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/2keep.jpg, height=200px, bg=#1D0C04, alt=坐在哑铃上，挺胸抬头，肩胛骨收紧，发力时胸部向前挺，肘部夹紧，将把手拉直肚脐处为止，收力时身体稍微向前送出。 %}
 #### 引体向上
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/4keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，放松到大小臂90度夹角即可，向上头刚刚超过横杠即可。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/4keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，放松到大小臂90度夹角即可，向上头刚刚超过横杠即可。 %}
 #### 固定器械高位下拉
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/5keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，用胸部发力去带动胳膊向后收。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/5keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，用胸部发力去带动胳膊向后收。 %}
 
 #### 背部拉伸
 找个一米多高的地方，双手抓住，身体向下坐使背部得到拉伸。
@@ -97,18 +97,18 @@ tags:
 ### 3.胸部训练
 
 #### 胸部热身
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/6keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，用胸部发力去带动胳膊向后收。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/6keep.jpg, height=200px, bg=#1D0C04, alt=挺胸收腹，肩胛骨收紧，双手抓把手中间，用胸部发力去带动胳膊向后收。 %}
 
 #### 史密斯杠铃卧推
 {% videos, 3 %}
- {% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/17keep.mp4 %}
+ {% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/17keep.mp4 %}
 {% endvideos %}
 平躺在坐垫上，小臂与大臂成90度夹角抓住杠铃，肩胛骨夹紧，向上直直推出，保持杠铃下来后在乳头上方，动作幅度大。(中部胸肌)
 #### 杠铃上斜卧推
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/8keep.jpg, height=200px, bg=#1D0C04, alt=反坐在坐垫上，小臂与大臂成90度夹角抓住杠铃，肩胛骨夹紧，保持杠铃下来后在锁骨上方，动作幅度大。(上部胸肌) %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/8keep.jpg, height=200px, bg=#1D0C04, alt=反坐在坐垫上，小臂与大臂成90度夹角抓住杠铃，肩胛骨夹紧，保持杠铃下来后在锁骨上方，动作幅度大。(上部胸肌) %}
 
 #### 双杠臂曲伸
- {% image https://cdn.cbd.int/dd_blog_assets@1.0.0/img/keep/4keep.jpg, height=200px, bg=#1D0C04, alt=抓住中间把手，下巴抵住锁骨，背部拱起成C字型，肘部夹紧。 %}
+ {% image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/keep/4keep.jpg, height=200px, bg=#1D0C04, alt=抓住中间把手，下巴抵住锁骨，背部拱起成C字型，肘部夹紧。 %}
 #### 胸部拉伸
 右胸为例，找面墙壁，右腿弓布向前，右臂大小臂呈垂直放在墙的另一面，身体向左前方发力，使右边有拉伸的感觉。左胸反之亦然
 
@@ -127,14 +127,14 @@ tags:
 ### 4.肩部训练
 
 {% videos::3 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/1keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/19keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/6keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/7keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/14keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/9keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/11keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/5keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/1keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/19keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/6keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/7keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/14keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/9keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/11keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/5keep.mp4 %}
 {% endvideos %}
 
 #### 颈前推举
@@ -165,10 +165,10 @@ tags:
 
 ### 5.手臂训练
 {% videos, 3 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/23keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/20keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/21keep.mp4 %}
-{% video https://cdn.cbd.int/dd_blog_assets@1.0.0/media/22keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/23keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/20keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/21keep.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/22keep.mp4 %}
 {% endvideos %}
 #### 哑铃弯举
 

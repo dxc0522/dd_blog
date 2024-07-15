@@ -1,0 +1,16 @@
+{
+  "name": "dd_blog_assets",
+  "version": "2.0.0",
+  "description": "blog assets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "dou",
+  "license": "ISC",
+  "homepage": "https://github.com/dxc0522/dd_blog",
+  "bugs": "https://github.com/dxc0522/dd_blog/issues"
+}
