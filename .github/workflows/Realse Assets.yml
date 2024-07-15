@@ -1,0 +1,70 @@
+name: Release Assets
+
+on:
+  push:
+    branches:
+      - main # 或者您想要发布新版本的分支名
+
+jobs:
+  ReleaseDeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # - name: Check if tag 1.0.0 exists
+      #   id: check-tag
+      #   uses: actions/github-script@v3
+      #   with:
+      #     script: |
+      #       const { data } = await github.request('POST /repos/{owner}/{repo}/git/tags', {
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #       });
+            
+      #       const tagExists = data.some(tag => tag.name === '1.0.0');
+      #       return tagExists;
+      # - name: Delete tag 1.0.0 if exists
+      #   if: steps.check-tag.outputs.result == 'true'
+      #   uses: actions/github-script@v3
+      #   with:
+      #     script: |
+      #       await github.rest.git.deleteRef({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         ref: 'tags/1.0.0'
+      #       });
+      # - name: Delete existing tag
+      #   run: |
+      #     git fetch --all
+      #     git tag -d 1.0.0
+      #     git push --delete origin 1.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: 1.0.0
+          release_name: dd_blog_assets
+          body: |
+            # Release Notes
+            dd_blog_assets
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Assets
+        id: upload_release_assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /source/assets/*
+          asset_name: dd_blog_assets
+          asset_content_type: application/octet-stream

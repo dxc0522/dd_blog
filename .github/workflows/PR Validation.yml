@@ -1,0 +1,38 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - 'stg/*'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # 拉取完整的提交历史
+
+    - name: Validate branch name
+      run: |
+        PR_BRANCH=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/refs\/heads\///')
+
+        if [[ ! $PR_BRANCH =~ ^(feature\/|feat\/|bugfix\/|hotfix\/) ]]; then
+          echo "错误: 分支名不符合规范!"
+          exit 1
+        fi
+
+    - name: Validate commit message
+      run: |
+        COMMIT_SHA="${{ github.event.pull_request.head.sha }}"
+        echo "Pull Request SHA: $COMMIT_SHA"
+        
+        COMMIT_MESSAGES=$(git log --format=%B -n 1 $COMMIT_SHA)
+        echo "Commit Message: $COMMIT_MESSAGES"
+
+        if [[ ! $COMMIT_MESSAGES =~ ^(feature|feat|bugfix|hotfix)\(.+\):.+$ ]]; then
+            echo "错误: commit message不符合规范!"
+            exit 1
+        fi
+        

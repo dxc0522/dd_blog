@@ -2,7 +2,6 @@
 title: Go开发手册
 authorDesc: 豆豆
 categories: 开发
-pin: true
 date: 2024-02-01 16:14:00
 updated: 2024-05-30 12:21:00
 tags:

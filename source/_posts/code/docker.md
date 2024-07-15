@@ -3,11 +3,12 @@ title: Docker应用
 authorDesc: 豆豆
 categories: 开发
 date: 2021-5-2 18:00:00
+update: 2024-7-11 09:46:00
 tags: 
   - Docker
   - 运维
 ---
-#### 基本命令
+### 基本命令
 
 | 作用             | 命令                                                                                                                                                   | 参数                                                                                                                                                                                                     |
 | :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,35 +25,77 @@ tags:
 | 删除所有的容器   | `docker container prune`                                                                                                                               | -                                                                                                                                                                                                        |
 | 删除所有的镜像   | `docker container image` <br/> **例:** `sudo docker rmi $(docker images -q)`                                                                           | -                                                                                                                                                                                                        |
 | 进入容器         | `docker exec -it db3 /bin/sh`                                                                                                                          | 其中/bin/sh是容器内的文件                                                                                                                                                                                |
+### Dockerfile
+```Dockerfile
+####### GoLang #######
+FROM golang:1.21.6-alpine AS builder
 
-#### 可视化工具 portainer
+LABEL stage=gobuilder
 
-``` shell
-docker pull portainer/portainer
+ENV CGO_ENABLED 0
+ENV GOPROXY https://goproxy.cn,direct
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
-docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data swr.cn-north-1.myhuaweicloud.com/iivey/portainer-ce:2.1.1
+RUN apk update --no-cache && apk add --no-cache tzdata
+
+WORKDIR /build
+
+ADD go.mod .
+ADD go.sum .
+RUN go mod download
+COPY . .
+COPY app/etc /app/etc
+RUN go build -ldflags="-s -w" -o /app/study-go app/app.go
+
+# 空镜像仅用于运行go
+FROM scratch
+WORKDIR /app
+COPY --from=builder /app/study-go /app/study-go
+COPY --from=builder /app/etc /app/etc
+CMD ["./study-go", "-f", "etc/app-prd.yaml"]
+####### Web #######
+FROM node:20.15.0 AS builder
+WORKDIR /app
+COPY . .
+RUN npm i -g pnpm
+RUN pnpm config set registry https://registry.npmmirror.com/
+RUN pnpm i
+RUN pnpm build
+
+FROM scratch
+WORKDIR /app
+COPY --from=builder /app/dist ./
+COPY --from=builder /app/nginx.conf ./
+
+CMD [""]
+####### Nginx #######
+FROM nginx:alpine
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/Shanghai
+ENV TZ Asia/Shanghai
+
+COPY app/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+# 不可出现两个
+CMD ["nginx", "-g", "daemon off;"]
 ```
-
-#### nginx
-
-`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html -v C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d nginx`
-
-#### mysql
-
-`docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`
 
 ### docker-compose
 Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。
 #### 命令
 docker-compose下的常用命令常用的列出
-| 作用           | 命令                      | 备注                        |
-| :------------- | :------------------------ | :-------------------------- |
-| 运行容器       | `docker-compose up xxx`   | 详细下面展开                |
-| 停止容器       | `docker-compose stop xxx` | 默认按顺序停止,也可停止某个 |
-| 停止并删除容器 | `docker-compose down xxx` |                             |
-| 容器下执行命令 | `docker-compose exec xxx` |                             |
+| 作用               | 命令                                   | 备注                                                                                                                                             |
+| :----------------- | :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 运行容器           | `docker-compose up xxx`                | 详细下面展开                                                                                                                                     |
+| 停止容器           | `docker-compose stop xxx`              | 默认按顺序停止,也可停止某个                                                                                                                      |
+| 停止并删除容器     | `docker-compose down xxx`              |                                                                                                                                                  |
+| 清理临时停止的容器 | `docker-compose down --remove-orphans` | 即已经停止但未被移除的容器                                                                                                                       |
+| 清理未使用的镜像   | `docker-compose down --rmi 'local'`    | 停止并移除服务，并删除所有本地的镜像。--rmi 'local' 参数告诉 docker-compose 只删除本地的镜像，而不删除通过 build 或者 image 指令定义的远程镜像。 |
+| 容器下执行命令     | `docker-compose exec xxx`              |                                                                                                                                                  |
 
-docker up 下常的常用参数
+docker-compose up 下常的常用参数
 | 作用          | 命令                                  |
 | :------------ | :------------------------------------ |
 | 后台运行      | `-d`                                  |
@@ -73,6 +116,9 @@ services:
       - "8080:80"
     volumes: # 文件映射
       - ./html:/usr/share/nginx/html
+    build:
+      context: ./web/admin-web # 上下文路径
+      dockerfile: ./Dockerfile # 基于上下文路径的文件
     environment: # 环境变量
       - ENV_VAR=example
     networks: #网络
@@ -96,13 +142,34 @@ services:
 networks:
   my_network: # 创建了一个新的网络
     driver: bridge # 驱动为桥接模式
+    external: true # 直接表明是已存在的网络也可就不会新建网络
 
 volumes:
-  db_data: #定义后其他服务也可以引用数据轴
-
+  web_data: # 都可以挂载的卷
+    external: true # 外部卷
+  nginx_data:
+    external: true
 ```
 
-## Helm基础
+### 相关应用
+#### 可视化工具 portainer
+
+``` shell
+docker pull portainer/portainer
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data swr.cn-north-1.myhuaweicloud.com/iivey/portainer-ce:2.1.1
+```
+
+#### nginx
+
+`docker run -d -p 8880:80 --name nginx -v C:\Users\dou\Desktop\nginx/scan-code:/usr/share/nginx/html -v C:\Users\dou\Desktop\nginx\conf.d:/etc/nginx/conf.d nginx`
+
+#### mysql
+
+`docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`
+
+
+## K8s基础
 
 ### K8s、Helm、Kubectl 之间的关系
 
