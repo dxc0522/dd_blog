@@ -11,7 +11,7 @@ tags:
 ### 入门
 [教程](https://juejin.cn/post/7127302949797101604)
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/process.png %}
+{%  image /assets/img/jenkins/process.png %}
 
 流程说明：
 
@@ -33,6 +33,8 @@ tags:
 另外一方面也是为了更好的扩展，如果出现紧急情况，需要横向扩展，可以在备用机器上，直接进行拉取部署即可。
 
 ###  Setup
+
+Jenkins不要设置配置限制性能
 #### Docker 安装服务
 ``` docker-compose.yml
 version: '3.7'

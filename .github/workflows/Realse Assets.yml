@@ -4,36 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  PulishAssets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.15'
-
-      - uses: healthplace/npmrc-registry-login-action@v1.0
-        with:
-          scope: ''
-          registry: 'https://registry.npmjs.org/'
-          auth-token: ${{ secrets.NPM_TOKEN }}
-
-      - name: unpublish package
-        run: |
-          cd source/assets
-          npm unpublish dd_blog_assets@2.0.0
-
-      - name: publish npm package
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./source/assets
-
   BuildAssets:
     runs-on: ubuntu-latest
     steps:

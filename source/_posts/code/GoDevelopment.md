@@ -117,6 +117,7 @@ func JwtUnauthorizedResult(w http.ResponseWriter, r *http.Request, err error) {
 ### 生成API文档
 
 * 安装goctl-swagger `go install github.com/zeromicro/goctl-swagger@latest`
+* 生成json `goctl api plugin -plugin goctl-swagger="swagger -filename doc/app.json" -api app.api -dir .`
 * 生成app.json 如果没有doc目录，需要先创建然后更换自己本地地址执行 `docker run -d --name swag -p 8087:8080 -e SWAGGER_JSON=/opt/app.json -v /Users/dou/go/src/github.com/go-template/app/doc/:/opt swaggerapi/swagger-ui`
   
 ### 连接Mysql
@@ -213,6 +214,36 @@ COMMAND
 #### 链接
 
 [部署问题](https://www.fengfengzhidao.com/article/dtyibo4BEG4v2tWkcxXp#%E8%BF%9E%E6%8E%A5%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1)
+
+## GoZero
+
+* [官方文档源码最全](https://github.com/zeromicro/go-zero-pages)
+* [视频教程](https://www.bilibili.com/video/BV1Fr4y177Jf/?spm_id_from=333.788&vd_source=7b375be35b2f577c65ee6446b86f37e9)
+
+### API 文档
+
+* [官方文档](https://go-zero.dev/docs/tutorials?_highlight=syntax#api-%E8%AF%AD%E6%B3%95%E6%A0%87%E8%AE%B0) 有但是不全
+* [源码文档页面](https://dohyeon5626.github.io/github-html-preview-page/?https://github.com/zeromicro/go-zero-pages/blob/491478350847eeb7eefb6634e875386a9f58309b/cn/api-grammar.html)
+
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/go/goctl-cn.svg %}
+
+``` go
+// tag 有四种 分别是 json、path、form、header
+type Request {
+ Name string `path:"name"` // 路由path如 /foo/:name
+ Name string `json:"name"`
+ Name string `form:"name"` // Post请求或Get请求中的params如 /search?name=xx 参数
+ Name string `header:"name"`
+}
+// tag修饰符 对参数的描述
+type Request {
+ Name string `json:"name,optional"` // 可选字段
+ Name string `json:"name,options=you|me""` // 多个枚举值
+ Name string `json:"name,range=[0:100]"` // 范围
+ Name string `json:"name,default=dou"` // 默认值
+}
+//  字段的描述是直接在字段后面写上注释例: //字段描述
+```
 
 ## 相关资源
 

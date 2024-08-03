@@ -1,0 +1,82 @@
+name: Replace Assets Path
+on:
+    workflow_dispatch:
+    # schedule:
+    #     - cron: '0 0 * * *'
+
+jobs:
+    ReplaceAssetsPath:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+            -   name: Has Local Assets Path
+                id: has_local_assets_path
+                run: |
+                    if find ./source/_posts -name "*.md" -type f -exec grep -qzl "{%  image /assets/" {} \; > /dev/null; then
+                        echo "Found matches."
+                        echo "has_matches=true" >> $GITHUB_OUTPUT
+                    else
+                        echo "No matches found. Skipping further steps."
+                        echo "has_matches=false" >> $GITHUB_OUTPUT
+                    fi
+                    
+            -   name: Replace Assets Path
+                uses: jacobtomlinson/gha-find-replace@v3
+                if: steps.has_local_assets_path.outputs.has_matches == 'true'
+                with:
+                    find: "{%  image /assets/"
+                    replace: "{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/"
+                    include: "./source/_posts/*.md"
+                    regex: true
+    
+    PulishAssets:
+        needs: ReplaceAssetsPath
+        runs-on: ubuntu-latest
+        if: success()
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+
+            -   name: Use Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '20.15'
+                    registry-url: 'https://registry.npmjs.org/'
+
+            # -   run: npm ci
+            # -   run: |
+            #         cd source/assets
+            #         npm whoami
+            #         npm unpublish dd_blog_assets@2.0.0 --force
+            #         npm publish
+            #     env:
+            #         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+            -   name: publish npm package
+                uses: JS-DevTools/npm-publish@v3
+                with:
+                    token: ${{ secrets.NPM_TOKEN }}
+                    strategy: all
+                    tag: latest
+                    package: ./source/assets
+    RebaseBranch:
+        needs: PulishAssets
+        runs-on: ubuntu-latest
+        if: success()
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+            -   name: Rebase Branch
+                run: |
+                    git add .
+                    git status
+                    git commit --amend --no-edit && git push -f
+        env:
+          github-token: ${{ secrets.ACTION_TOKEN }}

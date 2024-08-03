@@ -8,6 +8,22 @@ tags:
   - Docker
   - 运维
 ---
+### 基础配置
+官方[网站](https://docs.docker.com/desktop/install/mac-install/)安装包无法下载, 下载镜像文件包[仓库](https://github.com/tech-shrimp/docker_installer/releases/)
+
+docker-compose 在mac系统安装包内自带, 就在`~/.docker/cli-plugins/`文件夹内可能需要配置到$PATH
+
+修改国内代理镜像服务器
+``` daemon.json
+{"registry-mirrors": [
+    "https://sy2nxcfq.mirror.aliyuncs.com",
+    "https://registry.docker-cn.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://hub-mirror.c.163.com",
+    "https://mirror.baidubce.com"
+  ]
+}
+```
 ### 基本命令
 
 | 作用             | 命令                                                                                                                                                   | 参数                                                                                                                                                                                                     |
@@ -26,7 +42,7 @@ tags:
 | 删除所有的镜像   | `docker container image` <br/> **例:** `sudo docker rmi $(docker images -q)`                                                                           | -                                                                                                                                                                                                        |
 | 进入容器         | `docker exec -it db3 /bin/sh`                                                                                                                          | 其中/bin/sh是容器内的文件                                                                                                                                                                                |
 
-> 创建网络`docker create network --driver bridge my-network` 驱动分为bridge、host、none 
+> 创建网络`docker network create --driver bridge my-network` 驱动分为bridge、host、none 
 
 ### Dockerfile
 ```Dockerfile
