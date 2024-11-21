@@ -17,6 +17,7 @@ tags:
 
 ### 常用命令
 
+> 清除已有缓存 `go clean -modcache`
 > 更新依赖 `go mod tidy && go mod vendor`
 > 检查api文件配置 `goctl api validate --api app.api`
 > 格式化api文件 `goctl api format -dir .`
@@ -260,3 +261,9 @@ type Request {
 #### gen sql struct command
 
 `sql2struct --dsn "mysql://root:123456@tcp(127.0.0.1:3306)/go_test?charset=utf8mb4&parseTime=True&loc=Local" -t "users" -t "table_test"`
+
+## 注意
+### 发布包相关事项
+版本号为tag的标签号. 如`v1.0.0` 发布包时需要带上tag.
+#### 安装包路径问题
+大概率是因为代理的缓存问题, 首先修改go env 的变量proxy 为direct, 然后执行`go clean -modcache` 清除缓存即可.

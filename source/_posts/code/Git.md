@@ -68,6 +68,12 @@ git merge origin/master                                   # 合并远程master�
 git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
 git push origin master                                    # 将当前分支push到远程master分支
 git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
+git tag                                                   # 查看所有标签
+git tag v2.0                                              # 增加tag v2.0
+git tag -a v2.0 -m 'xxx'                                  # 增加tag v2.0并附上注释
+git tag -d v2.0                                           # 删除tag v2.0
+git push origin v2.0                                      # 将tag v2.0 push到远程仓库
+git push origin :v2.0                                     # 删除远程仓库的tag v2.0
 git push --tags                                           # 把所有tag推送到远程仓库
 git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
 git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
