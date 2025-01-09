@@ -16,3 +16,8 @@ nvm 用git下载下来，然后在目录里，
 ## docker 安装
 新版的直接命令安装 `brew install --cask --appdir=/Applications docker`
 [旧电脑选择旧版的支持](https://docs.docker.com/desktop/release-notes/#docker-desktop-450)
+
+## 环境问题
+
+### 本地局域网之间通信调试
+Mac 需要开启本地网路功能: 设置-隐私与安全性-本地网络-浏览器

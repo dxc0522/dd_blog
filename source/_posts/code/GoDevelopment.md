@@ -259,8 +259,38 @@ type Request {
 `go install github.com/starfishs/sql2struct@latest`
 
 #### gen sql struct command
-
-`sql2struct --dsn "mysql://root:123456@tcp(127.0.0.1:3306)/go_test?charset=utf8mb4&parseTime=True&loc=Local" -t "users" -t "table_test"`
+安装
+`go install gorm.io/gen/tools/gentool@latest`
+使用
+` gentool -dsn "root:123456@tcp(127.0.0.1:3306)/local?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai" -tables "users"  -onlyModel`
+配置文件使用
+`gentool -conf gen.tool`
+``` yaml
+version: "0.1"
+database:
+  # consult[https://gorm.io/docs/connecting_to_the_database.html]"
+  dsn : "root:123456@tcp(127.0.0.1:3306)/local?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai"
+  # input mysql or postgres or sqlite or sqlserver. consult[https://gorm.io/docs/connecting_to_the_database.html]
+  db  : "mysql"
+  # enter the required data table or leave it blank.You can input : orders,users,goods
+  tables  :
+         - users
+  # specify a directory for output
+  outPath :  "dbmodel"
+  # query code file name, default: gen.go
+  outFile :  ""
+  # generate unit test for query code
+  withUnitTest  : false
+  # generated model code's package name
+  modelPkgName  : "dbmodel"
+  # generate with pointer when field is nullable
+  fieldNullable : true
+  # generate field with gorm index tag
+  fieldWithIndexTag : false
+  # generate field with gorm column type tag
+  fieldWithTypeTag  : false
+  onlyModel : true
+```
 
 ## 注意
 ### 发布包相关事项
