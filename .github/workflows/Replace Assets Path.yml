@@ -28,7 +28,7 @@ jobs:
                 if: steps.has_local_assets_path.outputs.has_matches == 'true'
                 with:
                     find: "{%  image /assets/"
-                    replace: "{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/"
+                    replace: "{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/"
                     include: "./source/_posts/*.md"
                     regex: true
     
@@ -52,7 +52,7 @@ jobs:
             # -   run: |
             #         cd source/assets
             #         npm whoami
-            #         npm unpublish dd_blog_assets@2.0.0 --force
+            #         npm unpublish dd_blog_assets@2.0.1 --force
             #         npm publish
             #     env:
             #         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

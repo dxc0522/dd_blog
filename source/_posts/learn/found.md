@@ -55,40 +55,40 @@ ps：最后两个概念不明白也没关系，没必要一次性死记硬背这
 基金入门第二章：基金投资的流程（上）
 基金的购买渠道：我们需要知道，在哪里可以购买基金（博主也是萌新，暂且现在"支付宝/蚂蚁金服"上混混经验吧）。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/found/28.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/found/28.png %}
 
 基金投资的风险：
 
 ps：这里不要一看到这么多风险，就害怕了，博主觉得简单的来说，市场风险就是市场环境现在怎么样，适不适合投资；管理风险和技术风险的话，新手就选大一点的基金产品，不要搞些小众产品。重要的是投资习惯，投资基金的话心态要好，不要看着有些基金有些小波动，就生怕亏钱了，基金是一种长期理财的工具，钱投在里面，要想赚取稳定的收益，还是得看长期，不要在意短期的市场波动。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/29.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/29.png %}
 
 基金投资者等级：
 
 不用多说，博主也是初级小菜鸟级别的。个人觉得年轻人要学会攒钱，攒钱，攒钱，前面三个词不要关注钱，重要的是攒、攒、攒，不要把工资都吃喝拉撒玩用光了，抽出工资的一小部分，长期积累，积少成多。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/30.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/30.png %}
 
 基金投资的核心原则：
 
 ps：博主的理解就是，选基金的时候，不要选那种近期排名前几的太火爆的基金，这个跟学习工作不一样，不用争第一，排名靠前就行了。同时这里也提到，要放眼长期，资金要能长期存在里面，投资几天几周的这种，既花时间、又不一定获得收益。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/31.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/31.png %}
 
 基金入门第二章：基金投资的流程（下）
 正确的投资流程：
 
 小白选手也不可能一下子懂这么多，太繁琐的流程，估计还没学会，就已经放弃了，这里简单点：了解市场环境、选一两只合适的基金、投资自己的一小部分钱、合适的时候(觉得收益满意了)收回。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/32.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/32.png %}
 
 下面是几个详细的流程：
 
 简单的说：弄清楚你的自身情况，和你用来投资的这部分钱，大概投资多久。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/33.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/34.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/35.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/33.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/34.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/35.png %}
 
 ### 基金相关主体
 （1）基金管理公司，就是负责管理基金的公司，他们的工作包括发起设立基金，进行基金运作，帮助投资者获得收益。一个基金管理公司，可以管理多个基金（大点的基金公司，基本上都是好几十个）。
@@ -115,7 +115,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 这你也不必太多担心，因为李四一般是由银行（中农工交建行等等）来担任，况且在他们俩之上，还有一些市场管理员（证监会等），专门来管理市场秩序的。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/0.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/0.jpg %}
 
 ### 基金的进程
 
@@ -137,7 +137,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 一只基的一生大概包括以下几个阶段：
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/1.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/1.jpg %}
 
 
 1.产品设计——“养只什么鸡呢”
@@ -162,7 +162,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 正式发行后，就会进入募集资金的阶段，即我们常在各种基金公司网站常看到的这种：
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/2.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/2.jpg %}
 这个时候类，其实就是养鸡人向大家宣布：“我要养鸡啦，养鸡一共需要5000块，谁出钱给我养鸡，养了生下的鸡蛋（基金收益）就按出资比例分给你啦～”
 
 
@@ -213,7 +213,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 界定完大范围后，我们开始来讲细的，一谈到基金分类，我们的教科书和百度都是这么说的：
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/3.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/3.jpg %}
 嗯，没有错，很准确，很完整。但是我们需要记住这么多么？
 
 
@@ -222,7 +222,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 其实红框里面的类型，就是我们所需要知道的基金分类。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/4.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/4.jpg %}
 
 
 
@@ -249,7 +249,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 我们就按照天天基金的这个分类来讲——
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/5.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/5.jpg %}
 
 
 
@@ -260,7 +260,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 所谓的货币型基金，我们来看度娘的解释：
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/6.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/6.jpg %}
 
 
 其实不用记得太多，你就记得货币基金是一种收益较低（但比银行活期高得多，目前在一年2-3%收益率左右徘徊），风险也很低，而且很灵活（很多货币基金已经支持随存随取，1分起购了）的基金就可以了。
@@ -279,17 +279,17 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 当然，上市的股票太多，为了更加方便让投资选择基金，同时也是因为基金经理的擅长领域有所不同，一般的股票基金都会再进行主题细分。感受一下：
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/7.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/7.jpg %}
 
 
 比如专门投资于医疗行业的
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/8.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/8.jpg %}
 
 
 比如专门投资于沪港深主题的
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/9.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/9.jpg %}
 
 
 股票型基金，因其投资标的是股票，因此收益和风险在各类基金中都是最高的。
@@ -298,7 +298,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 （3）债券型基金 所谓债券型基金，就是大部分资金（80%以上）投资于债券的基金。
 不同于股票型基金，以投资的股票主题来命名，大部分债券型基金都会标明投资债券的品种，这是因为不同的债券所代表的收益和风险也是不同的，常见的包括信用债、可转债等等。相较于股票型基金的一目了然，债券型基金的名称看起来总让人有点摸不着头脑，这块会在进阶版细讲，这里不展开。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/10.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/10.jpg %}
 （4）混合型基金
 所谓混合型基金，就是个不伦不类的基金，怎么样都可以，它可以投资于货币工具、股票和债券等等，你记住它是个什么都可以投的基金就可以了。
 
@@ -319,7 +319,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 #### ETF、ETF联接，LOF，QDII……
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/4.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/4.jpg %}
 
 
 先讲讲ETF和LOF。
@@ -387,7 +387,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 上面提到了，ETF是交易型开放式指数基金，其实它还有一个名字，叫交易所交易基金，跟前面的名称相比，少了“开放式”三个字，为啥呢？因为ETF虽然可以在场外进行申赎，但是——真的很麻烦，起点高不说，它还规定必须用股票来进行申赎。什么意思呢？这个不用管，反正你就记得它基本上只能够场内交易，场外交易很麻烦就是。看下天天基金的列表，都是只支持场内交易的。
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/11.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/11.jpg %}
 
 
 
@@ -411,7 +411,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 讲人话，就是可以投资国外证券的基金，比如下图的嘉实恒生中国企业，投资的标的就是香港上市的中国企业股票。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/12.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/12.jpg %}
 
 
 好了，终于把这几个奇奇怪怪的基金讲完了（让我长舒一口气），这里再放个大神的回答，个人觉得有助于加深对本篇的理解，感兴趣可以当作延展阅读咯。
@@ -430,7 +430,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 那分级基金究竟是什么捏？
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/13.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/13.jpg %}
 
 
 
@@ -469,7 +469,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 接下来是保本基金，相比分级基金而言，保本基金就容易理解得多得多……
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/14.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/14.jpg %}
 
 
 
@@ -508,7 +508,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 最后是量化基金。
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/15.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/15.jpg %}
 
 
 
@@ -535,7 +535,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 第一次买基金的时候，我们最常遇到的问题就是，“申购”是什么？“认购”又是什么？当然现在很多网站（包括基金公司和三方平台），为了避免让投资者疑惑，不管申购和认购，一律称为购买。但是呢，在查看费率的时候，我们还是会看的基金写的是申购费率，有时写的又是认购费率。那这两者究竟有什么不同呢？
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/16.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/16.jpg %}
 
 
 其实很简单，对于新成立的基金，购买行为称做认购；对于成立后的基金，购买行为称为申购。除此之外呢，还有一个比较重要的区别，就是确认时间。
@@ -547,13 +547,13 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 认购时间：
 
 我们在第一部分的时候，讲过一只基金的一生。忘了可以回顾下（贴链接）
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/1.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/1.jpg %}
 
 
 认购其实对应的就是上述流程的“募集资金”阶段，这个时期长短是由基金公司决定的，不论是什么时候认购的，都必须等到募集结束之后，才能够确认的。
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/17.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/17.jpg %}
 
 
 
@@ -593,7 +593,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 这里重点要说另一个功能——极速赎回。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/18.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/18.jpg %}
 
 
 
@@ -626,7 +626,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 最后来讲讲另一个重要功能，叫做使用活期宝（即货币基金）支付。
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/19.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/19.jpg %}
 
 
 
@@ -700,7 +700,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 所以，从逻辑上讲，是直销更便宜一点。
 但其实现在很多代销渠道的费率也很低了。比如天天基金网，购买费率已经是一折了，基本上跟基金公司的直销费率持平。当然有时为了促销，基金公司会通过一些方法把费率打到0折，比如招商基金的0元购栏目。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/20.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/20.jpg %}
 
 
 2.哪里更方便？
@@ -713,7 +713,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 （招商基金和天天基金的对比）
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/21.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/21.jpg %}
 
 
 
@@ -738,7 +738,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 （感谢知友的提醒，下图中的“蚂蚁聚宝”目前已改名“蚂蚁财富”，由于找不到原表格，所以就不改图片了哈）
 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/22.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/22.jpg %}
 
 
 
@@ -750,7 +750,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 从天天基金网，随便打开一个基金的费率详情。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/23.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/23.jpg %}
 可以看到，跟基金相关的费用主要包括两种类型，一种为运作费用，另外一种为交易费用。
 
 
@@ -779,7 +779,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 在购买基金的时候，建议大家可以把基金合同里的基金费率和税收一项关注下。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/24.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/24.jpg %}
 
 
 与按日计提的运作费用不同的是，交易费用，都按次收费的。即只有在每次交易的时候，直接一次性收费。
@@ -800,7 +800,7 @@ ps：博主的理解就是，选基金的时候，不要选那种近期排名前
 
 赎回费呢，也同样不是固定的，而是根据持有的时间年限不同。基金公司当然希望你拿得越久越好，因为拿得越旧，你贡献的管理费越多啊，所以呢，赎回费是持有时间越长，费率越低。具体需要查看具体基金的费率政策。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/25.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/25.jpg %}
 
 
 申购费（认购费同）的计算
@@ -924,12 +924,12 @@ B基金，申购费1.5%，赎回费0.1%
 
 我们先看下最新的银行存款利率哈
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/26.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/26.jpg %}
 
 
 然后我们随便拉下目前市场上的货币基金，
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/found/27.jpg %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/found/27.jpg %}
 
 
 先看下7日年化，前20名的货基都已经4.7%的年化收益，当然这个节点有基金公司估计作答收益的嫌疑，那我们再看下35日年化，基本上也都达到3.5-4.5之间，而随着美联储加息和缩表的预期不停，至少今年年内，货币基金都将维护在较高的水平。

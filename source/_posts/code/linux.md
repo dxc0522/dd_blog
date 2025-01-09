@@ -5,9 +5,10 @@ date: 2020-04-17 21:14:00
 tags:
   - 运维
 ---
+
 ## 基础操作
 
-### 显示cpu架构信息
+### 显示 cpu 架构信息
 
 ```
  [xxx@localhost ~]$ lscpu
@@ -37,36 +38,36 @@ NUMA node0 CPU(s):     0-3
 
 ### 查看安装位置
 
-| 作用                  | 命令               |
-| :-------------------- | :----------------- |
-| 查看服务位置          | `ps  -ef           | grep nginx` |
-| 查看端口占用          | `netstat -ntlp`    |
-| 查看nginx配置文件位置 | `nginx -t`         |
-| 刷新环境变量          | `source ~/.bashrc` |
+| 作用                    | 命令               |
+| :---------------------- | :----------------- | ----------- |
+| 查看服务位置            | `ps -ef            | grep nginx` |
+| 查看端口占用            | `netstat -ntlp`    |
+| 查看 nginx 配置文件位置 | `nginx -t`         |
+| 刷新环境变量            | `source ~/.bashrc` |
 
 ### 传输 scp
 
-``` shell
-scp local_file remote_username@remote_ip:remote_folder 
-# 或者 
-scp local_file remote_username@remote_ip:remote_file 
-# 或者 
-scp local_file remote_ip:remote_folder 
-# 或者 
-scp local_file remote_ip:remote_file 
+```shell
+scp local_file remote_username@remote_ip:remote_folder
+# 或者
+scp local_file remote_username@remote_ip:remote_file
+# 或者
+scp local_file remote_ip:remote_folder
+# 或者
+scp local_file remote_ip:remote_file
 # 或者
 scp -i key.pm file_path remote:remote_file
 ```
 
 ## PM2 常用命令
 
-pm2常用命令记录
+pm2 常用命令记录
 
-`$ pm2 start app.js` # 启动app.js应用程序
+`$ pm2 start app.js` # 启动 app.js 应用程序
 
-`$ pm2 start app.js -i 4`        # cluster mode 模式启动4个app.js的应用实例
+`$ pm2 start app.js -i 4` # cluster mode 模式启动 4 个 app.js 的应用实例
 
-4个应用程序会自动进行负载均衡
+4 个应用程序会自动进行负载均衡
 
 ```
 pm2 start app.js --name="api" # 启动应用程序并命名为 "api"
@@ -116,4 +117,4 @@ pm2 update                    # Save processes, kill PM2 and restore processes
 pm2 generate                  # Generate a sample json configuration file
 ```
 
-pm2文档地址：<http://pm2.keymetrics.io/docs/usage/quick-start/>
+pm2 文档地址：<http://pm2.keymetrics.io/docs/usage/quick-start/>

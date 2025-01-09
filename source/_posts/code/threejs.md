@@ -173,7 +173,7 @@ renderer.shadowMap.enabled = true;
 ### UV 法向属性
 
 图形摊开后以左上角为坐标轴的坐标点为 uv，下图以正方体为例。
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/threejs/uv.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/threejs/uv.png %}
 
 ### 滤镜参数
 

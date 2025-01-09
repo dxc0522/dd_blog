@@ -11,7 +11,7 @@ tags:
 ### 入门
 [教程](https://juejin.cn/post/7127302949797101604)
 
-{%  image /assets/img/jenkins/process.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/process.png %}
 
 流程说明：
 
@@ -70,15 +70,15 @@ volumes:
 
 #### init 
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/init.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/init.png %}
 看到这个图片查看文件内容
 ``` bash
 docker exec -it -uroot jenkins bash # -uroot 是以管理员身份登入容器
 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/installPlugins.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/installPlugins.png %}
 安装默认插件即可,然后用户新建
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/image.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/image.png %}
 页面功能分类,开了中文翻译就看得懂了
 
 ### 插件安装
@@ -91,50 +91,50 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 
 ### 添加凭据
 凭据其实就是账号密码，你访问远程服务器都需要账号密码才行，这里的凭据就是相应的账号密码。
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/auth.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/auth.png %}
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/auth2.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/auth2.png %}
 #### 服务器凭证
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/auth3.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/auth3.png %}
 #### Github凭证
 2021年后https方式不允许登陆账户密码的方式拉取代码, 而ssh的形式可能容器的公钥会更改, 所以我们采用github access token的方式访问仓库.
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/github6.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/github6.png %}
 最后完成的时候，记得复制
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/github3.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/github3.png %}
 1. 创建 GithubApi相关凭证, 粘贴token到secret就好
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/auth5.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/auth5.png %}
 2. 创建 Github 仓库凭证
 
 点添加的时候，会弹出一个框 github的账户名, 密码就是复制的github access token
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/auth4.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/auth4.png %}
 描述自己写就行~~
 
 ### 系统配置
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/system.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/system.png %}
 找到两个配置：
 
 1、SSH remote hosts
 
 2、SSH Servers
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/ssh1.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/ssh2.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/ssh3.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/ssh1.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/ssh2.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/ssh3.png %}
 
 ### 全局工具配置
 node 安装指定版本
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/tools.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/tools.png %}
 
 ### Github WebHooks
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/webhook.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/webhook2.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/webhook.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/webhook2.png %}
 像我jenkins是部署在服务器上的 我的 地址就是服务器 IP:port/github-webhook/
 
 找到项目，点击配置
 
 把构建触发器中的 GitHub hook trigger for GITScm polling 勾上
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/github8.png %}
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/jenkins/github9.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/github8.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/jenkins/github9.png %}
 记得点击保存。
 
 然后就可以进行测试啦。

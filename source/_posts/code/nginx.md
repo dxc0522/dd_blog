@@ -35,11 +35,11 @@ yum -y install wget httpd-tools vim
 但是 yum 中的版本一般比较低需要重新设置 yum 源
 进入 [Nginx 官网](http://nginx.org/en/download.html)查找最新稳定版本的
 
-{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.0/img/article/nginx0.png> %}
+{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.1/img/article/nginx0.png> %}
 
 复制这段代码
 
-{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.0/img/article/nginx1.png> %}
+{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.1/img/article/nginx1.png> %}
 
 然后在服务器终端里输入 `vim /etc/yum.repos.d/nginx.repo` 然后把代码复制进去，
 复制完成后，你需要修改一下对应的操作系统和版本号，因为我的是 centos 和 7 的版本，所以改为这样。
@@ -156,7 +156,7 @@ nginx.conf 文件是 Nginx 总配置文件，在我们搭建服务器时经常�
 3. 点击“网络和安全组” ，再点击“安全组配置”
 4. 右上角添加“安全组配置”
 5. 进行 80 端口的设置，具体设置如图就好。
-   {%  img <https://cdn.cbd.int/dd_blog_assets@2.0.0/img/article/nginx2.png> %}
+   {%  img <https://cdn.cbd.int/dd_blog_assets@2.0.1/img/article/nginx2.png> %}
 
 如果访问域名可以查看到页面就正常运行了。
 
@@ -176,7 +176,7 @@ nginx.conf 文件是 Nginx 总配置文件，在我们搭建服务器时经常�
 还可以使用个 Linux 的命令进行启动，我一般都是采用这种方法进行使用。因为这种方法无论启动什么服务，都是一样的，只是换一下服务的名字（不用增加额外的记忆点）。
 `systemctl start nginx.service` 输入命令后，没有任何提示，那我们如何知道 Nginx 服务已经启动了哪？可以使用 Linux 的组合命令，进行查询服务的运行状况。
 `ps aux | grep nginx`如果启动成功会出现如下图片中类似的结果。
-{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.0/img/article/nginx3.png> %}
+{%  img <https://cdn.cbd.int/dd_blog_assets@2.0.1/img/article/nginx3.png> %}
 
 有这三条记录，说明我们 Nginx 被正常开启了。
 

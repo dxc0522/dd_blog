@@ -40,4 +40,4 @@ keywords: 大吉他
 
 ### 节拍
 
-{% video https://cdn.cbd.int/dd_blog_assets@2.0.0/media/1guitar.mp4 %}
+{% video https://cdn.cbd.int/dd_blog_assets@2.0.1/media/1guitar.mp4 %}

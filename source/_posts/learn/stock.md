@@ -28,7 +28,7 @@ tags:
 认知决定收益,市场是验证个人认知的地方.
 所有指标都是滞后的甚至无效的，只能作为对规则的参考，不能完全依靠指标。
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220520-094123.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220520-094123.png %}
 
 | 名词 | 解释                         |
 | :--- | :--------------------------- |
@@ -136,13 +136,13 @@ tags:
 #### 1.交易策略
 
 任何可以盈利的策略都是有底层规律支撑的.
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-194929.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-194929.png %}
 入场时机
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-195243.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-195243.png %}
 
 #### 2.风险模型
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-210944.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-210944.png %}
 
 评估策略风险,判断交易能力.
 
@@ -153,7 +153,7 @@ tags:
    止盈金额/止损金额
 4. 盈利效率=总盈利/交易量;
    每一单位的仓位带来的收益
-   {%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-193938.png %}
+   {%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-193938.png %}
 
 #### 趋势
 
@@ -176,11 +176,11 @@ tags:
 3. 凯利公式:凯利公式投注比例:(盈亏比\*盈利概率-亏损概率)/盈亏比
 
 试图如下
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-193617.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-193617.png %}
 
 ### 增长模型
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220406-194110.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220406-194110.png %}
 
 从 0 到 1 的试错期,少量投入资金用于验证策略,磨砺内心.(切勿投入大量资本)
 从 1 到 10 的回本期,逐渐入金大于出金,实现盈利.
@@ -198,7 +198,7 @@ tags:
 
 ### K 线反转形态
 
-{%  image https://cdn.cbd.int/dd_blog_assets@2.0.0/img/stock/WX20220519-101729.png %}
+{%  image https://cdn.cbd.int/dd_blog_assets@2.0.1/img/stock/WX20220519-101729.png %}
 
 `K 线的反转形态发生在支撑位才有意义,主要用于验证关键位置的支撑阻力是否存在.`
 
