@@ -22,7 +22,8 @@ tags:
 > 检查api文件配置 `goctl api validate --api app.api`
 > 格式化api文件 `goctl api format -dir .`
 > 更新api文件 `rm -rf internal/handler && rm -rf internal/types/types.go  && goctl api go -api app.api -dir .`
-> 生成dbmodel `goctl model mysql datasource --url "root:123456@tcp(127.0.0.1:3306)/local" -t "users" -t "charging_data"`
+> 生成dbmodel `gentool -dsn "root:123456@tcp(127.0.0.1:3306)/db_health?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai"  -onlyModel -outPath "./dbmodel" -fieldNullable -modelPkgName dbmodel`
+> 设置代理 `go env -w GO111MODULE=on & go env -w GOPROXY=https://goproxy.cn,direct`
 
 ### 环境准备
 

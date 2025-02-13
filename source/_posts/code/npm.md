@@ -10,7 +10,7 @@ tags:
 ## 相关资料
 
 [eslint 文档](https://cn.eslint.org/docs/user-guide/configuring#extending-configuration-files)
-
+> 代理到本机科学上网 npm config set proxy http://127.0.0.1:7890
 ## 规范
 
 一般来说根目录下会存在这么几个文件夹：
