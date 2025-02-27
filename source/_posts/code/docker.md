@@ -172,6 +172,15 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+#### docker 自建镜像库
+
+查看镜像 `curl http://localhost:5000/v2/_catalog`
+查看镜像详情 `curl http://localhost:5000/v2/vibrahealth-admin/tags/list`
+获取特定标签的元数据 `curl http://localhost:5000/v2/vibrahealth-admin/manifests/latest`
+打上 TAG `docker tag vibrahealth-admin:latest localhost:5000/vibrahealth-admin:latest`
+推送镜像 `docker push localhost:5000/vibrahealth-admin:latest`
+删除特定标签 `docker push localhost:5000/v2/<name>/manifests/<digest>`
+
 ### docker-compose
 
 Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。
