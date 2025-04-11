@@ -13,6 +13,7 @@ nvm 用git下载下来，然后在目录里，
 
 ## brew 安装
 `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"`
+`brew info [包名]` 可以直接查看包信息，部分包不会自动添加到path中去。需要查看info信息后操作。
 ## docker 安装
 新版的直接命令安装 `brew install --cask --appdir=/Applications docker`
 [旧电脑选择旧版的支持](https://docs.docker.com/desktop/release-notes/#docker-desktop-450)

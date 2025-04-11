@@ -26,6 +26,9 @@ docker-compose 在 mac 系统安装包内自带, 就在`~/.docker/cli-plugins/`�
   ]
 }
 ```
+ 
+调试镜像
+`docker run --rm -it golang-with-mupdf:1.22.10 bash`
 
 #### 基本命令
 
